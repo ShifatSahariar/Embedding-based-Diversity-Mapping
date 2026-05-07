@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.karatelabs.js.JsJsonTest
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in io.karatelabs.js.JsJsonTest

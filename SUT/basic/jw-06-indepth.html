@@ -1,0 +1,790 @@
+<HTML>
+<HEAD>
+<TITLE>JavaWorld - Java In Depth: How to build an interpreter in Java, Part 2 - June 1996</TITLE>
+
+<META name="description" content="JavaWorld May 1997 -- Java In Depth: How to build an interpreter in Java, Part 2">
+<META name="keywords" content="JavaWorld, Java">
+<META name="author" content="Chuck McManis">
+
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" ALINK="#FF0000" VLINK="#551a8b">
+
+<!--#config timefmt="%A, %B %d, %Y" -->
+
+<!--#include virtual="/javaworld/jw-06-1997/jw-06-nuts.dat"-->
+
+<!--#exec cgi="/javaworld/cgi-bin/jw-adbanrot.cgi"-->
+
+<center>
+<img width="437" height="64" src="/javaworld/icons/c-in.depth.gif" alt="In Depth: by Chuck McManis">
+</center>
+
+<H1 ALIGN="CENTER">
+How to build an interpreter in Java, Part 2: The structure
+</H1>
+
+<H3 ALIGN="CENTER">
+The trick to assembling the foundation classes for a simple interpreter
+</H3>
+
+<BLOCKQUOTE>
+<STRONG>Summary</STRONG><BR>
+Constructing an interpreter in Java ties together many different
+programming techniques. Java object orientation makes implementing the
+interpreter both straightforward and easy to grasp by any programmer.
+Part 2 of this column looks at the Java-based interpreter (written in a
+form of BASIC I called Cocoa in Part 1) and its source code, with
+particular attention paid to the structure of the interpreter. <EM>(3,350
+words)</EM>
+</BLOCKQUOTE>
+
+<CENTER><IMG SRC="/javaworld/icons/greenline.gif" HEIGHT="7"
+WIDTH="432"></CENTER>
+<P>
+
+<FONT SIZE="+3">I</FONT>n <a
+href="/javaworld/jw-05-1997/jw-05-indepth.html">last month's column</a>
+I discussed the idea of building an interpreter in Java and introduced
+my version of BASIC, named Cocoa. In this month's column we will jump
+right into the source code for the Cocoa interpreter. However, as the
+emphasis here is on building interpreters in Java, more attention will
+be paid to the structure than to the actual code. As always, the full
+source code for the column is available in the <a
+href="#Resources">Resources section</a> below.
+
+<p><font size="+1"><strong>The Program class</strong></font><br>
+
+All the constituent classes of the interpreter are collected into a
+single Java package. For this interpreter, that package is named
+<em>basic</em>. (Here is <a
+href="/javaworld/jw-06-1997/indepth/basic.html">Cocoa's programming
+documentation</a>.) This does contravene Sun's suggested naming
+convention for packages for no good reason, but then again Sun's naming
+scheme, as described in the Java Language spec, isn't particularly well
+motivated either. :-)  However, there is good reason to put the classes
+together in a single package, and that is to provide visibility of
+interpreter private methods to other interpreter classes without
+exposing them to the interpreter's clients.
+
+<p>As I discussed last month, the primary class for the interpreter is
+a public class with a factory method to create executable programs. I
+chose to implement this <code>load</code> method in a class named
+<code>basic.Program</code>. (For the rest of the article we'll assume
+the class names are all preceded by the "basic" package name without
+expressly calling it out.) <code>Program</code> exports a static method
+whose signature is:
+
+<p>
+<pre>
+public static Program load(InputStream source, PrintStream out)
+        throws IOException, BASICSyntaxError { ... }
+</pre>
+
+<p>This method is responsible for getting the text in an
+<code>InputStream</code> parsed and collected into something that
+can be interpreted. It returns an instance of a
+<code>Program</code> object, which is the parsed program. The other
+important public method in <code>Program</code> is <code>run</code>,
+whose signature is as follows:
+
+<p>
+<pre>
+public void run(InputStream in, OutputStream out) throws BASICRuntimeError {
+        PrintStream pout;
+</pre>
+
+<p>The <code>run</code> method is not static; it actually runs the
+instance of the program using the input and output streams that are
+passed for doing character I/O.
+
+<p>As you can see, both of these methods throw exceptions. The first
+throws an <code>IOException</code> if an I/O error occurs while reading
+the source code from the input stream.  The <code>load</code> method
+also can throw a <code>BASICSyntaxError</code> exception if the source
+code it is reading fails to parse. The second method, <code>run</code>,
+throws the exception <code>BASICRuntimeError</code> when an error
+occurs during the execution of the program.  The kinds of situations
+that would throw this error include dividing by zero or reading from an
+uninitialized variable.
+
+<p>These two methods, <code>load</code> and <code>run</code>, define
+the two halves of any interpreter, loading and executing.
+
+<p><font size="+1"><strong>Getting the program loaded</strong></font><br>
+
+The <code>load</code> method in the <code>Program</code> class
+begins as follows:
+
+<p>
+<pre>
+public static Program load(InputStream source, PrintStream out) throws IOException, BASICSyntaxError {
+        DataInputStream dis = null;
+        char data[] = new char[256];
+        LexicalTokenizer lt = new LexicalTokenizer(data);
+        String lineData;
+        Statement s;
+        Token t;
+        Program result = new Program();
+	if (! (source instanceof DataInputStream))
+	    dis = new DataInputStream(new BufferedInputStream(source));
+	else
+	    dis = source;
+</pre>
+
+<p>In the code above, the variables for the parsing section of the
+interpreter are initialized. These include a lexical analyzer (in the
+form of the <code>LexicalTokenizer</code> class) and a
+<code>DataInputStream</code>.  There is a simple optimization that
+checks to see whether or not the method was passed an instance of a
+<code>DataInputStream</code>.  The data array is an array of characters
+the lexical analyzer will use while reading in the source code. Note
+that it puts a limit of about 256 characters on the input line.
+
+<p>The bulk of the loading method is simply a loop that reads in data
+(in the form of strings) and then parses it. Here is the source code
+for this loop:
+
+<p>
+<pre>
+1      while (true) {
+2        lineData = dis.readLine();
+3
+4        if (lineData == null) return result;
+5
+6        if (lineData.length() == 0) continue;
+7
+8        lt.reset(lineData);
+9        t = lt.nextToken();
+10        if (t.typeNum() != Token.CONSTANT) {
+11              throw new BASICSyntaxError(&quot;Line failed to start with a line number.&quot;);
+12        }
+13
+14        try {
+15              s = ParseStatement.statement(lt);
+16        } catch (BASICSyntaxError bse) {
+17              out.println(&quot;Syntax error: &quot;+bse.getMsg());
+18              out.println(lt.showError());
+19              throw bse;
+20        }
+21        s.addText(lineData);
+22        s.addLine((int) t.numValue());
+23        result.add((int) t.numValue(), s);
+24     }
+25  }
+</pre>
+
+<p>This loop will run until the return statement in line 4 returns a
+result, or the catch statement is executed in line 16 and the exception
+is thrown. The most important statements in this loop are lines #15,
+#8, and #23. In line 15 a valid BASIC statement is parsed. In line 8
+the lexical analyzer is preloaded with the string containing a BASIC
+statement. In line 23 the parsed statement is stored in
+<code>result</code> (which is an instance of program) by adding the
+parsed statement to a binary search tree, indexed by the parsed line
+number.
+
+<p>All interpreters will need a collection of, or container for,
+statements. BASIC provides a convenient hook in the form of line
+numbers. My version uses a modified red-black tree, you may wish to
+refer to my column on <a href="http://www.javaworld.com/jw-11-1996/jw-11-indepth.html">containers</a> if
+you are building your own interpreter.
+
+<p>In lines 21 and 22 I store a copy of the text that was read into a
+holding variable of the statement. Doing this allows me to implement a
+very simple program listing function where I simply iterate over the
+statement objects and print out the originally read line for each one.
+
+<p><font size="+1"><strong>Lexing BASIC statements</strong></font><br>
+
+Decomposing the string into components that can be interpreted by the
+parser is the job of the lexical analyzer. For a review on lexical
+analysis see my <a href="#previous">previous Java In Depth columns</a>
+in <em>JavaWorld</em>.
+
+<p>The lexical analyzer I designed for this interpreter falls right in
+the middle of the complexity range. It is too complicated to be handled
+by either <code>StringTokenizer</code> or <code>StreamTokenizer</code>,
+but it is simple enough that I found using a parser generator such as
+JavaCC was overkill. (See my article <a
+href="/javaworld/jw-12-1996/jw-12-jack.html">"Looking for lex and yacc
+for Java? You don't know Jack</a>" in the December issue of
+<em>JavaWorld</em>.) Added to the complexity issue, or lack thereof,
+was the fact that customizing the lexical analyzers that are
+automatically generated is still evolving as a feature in the automatic
+generation space.  So it was harder to write the analyzer code but
+easier to plug it into the interpreter.
+
+<p>I won't go into great detail on the lexical analyzer, but I will
+cover two aspects of it that make the interpreter easier to write.
+
+<p>The first &quot;trick&quot; one can play is to design a
+sophisticated <code>Token</code> class. You will recall from the
+discussion of lexical analyzers that the component parts produced are
+tokens. Some of the tokens you will parse will end up as variables in
+your interpreted code. I created a subclass of my <code>Token</code>
+class, named <code>Variable</code>, that was derived from
+<code>Token</code> by also including a <code>setValue</code> method.
+This allows me to store the variable directly after I receive it in the
+parser, without having to create a new object instance to hold it.
+
+<p>The second technique I used was to incorporate a <code>mark</code>
+and <code>resetToMark</code> feature in the analyzer so that I could
+parse several possible choices, first by marking my position and trying a
+parse, then resetting and trying a different parse path.
+
+<p>The most commonly used method in the lexical analyzer is
+<code>nextToken</code>. This method encapsulates all the rules
+regarding how a stream of ASCII characters should be divided into
+individual tokens. A version of this method is shown below to
+demonstrate the flow, although I've edited out redundant parts to save
+space. See the <a href="#Resources">Resources section</a> for links to
+the complete source.
+
+<p>
+<pre>
+Token nextToken() {
+        Token r;
+ 	....
+        if (currentPos &gt;= buffer.length)
+            return EOLToken;
+</pre>
+
+<p>The conditional statement above guarantees that every time
+<code>nextToken</code> is called, it returns something, even if it is only
+an end-of-line indication.
+
+<p>The statement below saves our position in the input stream so
+the lexical analyzer can return to the current position should the
+analysis of the incoming character stream either fail to produce a
+valid token, or the token that is returned need to be pushed back
+to be re-read by another part of the interpreter.  This technique of
+pushing back the last token to be re-read is used extensively in the
+expression evaluator. (See the source code in <code>ParseExpression.java</code>.)
+
+<p>
+<pre>
+previousPos = currentPos;
+</pre>
+
+<p>The next step is to create a loop to consume all of the white space
+(tabs, spaces, and so on) under the current parse point.  The
+definition of white space is encapsulated in the private
+<code>isSpace</code> method:
+
+<p>
+<pre>
+while (isSpace(buffer[currentPos]))
+            currentPos++;
+</pre>
+
+<p>The bulk of the code is a giant switch statement, based on the
+character value, first checking for the operator characters as shown
+here,
+
+<p>
+<pre>
+switch (buffer[currentPos]) {
+
+            case '+' :
+                currentPos++;
+                return new Token(Token.OPERATOR, &quot;+&quot;, Expression.OP_ADD);
+</pre>
+
+and then the multiple character operators as shown below. In the
+following code the analyzer is trying to match the tokens '&lt;',
+'&lt;=', or '&lt;&gt;'.
+
+<p>
+<pre>
+case '&lt;' :
+                if (buffer[currentPos+1] == '=') {
+                    currentPos += 2;
+                    return new Token(Token.OPERATOR, &quot;&lt;=&quot;, Expression.OP_LE);
+                } else if (buffer[currentPos+1] == '&gt;') {
+                    currentPos += 2;
+                    return new Token(Token.OPERATOR, &quot;&lt;&gt;&quot;, Expression.OP_NE);
+                }
+                currentPos++;
+                return new Token(Token.OPERATOR, &quot;&lt;&quot;, Expression.OP_LT);
+</pre>
+
+<p>After the operators, various symbols are identified as shown below:
+
+<p>
+<pre>
+case '(' :
+            case '\'':
+		...
+            case ',' :
+                return new Token(Token.SYMBOL, (double) buffer[currentPos++]);
+</pre>
+
+<p>Once all possible symbols are checked for, the analyzer checks to
+see if the token could be a numeric constant. A number always starts
+with either a digit or a decimal point so the analyzer checks for these
+characters before calling a helper method to actually convert the
+number into a Java number:
+
+<p>
+<pre>
+case '.' :
+                if (r != null)
+                    return r;
+            case '0':
+            case '1':
+		...
+            case '9':
+                r = parseNumericConstant();
+                if (r != null)
+                    return r;
+                return new Token(Token.SYMBOL, (double) buffer[currentPos++]);
+</pre>
+
+<p>Once numeric characters and symbols are out of the way, the class
+attempts some &quot;universal&quot; end of line processing, hiding from
+the user the differences in line endings between Unix, DOS, and MacOS.
+
+<p>
+<pre>
+case '\r' :
+            case '\n' :
+                while (currentPos &lt; buffer.length)
+                    currentPos++;
+                return EOLToken;
+</pre>
+
+<p>Next, if the current character isn't one of the above symbols, or a
+numeric constant, or an end of line, the penultimate step is to check
+to see if perhaps it is a double quote character, which indicates the
+beginning of a quoted string constant. If the character is a double
+quote, the code below extracts the string between the quotes and
+returns a string constant token:
+
+<p>
+<pre>
+case '&quot;' :
+                StringBuffer sb = new StringBuffer();
+		... parse quoted string ...
+                }
+</pre>
+
+<p>Finally, if the code above has not been able to identify the token,
+we can safely assume that the input character the lexical analyzer is
+looking at is a letter. This assumption is predicated on the fact that
+any non-letter character would have already been consumed by the
+earlier code.
+
+<p>The remaining code consumes the letters and numbers following the
+initial letter up to the next non-alphabetic character and processes
+the resulting string potentially as one of the following token types:
+
+<ul>
+<li>Function name -- particularly if the string ended in "(",
+the list of function names is checked for a match.
+
+<li>Keyword -- one of BASIC's reserved words such as <code>print</code>,
+<code>if</code>, and so on.
+
+<li>Command -- primarily for interactive mode such as <code>run</code>,
+<code>list</code>, <code>new</code>, and so on.
+
+<li>Array Variable -- if the token is followed by "(" and it <em>isn't</em>
+a function, then it is assumed to be an array.
+
+<li>Scalar Variable -- the last "catch-all" choice.
+</ul>
+
+<p>The final result is a relatively large amount of code converting
+the characters into a token object that is easily manipulated by the
+next stage, the statement parser.
+
+<p><font size="+1"><strong>Collecting tokens into BASIC statements</strong></font><br>
+
+The next major class in the interpreter is a class used to
+parse statements, named <code>ParseStatement</code>.
+
+<p>The <code>ParseStatement</code> class is a subclass of the
+<code>Statement</code> class. The implementation of the
+<code>Statement</code> class was affected by a design issue: I wanted
+some basic methods that all statements shared, such as
+<code>trace</code>, <code>execute</code>, and <code>unparse</code>, and
+I didn't want a single monolithic class that defined the entire set of
+all statements.  By designing it in this way, I was able to easily add
+additional statement types with a minimum impact on the classes that
+were already in place.
+
+<p><code>ParseStatement</code>'s factory method is named
+<em>doParse</em>; it takes as an argument an instance of the
+<code>LexicalTokenizer</code> class and returns an instance of the
+<code>Statement</code> class. This structure is what makes the simple
+&quot;compiler&quot; loop in the <code>Program</code> class's
+<code>load</code> method so trivial to write.
+
+<p>The implementation of the <code>doParse</code> method is fairly
+mechanical. There are three valid initial token streams for BASIC
+statements:
+
+<p>
+<ol>
+<li>The single quote (') and question mark (?) symbols,
+which are shorthand for the <em>rem</em> and <em>print</em>
+keywords respectively.
+
+<li>A keyword identifying a BASIC statement.
+
+<li>A variable, which would identify a shorthand version
+of the <code>let</code> statement. 
+</ol>
+
+<p>The requirement for case #1 in the list above stems from old BASIC
+interpreters that used these symbols in lieu of keywords to save space
+in precious random-acess memory. The <code>doParse</code> method treats
+lines with these initial symbols exactly as it would if those lines
+started with the keyword. The code that handles case #1 is shown
+below:
+
+<p>
+<pre>
+1    static Statement doParse(LexicalTokenizer lt) throws BASICSyntaxError {
+2        Statement s;
+3        Token   t;
+4
+5        t = lt.nextToken();
+6        if (t.typeNum() == Token.SYMBOL) {
+7            switch ((int) t.numValue()) {
+8                case '?':
+9                    s = new PRINTStatement(lt);
+10                    t = lt.nextToken();
+11                    if ((t == null) || (t.typeNum() == Token.EOL))
+12                        return s;
+13
+14                    if (t.isSymbol(':')) {
+15                        s.nxt = statement(lt);
+16                        return s;
+17                    }
+18                    throw new BASICSyntaxError(extraError);
+19                case '\'':
+20                    s = new REMStatement(lt);
+21                    return s;
+22                default :
+23                    throw new BASICSyntaxError(&quot;Illegal statement symbol start?&quot;);
+24            }
+25        }
+</pre>
+
+<p>As you can see from the code listing, once a symbol is parsed as the
+initial token, the only two exits from this code are either a return
+statement, or the throwing of an exception. Take the case of the "?"
+symbol.  If it is returned by the lexical analyzer, the
+<code>doParse</code> method creates a new statement by instantiating an
+instance of the <code>PRINTStatement</code> class. As we will see a bit
+later, this invokes a parser specific to print statements on the
+remaining tokens on the input line.  The next interesting bit is the
+way in which the colon (":") character is handled. This character is
+used by the BASIC interpreter to separate multiple statements on a
+line, so once the print statement is parsed, the next token must be
+either an end of line (EOL) or a symbol token (whose value is ":").
+Otherwise, there is unparsed data after the statement proper, and this
+always results in an error.
+
+<p>Parsing keyword statements for case #2, in the three-part list
+above, is very similar. As the code below shows, if the token is a
+keyword, then a large switch statement is entered. The cases for the
+switch statement are those keywords that can legally start a BASIC
+statement. The code parsing keyword statements is shown here:
+
+<p>
+<pre>
+1        if (t.typeNum() == Token.KEYWORD) {
+2            switch ((int) t.numValue()) {
+3                case TRON:
+4                    s = new TRONStatement(lt);
+5                    t = lt.nextToken();
+6                    if (t.isSymbol(':')) {
+7                        s.nxt = statement(lt);
+8                    } else if (t.typeNum() != Token.EOL)
+9                        throw new BASICSyntaxError(extraError);
+10                    return s;
+11
+12                case TROFF:
+13                    s = new TROFFStatement(lt);
+14                    t = lt.nextToken();
+15                    if (t.isSymbol(':')) {
+16                        s.nxt = statement(lt);
+17                    } else if (t.typeNum() != Token.EOL)
+18                        throw new BASICSyntaxError(extraError);
+19                    return s;
+...		...
+</pre>
+
+<p>This code demonstrates the "cookie cutter" nature of parsers -- a
+feature that makes them so amenable to automatic generation. In pseudo
+code each case can be expressed as:
+
+<ul>
+<li>For each valid keyword:
+<ul>
+<li>Parse the tokens specifically for this keyword
+<li>Identify the next token, allow one of:
+<ul>
+<li>End of line
+<li>A follow-on statement
+</ul>
+</ul>
+</li>
+</ul>
+
+<p>Other than the class used to parse the tokens, the only variable is
+whether or not it makes sense to allow additional statements after the
+current statement. Some statements, such as <code>end</code> and
+<code>rem</code>, do not allow another statement to follow them on the
+same line. Finally, this version of BASIC allows you to specify a
+<code>let</code> statement (<code>let</code> is the BASIC keyword for
+assignment statements) without actually specifying the <code>let</code>
+keyword. Typically a statement that is entered as,
+
+<p>
+<pre>
+100 A = 10
+</pre>
+
+<p>is interpreted as the <code>let</code> statement shown below:
+
+<p>
+<pre>
+100 LET A = 10
+</pre>
+
+<p>The <em>let</em> keyword is implicit in this case. The implicit
+<code>let</code> statement is parsed by the following code:
+
+<p>
+<pre>
+21        } else if (t.typeNum() == Token.VARIABLE) {
+22            lt.unGetToken();
+23            s = new LETStatement(lt);
+24            t = lt.nextToken();
+25            if ((t == null) || (t.typeNum() == Token.EOL)) {
+26                return s;
+27            } else if (t.isSymbol(':')) {
+28                s.nxt = statement(lt);
+29                return s;
+30            }
+31            throw new BASICSyntaxError(extraError);
+32        }
+33        throw new BASICSyntaxError(&quot;Unrecognized statement&quot;);
+</pre>
+
+<p>As the code above shows, if the first token on the line is
+a variable, it is first "pushed back" onto the input stream in line 22,
+and then a new <code>LETStatement</code> object is instantiated as if
+the parser had actually seen the <em>let</em> keyword.
+
+<p>All the keyword statement subclasses have the parser built into
+the constructor. An example of this is the <code>GOTOStatement</code>
+class, whose constructor is simply:
+
+<p>
+<pre>
+GOTOStatement(LexicalTokenizer lt) throws BASICSyntaxError {
+        super(GOTO);
+        parse(this, lt);
+    }
+</pre>
+
+<p>Here you can see that the <code>GOTOStatement</code> class invokes
+the <code>Statement</code> constructor that takes a keyword identifier
+as a parameter. Then it invokes a static parse statement, which parses
+the parameters that can follow the <em>GOTO</em> keyword in a BASIC
+program. This class provides an example of a constructor that throws an
+exception (in this case a syntax error exception).
+
+<p>The <code>parse</code> method is shown below, and as you can read in
+the code, it is a private static method responsible for parsing the
+necessary parameters for a <code>GOTO</code>. In the case of
+<code>GOTO</code>, the only valide token that could follow the keyword
+is simply a line number; however it could just as easily have been an
+expression.
+
+<p>
+<pre>
+private static void parse(GOTOStatement s, LexicalTokenizer lt) throws BASICSyntaxError {
+        Token t = lt.nextToken();
+        if (t.typeNum() != Token.CONSTANT) {
+            throw new BASICSyntaxError(&quot;Line number required after GOTO.&quot;);
+        }
+        s.lineTarget = (int) t.numValue();
+    }
+</pre>
+
+<p>Once complete, the <code>parse</code> method leaves the lexical
+analyzer ready to fetch the first token after the <code>GOTO</code>'s
+parameters. This next token must be an end-of-line token rather than a
+follow on statement because a <code>GOTO</code> transfers control of
+the BASIC program unconditionally to the line whose number follows the
+keyword.  Any statement that followed the <code>GOTO</code> on the same
+line would be inaccessible as it would have no line number associated
+with it.
+
+<p><font size="+1"><strong>Wrapping up</strong></font><br>
+
+Of course, there are many subclasses of <code>Statement</code>, one for
+each keyword. The advantage of designing your interpreter using a
+technique like the one described in this column is that you can work on
+a statement with the confidence and knowledge that you aren't causing
+other statements problems with side effects. This encapsulation is one
+of the real benefits of an object-oriented language and it really
+shines when writing applications such as this one. Check out the
+pointers in the <a href="#Resources">Resources section</a>, and in
+particular, check out the complete classes to get a feel for how the
+entire parsing structure fairly clips together.
+
+<p>In the next and final installment in the BASIC series, I'll take a
+look at how you can execute these statements now that they are parsed
+and how you can hook the resulting interpreter into another Java
+class.
+
+<img width="8" height="8" src="/javaworld/icons/dingbat.gif" alt="[]">
+
+<P><STRONG>About the author</STRONG><BR>
+
+Chuck McManis currently is the director of system software at FreeGate
+Corp., a venture-funded start-up that is exploring opportunities in the
+Internet marketplace.  Before joining FreeGate, Chuck was a member of
+the Java Group. He joined the Java Group just after the formation of
+FirstPerson Inc. and was a member of the portable OS group (the group
+responsible for the OS portion of Java). Later, when FirstPerson was
+dissolved, he stayed with the group through the development of the
+alpha and beta versions of the Java platform. He created the first "all
+Java" home page on the Internet when he did the programming for the
+Java version of the Sun home page in May 1995. He also developed a
+cryptographic library for Java and versions of the Java class loader
+that could screen classes based on digital signatures. Before joining
+FirstPerson, Chuck worked in the operating systems area of SunSoft,
+developing networking applications, where he did the initial design of
+NIS+. You can reach him at <A NAME="author"
+HREF="/javaworld/cgi-bin/jw-mailto.cgi?chuck.mcmanis@javaworld.com+/javaworld/jw-06-1997/jw-06-indepth.html+author">chuck.mcmanis@javaworld.com</A>.
+Also, check out his <a
+href="http://www.professionals.com/~cmcmanis">home page</a>.
+
+
+<P>
+<!--#exec cmd="../cgi-bin/nuts-bot.cgi"-->
+
+<p>
+
+<A NAME="Resources"><STRONG>Resources</STRONG> </A>
+
+<p>
+<UL>
+
+<LI>Here is the complete source code for my column -- in both <A
+HREF="/javaworld/jw-06-1997/indepth/jw-06-indepth.zip">.zip</A> and <A
+HREF="/javaworld/jw-06-1997/indepth/jw-06-indepth.tar">.tar</A> form.
+
+<LI>"Uncommon Lisp" -- a Lisp interpreter written in Java<BR>
+<A HREF="http://user03.blue.aol.com/thingtone/workshop/lisp.htm">http://user03.blue.aol.com/thingtone/workshop/lisp.htm</A>
+
+<LI>Mike Cowlishaw's NetREXX interpreter written in Java<BR>
+<A HREF="http://www2.hursley.ibm.com/netrexx/">http://www2.hursley.ibm.com/netrexx/</A>
+
+<LI>An old copy of the USENET BASIC FAQ (it still has useful
+information in it.)<BR>
+<A HREF="http://whitworth.me.ic.ac.uk/people/students/djbur/qbasic.htm">http://whitworth.me.ic.ac.uk/people/students/djbur/qbasic.htm</A>
+
+<LI>COCOA, a BASIC interpreter written in Java<BR>
+<A HREF="http://www.professionals.com/~cmcmanis/java/javaworld/examples/BASIC.html">http://www.professionals.com/~cmcmanis/java/javaworld/examples/BASIC.html</A>
+
+<LI>Chuck's Java resources page<BR>
+<A HREF="http://www.professionals.com/~cmcmanis/java/javaworld/">
+http://www.professionals.com/~cmcmanis/java/javaworld/</A>
+
+<LI>TCL Interpreter written in Java<BR>
+<a href="http://www.cs.cornell.edu/home/ioi/Jacl/">http://www.cs.cornell.edu/home/ioi/Jacl/</a>
+
+<LI><!--[co: I'm working on some basic documentation as a 'side' link.]-->
+</UL>
+
+<STRONG><a name="previous">Previous &quot;Java In Depth&quot; articles</a>:</STRONG> 
+<UL>
+<LI><A HREF="http://www.javaworld.com/javaworld/jw-05-1997/jw-05-indepth.html">How to build an interpreter in Java, Part 1: The BASICs</A><BR>
+For complex applications requiring a scripting language, Java can be
+used to implement the interpreter, adding scripting abilities to any
+Java app.
+
+<LI><A
+HREF="http://www.javaworld.com/javaworld/jw-02-1997/jw-02-indepth.html">Lexical
+analysis, Part 2: Build an application</A><BR>
+How to use the StreamTokenizer object to implement an interactive
+calculator.
+
+<LI><A
+HREF="http://www.javaworld.com/javaworld/jw-01-1997/jw-01-indepth.html">
+Lexical analysis and Java: Part 1</A><BR>
+Learn how to convert human-readable text into machine-readable data
+using the StringTokenizer and StreamTokenizer classes.
+
+<LI><A HREF="http://www.javaworld.com/javaworld/jw-12-1996/jw-12-indepth.html">Code reuse and object-oriented systems</A><BR>
+Use a helper class to enforce dynamic behavior.
+
+<LI><A
+HREF="http://www.javaworld.com/javaworld/jw-11-1996/jw-11-indepth.html">
+Container support for objects in Java 1.0.2</A><BR>
+Organizing objects is easy when you put them into containers. This
+article walks you through the design and implementation of a
+container.
+
+<LI><A
+HREF="http://www.javaworld.com/javaworld/jw-10-1996/jw-10-indepth.html">
+The basics of Java class loaders</A><BR>
+The fundamentals of this key component of the Java architecture.
+
+<LI><A
+HREF="http://www.javaworld.com/javaworld/jw-09-1996/jw-09-indepth.html">
+Not using garbage collection</A><BR>
+Minimize heap thrashing in your Java programs. 
+
+<LI><A
+HREF="http://www.javaworld.com/javaworld/jw-07-1996/jw-07-mcmanis.html">Threads
+and applets and visual controls</A><BR>
+This final part of the series explores reading multiple data channels.
+
+<LI><A
+HREF="http://www.javaworld.com/javaworld/jw-06-1996/jw-06-mcmanis.html">Using
+communication channels in applets, Part 3</A><BR>
+Develop Visual Basic-style techniques to applet design -- and convert
+temperatures in the process.
+
+<LI><A
+HREF="http://www.javaworld.com/javaworld/jw-05-1996/jw-05-mcmanis.html">
+Synchronizing threads in Java, Part II</A><BR>
+Learn how to write a data channel class, and then create a simple
+example application that illustrates a real-world implementation of the
+class.
+
+<LI><A
+HREF="http://www.javaworld.com/javaworld/jw-04-1996/jw-04-synch.html">
+Synchronizing threads in Java</A><BR>
+Former Java team developer Chuck McManis walks you through a simple
+example illustrating how to synchronize threads to assure reliable and
+predictable applet behavior.
+</UL>
+
+<center>
+<P>
+<img width="432" height="7" src="/javaworld/icons/greenline.gif">
+<P>
+</center>
+
+<CENTER><A HREF="/javaworld/common/jw-copyright97.html"><IMG BORDER="0" width="338" height="20" SRC="/javaworld/icons/b-copyright97.gif" ALT="[(c) Copyright 1997 Web Publishing Inc., an IDG Communications company]"></A></CENTER>
+ 
+<P>
+If you have problems with this magazine, contact
+<A NAME="webmaster" HREF="/javaworld/cgi-bin/jw-mailto.cgi?webmaster@javaworld.com+/javaworld/jw-06-1997/jw-06-indepth.html+webmaster">webmaster@javaworld.com</A>
+ 
+<BR>URL: http://www.javaworld.com/javaworld/jw-06-1997/jw-06-indepth.html
+
+<BR> Last modified: <!--#echo var="LAST_MODIFIED" -->
+
+</BODY>
+</HTML>

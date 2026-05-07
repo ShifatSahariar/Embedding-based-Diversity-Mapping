@@ -1,0 +1,136 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2025 Karate Labs Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+package io.karatelabs.common;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public class MemoryResource implements Resource {
+
+    private static final Path SYSTEM_TEMP = Path.of(System.getProperty("java.io.tmpdir"));
+
+    private final Path root;
+    private final byte[] bytes;
+
+    private String[] lines;
+
+    MemoryResource(String text) {
+        this(text, null);
+    }
+
+    MemoryResource(byte[] bytes) {
+        this(bytes, null);
+    }
+
+    MemoryResource(String text, Path root) {
+        this(FileUtils.toBytes(text), root);
+    }
+
+    MemoryResource(byte[] bytes, Path root) {
+        this.root = root != null ? root : SYSTEM_TEMP;
+        this.bytes = bytes;
+    }
+
+    @Override
+    public String getText() {
+        return FileUtils.toString(bytes);
+    }
+
+    public String getLine(int index) {
+        if (lines == null) {
+            lines = getText().split("\\r?\\n");
+        }
+        return lines[index];
+    }
+
+    @Override
+    public boolean isFile() {
+        return false;
+    }
+
+    @Override
+    public boolean isClassPath() {
+        return false;
+    }
+
+    @Override
+    public Path getPath() {
+        return null;
+    }
+
+    @Override
+    public Path getRoot() {
+        return root;
+    }
+
+    @Override
+    public URI getUri() {
+        return null;
+    }
+
+    @Override
+    public String getRelativePath() {
+        return "";
+    }
+
+    @Override
+    public Resource resolve(String path) {
+        return new PathResource(root.resolve(path), root);
+    }
+
+    /**
+     * Materializes this in-memory resource to disk at the specified filename.
+     * The file is created within the root directory.
+     *
+     * @param filename the filename to save as
+     * @return PathResource pointing to the saved file
+     */
+    public PathResource materialize(String filename) {
+        try {
+            Path target = root.resolve(filename);
+            // Ensure parent directories exist
+            if (target.getParent() != null) {
+                Files.createDirectories(target.getParent());
+            }
+            Files.write(target, bytes);
+            return new PathResource(target, root);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to materialize resource to: " + filename, e);
+        }
+    }
+
+    @Override
+    public InputStream getStream() {
+        return new ByteArrayInputStream(bytes);
+    }
+
+    @Override
+    public String toString() {
+        return getPrefixedPath();
+    }
+
+}

@@ -16,6 +16,8 @@ This repository contains the replication package for the ICST 2026 paper:
 
 The package supports both fast result inspection and full reproduction from scratch.
 
+This GitHub repository includes the lightweight SUTs used for smoke testing, including KarateJS. The complete artifact archive with all subject programs and full reproduction data is available on Zenodo: [https://doi.org/10.5281/zenodo.20071065](https://doi.org/10.5281/zenodo.20071065).
+
 ---
 
 ## Workflow Overview
@@ -102,6 +104,10 @@ For first-time reproduction, we recommend using an IDE such as PyCharm or VS Cod
 │   │   ├── step01_run_input_prioritization.md
 │   │   └── ... step04_rq4_stability_analysis.md
 │   └── data_format_and_interpretation.md
+│
+├── SUT/
+│   ├── basic/
+│   └── karate-v2/
 │
 ├── Generation_Test_Inputs.py
 ├── Generation_Embeddings.py

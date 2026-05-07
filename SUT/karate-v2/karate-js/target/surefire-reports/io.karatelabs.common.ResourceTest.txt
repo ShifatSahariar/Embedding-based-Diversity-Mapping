@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.karatelabs.common.ResourceTest
+-------------------------------------------------------------------------------
+Tests run: 78, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.367 s -- in io.karatelabs.common.ResourceTest

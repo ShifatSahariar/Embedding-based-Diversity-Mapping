@@ -1,0 +1,421 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2024 Karate Labs Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+package io.karatelabs.js;
+
+import net.minidev.json.JSONValue;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+public class Terms {
+
+    public static final Object UNDEFINED = new Object() {
+        @Override
+        public String toString() {
+            return "undefined";
+        }
+    };
+
+    static final Number POSITIVE_ZERO = 0;
+    static final Number NEGATIVE_ZERO = -0.0;
+
+    static final Object NAN = Double.NaN;
+
+    final Number lhs;
+    final Number rhs;
+
+    Terms(Object lhsObject, Object rhsObject) {
+        lhs = objectToNumber(lhsObject);
+        rhs = objectToNumber(rhsObject);
+    }
+
+    static Number parseFloat(String str, boolean asInt) {
+        if (str == null) {
+            return Double.NaN;
+        }
+        str = str.trim();
+        if (str.isEmpty()) {
+            return Double.NaN;
+        }
+        int index = 0;
+        boolean negative = false;
+        if (str.charAt(index) == '-') {
+            negative = true;
+            index++;
+        } else if (str.charAt(index) == '+') {
+            index++;
+        }
+        Number hex = fromHex(str);
+        if (hex != null) {
+            return narrow(hex.doubleValue());
+        }
+        long intPart = 0;
+        double fracPart = 0;
+        double divisor = 1.0;
+        boolean foundDigit = false;
+        boolean seenDot = false;
+        while (index < str.length()) {
+            char ch = str.charAt(index);
+            if (ch == '.' && !asInt && !seenDot) {
+                seenDot = true;
+                index++;
+                continue;
+            }
+            if (ch < '0' || ch > '9') {
+                break; // stop at first invalid char
+            }
+            int digit = ch - '0';
+            if (!seenDot) {
+                intPart = intPart * 10 + digit;
+            } else {
+                divisor *= 10;
+                fracPart += digit / divisor;
+            }
+            foundDigit = true;
+            index++;
+        }
+        if (!foundDigit) {
+            return Double.NaN;
+        }
+        double value = intPart + fracPart;
+        if (negative) {
+            value = -value;
+        }
+        return narrow(value);
+    }
+
+    static Number objectToNumber(Object o) {
+        return switch (o) {
+            case Number n -> n;
+            case Boolean b -> b ? 1 : 0;
+            case Date d -> d.getTime();
+            case String s -> toNumber(s.trim());
+            case null -> 0;
+            // includes undefined
+            default -> Double.NaN;
+        };
+    }
+
+    public static Number toNumber(String text) {
+        if (text.isEmpty()) {
+            return 0;
+        }
+        try {
+            return narrow(Double.parseDouble(text));
+        } catch (Exception e) {
+            Number hex = fromHex(text);
+            return hex == null ? Double.NaN : narrow(hex.doubleValue());
+        }
+    }
+
+    static Number fromHex(String text) {
+        if (text.charAt(0) == '0') {
+            char second = text.charAt(1);
+            if (second == 'x' || second == 'X') { // hex
+                long longValue = Long.parseLong(text.substring(2), 16);
+                return narrow(longValue);
+            }
+        }
+        return null;
+    }
+
+    static boolean eq(Object lhs, Object rhs, boolean strict) {
+        if (lhs == null) {
+            return rhs == null || !strict && rhs == UNDEFINED;
+        }
+        if (lhs == UNDEFINED) {
+            return rhs == UNDEFINED || !strict && rhs == null;
+        }
+        if (lhs == rhs) { // instance equality !
+            return true;
+        }
+        if (lhs instanceof List || lhs instanceof Map) {
+            return false;
+        }
+        if (lhs.equals(rhs)) {
+            return true;
+        }
+        if (strict) {
+            if (lhs instanceof Number && rhs instanceof Number) {
+                return ((Number) lhs).doubleValue() == ((Number) rhs).doubleValue();
+            }
+            return false;
+        }
+        if (lhs instanceof Number || rhs instanceof Number) { // coerce to number
+            Terms terms = new Terms(lhs, rhs);
+            return terms.lhs.equals(terms.rhs);
+        }
+        return false;
+    }
+
+    static boolean lt(Object lhs, Object rhs) {
+        Terms terms = new Terms(lhs, rhs);
+        return terms.lhs.doubleValue() < terms.rhs.doubleValue();
+    }
+
+    static boolean gt(Object lhs, Object rhs) {
+        Terms terms = new Terms(lhs, rhs);
+        return terms.lhs.doubleValue() > terms.rhs.doubleValue();
+    }
+
+    static boolean ltEq(Object lhs, Object rhs) {
+        Terms terms = new Terms(lhs, rhs);
+        return terms.lhs.doubleValue() <= terms.rhs.doubleValue();
+    }
+
+    static boolean gtEq(Object lhs, Object rhs) {
+        Terms terms = new Terms(lhs, rhs);
+        return terms.lhs.doubleValue() >= terms.rhs.doubleValue();
+    }
+
+    Object bitAnd() {
+        return lhs.intValue() & rhs.intValue();
+    }
+
+    Object bitOr() {
+        return lhs.intValue() | rhs.intValue();
+    }
+
+    Object bitXor() {
+        return lhs.intValue() ^ rhs.intValue();
+    }
+
+    Object bitShiftRight() {
+        return lhs.intValue() >> rhs.intValue();
+    }
+
+    Object bitShiftLeft() {
+        return lhs.intValue() << rhs.intValue();
+    }
+
+    Object bitShiftRightUnsigned() {
+        return narrow((lhs.intValue() & 0xFFFFFFFFL) >>> rhs.intValue());
+    }
+
+    static Object bitNot(Object value) {
+        Number number = objectToNumber(value);
+        return ~number.intValue();
+    }
+
+    Object mul() {
+        double result = lhs.doubleValue() * rhs.doubleValue();
+        return narrow(result);
+    }
+
+    Object div() {
+        if (rhs.equals(POSITIVE_ZERO)) {
+            return lhs.doubleValue() > 0 ? Double.POSITIVE_INFINITY : Double.NEGATIVE_INFINITY;
+        }
+        if (rhs.equals(NEGATIVE_ZERO)) {
+            return lhs.doubleValue() < 0 ? Double.POSITIVE_INFINITY : Double.NEGATIVE_INFINITY;
+        }
+        if (rhs.equals(Double.POSITIVE_INFINITY)) {
+            return lhs.doubleValue() > 0 ? POSITIVE_ZERO : NEGATIVE_ZERO;
+        }
+        if (rhs.equals(Double.NEGATIVE_INFINITY)) {
+            return lhs.doubleValue() < 0 ? POSITIVE_ZERO : NEGATIVE_ZERO;
+        }
+        double result = lhs.doubleValue() / rhs.doubleValue();
+        return narrow(result);
+    }
+
+    Object min() {
+        double result = lhs.doubleValue() - rhs.doubleValue();
+        return narrow(result);
+    }
+
+    Object mod() {
+        double result = lhs.doubleValue() % rhs.doubleValue();
+        return narrow(result);
+    }
+
+    Object exp() {
+        double result = Math.pow(lhs.doubleValue(), rhs.doubleValue());
+        return narrow(result);
+    }
+
+    static Object add(Object lhs, Object rhs) {
+        if (lhs instanceof String || rhs instanceof String) {
+            return lhs + "" + rhs;
+        }
+        Number lhsNum = objectToNumber(lhs);
+        Number rhsNum = objectToNumber(rhs);
+        double result = lhsNum.doubleValue() + rhsNum.doubleValue();
+        return narrow(result);
+    }
+
+    public static Number narrow(double d) {
+        if (NEGATIVE_ZERO.equals(d)) {
+            return d;
+        }
+        if (d % 1 != 0) {
+            return d;
+        }
+        if (d <= Integer.MAX_VALUE) {
+            return (int) d;
+        }
+        if (d <= Long.MAX_VALUE) {
+            return (long) d;
+        }
+        return d;
+    }
+
+    static JavaMirror toJavaMirror(Object o) {
+        return switch (o) {
+            case String s -> new JsString(s);
+            case Number n -> new JsNumber(n);
+            case Boolean b -> new JsBoolean(b);
+            case Date d -> new JsDate(d);
+            case byte[] bytes -> new JsUint8Array(bytes);
+            case null, default -> null;
+        };
+    }
+
+    @SuppressWarnings("unchecked")
+    static Iterable<KeyValue> toIterable(Object o) {
+        // TODO strictly Objects are not iterable
+        if (o instanceof JsObject jsObject) {
+            return jsObject;
+        }
+        if (o instanceof List) {
+            return new JsArray((List<Object>) o);
+        }
+        if (o instanceof Map) {
+            return new JsObject((Map<String, Object>) o);
+        }
+        if (o instanceof String) {
+            return new JsString((String) o);
+        }
+        return new JsObject();
+    }
+
+    static JsCallable toCallable(Object o) {
+        if (o instanceof JsCallable callable) {
+            return callable;
+        } else if (o instanceof Invokable invokable) {
+            return (c, args) -> invokable.invoke(args);
+        } else {
+            return null;
+        }
+    }
+
+    public static boolean isTruthy(Object value) {
+        if (value == null || value.equals(UNDEFINED) || value.equals(Double.NaN)) {
+            return false;
+        }
+        if (value instanceof JavaMirror mirror) {
+            value = mirror.toJava();
+        }
+        return switch (value) {
+            case Boolean b -> b;
+            case Number number -> number.doubleValue() != 0;
+            case String s -> !s.isEmpty();
+            default -> true;
+        };
+    }
+
+    static boolean isPrimitive(Object value) {
+        if (value instanceof String
+                || (value instanceof Number)
+                || value instanceof Boolean) {
+            return true;
+        }
+        if (value == null) {
+            return true;
+        }
+        return value == UNDEFINED;
+    }
+
+    public static String typeOf(Object value) {
+        if (value instanceof String) {
+            return "string";
+        }
+        if (value instanceof JsFunction) {
+            return "function";
+        }
+        if (value instanceof Number) {
+            return "number";
+        }
+        if (value instanceof Boolean) {
+            return "boolean";
+        }
+        if (value == UNDEFINED) {
+            return "undefined";
+        }
+        return "object";
+    }
+
+    static boolean instanceOf(Object lhs, Object rhs) {
+        if (lhs instanceof JsObject objectLhs && rhs instanceof JsObject objectRhs) {
+            if (lhs instanceof JavaMirror && rhs instanceof JavaMirror) {
+                return lhs.getClass().equals(rhs.getClass());
+            }
+            Prototype prototypeLhs = objectLhs.getPrototype();
+            if (prototypeLhs != null) {
+                Object constructorLhs = prototypeLhs.get("constructor");
+                if (constructorLhs != null) {
+                    Object constructorRhs = objectRhs.get("constructor");
+                    return constructorLhs == constructorRhs;
+                }
+            }
+        }
+        return false;
+    }
+
+    static String TO_STRING(Object o) {
+        if (o == null) {
+            return "[object Null]";
+        }
+        if (Terms.isPrimitive(o) || o instanceof JavaMirror) {
+            return o.toString();
+        }
+        switch (o) {
+            case JsArray keyValues -> {
+                List<Object> list = keyValues.toList();
+                return JSONValue.toJSONString(list);
+            }
+            case JsFunction ignored -> {
+                return "[object Object]";
+            }
+            case SimpleObject so -> {
+                JsCallable callable = so.jsToString();
+                return (String) callable.call(null);
+            }
+            case ObjectLike objectLike -> {
+                Map<String, Object> map = objectLike.toMap();
+                if (map != null) {
+                    return JSONValue.toJSONString(map);
+                }
+            }
+            default -> {
+            }
+        }
+        if (o instanceof Map || o instanceof List) {
+            return JSONValue.toJSONString(o);
+        }
+        return "[object Object]";
+    }
+
+}

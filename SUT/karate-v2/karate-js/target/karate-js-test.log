@@ -1,0 +1,17 @@
+22:23:18.132 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+22:23:18.137 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+22:23:18.138 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+22:23:18.139 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+22:23:18.142 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+22:23:18.142 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+22:23:18.151 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+22:23:18.161 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+22:23:18.169 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+22:23:18.171 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+22:23:18.173 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+22:23:18.173 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+22:23:18.174 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+22:23:18.177 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+22:23:18.177 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+22:23:18.177 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+22:23:18.181 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'

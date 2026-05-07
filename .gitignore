@@ -1,8 +1,14 @@
-SUT/
+SUT/*
+!SUT/basic/
+!SUT/basic/**
+!SUT/karate-v2/
+!SUT/karate-v2/**
+SUT/**/.git/
+SUT/**/.gradle/
+SUT/**/.DS_Store
 __pycache__/
 *.pyc
 SUT/graalvm/graaljs/
-SUT/karate-v2/
 .venv/
 COVERAGE_REPORTS/CALC
 COVERAGE_REPORTS/RHINO

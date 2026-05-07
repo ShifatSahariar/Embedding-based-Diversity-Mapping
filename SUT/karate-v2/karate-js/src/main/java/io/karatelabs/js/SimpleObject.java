@@ -1,0 +1,95 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2025 Karate Labs Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+package io.karatelabs.js;
+
+import io.karatelabs.common.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public interface SimpleObject extends ObjectLike {
+
+    Logger logger = LoggerFactory.getLogger(SimpleObject.class);
+
+    String TO_STRING = "toString";
+
+    @Override
+    default void put(String name, Object value) {
+        logger.warn("put() not implemented for: {} - {}", name, getClass().getName());
+    }
+
+    @Override
+    default void remove(String name) {
+        logger.warn("remove() not implemented for: {} - {}", name, getClass().getName());
+    }
+
+    @Override
+    default Map<String, Object> toMap() {
+        return toMap(keys(), this);
+    }
+
+    default Collection<String> keys() {
+        logger.warn("keys() not implemented for: {}", getClass().getName());
+        return Collections.emptyList();
+    }
+
+    @Override
+    default Object get(String name) {
+        if (TO_STRING.equals(name)) {
+            return jsToString();
+        }
+        return jsGet(name);
+    }
+
+    Object jsGet(String name);
+
+    default JsCallable jsToString() {
+        try {
+            Object temp = jsGet(TO_STRING);
+            if (temp instanceof JsCallable jsc) {
+                return jsc;
+            }
+        } catch (Exception e) {
+            // ignore
+        }
+        return (context, args) -> toString(toMap());
+    }
+
+    static String toString(Map<String, Object> map) {
+        return StringUtils.formatJson(map);
+    }
+
+    static Map<String, Object> toMap(Collection<String> keys, SimpleObject so) {
+        Map<String, Object> map = new LinkedHashMap<>();
+        for (String key : keys) {
+            map.put(key, so.jsGet(key));
+        }
+        return map;
+    }
+
+}
