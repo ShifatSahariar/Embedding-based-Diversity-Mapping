@@ -1,7 +1,6 @@
 
-from asyncio import as_completed
 from collections import defaultdict
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 from PRIORATIZATION.prioritization_utils.cluster_analysis_inputs_selection import analyze_cluster_mutation_diversity
 from PRIORATIZATION.prioritization_utils.prioritization_utils import compute_all_cluster_orders, compute_input_rankings
@@ -24,8 +23,12 @@ def run_selection_approaches(embeddings_dict, mut_profiles_dict, budgets=None, n
     )
     results = defaultdict(lambda: defaultdict(list))
     # Clustering + Clusters Ranking + Input Rankings (compute once)
-    clusters, cluster_orders, exemplar_map = compute_all_cluster_orders(embeddings_dict,min_cluster_size=None)
-    input_rankings = compute_input_rankings(clusters, embeddings_dict, exemplar_map)
+    clusters, cluster_orders, exemplar_map = compute_all_cluster_orders(
+        embeddings_dict,
+        n_jobs=n_jobs,
+        min_cluster_size=None,
+    )
+    input_rankings = compute_input_rankings(clusters, embeddings_dict, exemplar_map, n_jobs=n_jobs)
 
     # we want to calculate gini of each cluster by MS values to evaluate clusters quality
     # Analyzing mutation behavior and diversity for each cluster

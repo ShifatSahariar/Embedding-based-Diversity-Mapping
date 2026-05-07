@@ -1,6 +1,5 @@
-import concurrent
-from asyncio import as_completed
 from collections import defaultdict
+import concurrent.futures
 from concurrent.futures import ProcessPoolExecutor
 import numpy as np
 from sklearn.cluster import AffinityPropagation
@@ -48,9 +47,6 @@ def cluster_embeddings_once(embeddings_dict):
 
 
 
-import concurrent.futures
-from concurrent.futures import ProcessPoolExecutor
-
 def compute_all_cluster_orders(embeddings_dict, n_jobs=4, min_cluster_size=None):
     """
     Computes multiple cluster ranking strategies in parallel.
@@ -85,6 +81,19 @@ def compute_all_cluster_orders(embeddings_dict, n_jobs=4, min_cluster_size=None)
     }
 
     orders = {}
+
+    if n_jobs == 1:
+        for key, (fn, *args) in tasks.items():
+            try:
+                order = fn(*args)
+                if isinstance(order, dict):
+                    order = sorted(order.keys(), key=lambda cid: order[cid])
+                orders[key] = _push_small_clusters_to_end(order, clusters, min_cluster_size)
+            except Exception as e:
+                print(f"Strategy {key} failed: {e}")
+                fallback = list(clusters.keys())
+                orders[key] = _push_small_clusters_to_end(fallback, clusters, min_cluster_size)
+        return clusters, orders, exemplar_map
 
     with ProcessPoolExecutor(max_workers=n_jobs) as executor:
         future_to_key = {}
@@ -200,6 +209,15 @@ def compute_input_rankings(clusters, embeddings_dict, exemplar_map, n_jobs=4):
 
     input_rankings = {}
 
+    if n_jobs == 1:
+        for strategy_name, (fn, *args) in input_strategies.items():
+            try:
+                input_rankings[strategy_name] = fn(*args)
+            except Exception as e:
+                print(f"Input ranking strategy {strategy_name} failed: {e}")
+                input_rankings[strategy_name] = {cid: members[:] for cid, members in clusters.items()}
+        return input_rankings
+
     with ProcessPoolExecutor(max_workers=n_jobs) as executor:
         future_to_key = {}
 
@@ -217,5 +235,3 @@ def compute_input_rankings(clusters, embeddings_dict, exemplar_map, n_jobs=4):
                 input_rankings[strategy_name] = {cid: members[:] for cid, members in clusters.items()}
 
     return input_rankings
-
-

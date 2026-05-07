@@ -1,5 +1,10 @@
 import os
+import re
 import pandas as pd
+
+
+def _natural_run_key(name):
+    return [int(part) if part.isdigit() else part.lower() for part in re.split(r"(\d+)", name)]
 
 
 # --------------------------------------------------------------
@@ -24,7 +29,7 @@ def compute_ranksum_all_models(
     os.makedirs(save_dir, exist_ok=True)
 
     # Detect run folders
-    run_folders = sorted([d for d in os.listdir(base_dir) if d.startswith("run_")])
+    run_folders = sorted([d for d in os.listdir(base_dir) if d.startswith("run_")], key=_natural_run_key)
 
     if n_runs is None:
         n_runs = len(run_folders)
@@ -61,7 +66,13 @@ def compute_ranksum_all_models(
         for model in models_in_run:
             row = df[df["Model"] == model].iloc[0]
 
-            tool_values = row[candidate_tools]
+            available_tools = [tool for tool in candidate_tools if tool in row.index]
+            if not available_tools:
+                raise ValueError(
+                    f"None of the candidate tool columns were found in {csv_path}. "
+                    f"Candidates: {candidate_tools}"
+                )
+            tool_values = row[available_tools]
 
             # descending ranking (higher coverage = better)
             ranked = tool_values.sort_values(ascending=False)

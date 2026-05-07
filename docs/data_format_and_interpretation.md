@@ -1,255 +1,248 @@
-## Interpreting Generator Selection Results (`data/Generator_Selection_Results/`)
+# Data Format and Result Interpretation
 
-This section explains how to inspect and interpret the experimental results for
-**Phase 1: Generator Selection**, as reported in the paper.  
-All files in this directory are **final, processed results**—no execution is
-required to validate the findings.
+This guide explains how to read the processed reports after either:
+
+- inspecting the archived results under `data/`, or
+- reproducing the workflow and generating fresh reports under the experiment output folders.
+
+Use this document after completing:
+
+- [Phase 1: Generator Selection](phase1_generator_selection.md)
+- [Phase 2: Input Prioritization](phase2_input_prioritization.md)
 
 ---
 
-### Directory Structure
+## Where Results Live
+
+Archived paper results:
+
 ```tree
-data/Generator_Selection_Results/
-├── <SUT_NAME>/
-│   ├── correlations_summary/
-│   │   ├── cluster_coverage_summary_all_runs.csv
-│   │   ├── final_correlation_summary.csv
-│   │   ├── jaccard_summary_by_model.csv
-│   │   └── summary_plots/
-│   │       ├── Mean_Coverage–MS_by_Cluster_Algo.png
-│   │       └── Mean_Coverage–MS_by_Embedding_Model.png
-│   ├── run_1/
-│   │   ├── cluster_coverage_summary_run_1.csv
-│   │   ├── mutation_metrics.csv
-│   │   ├── correlations_table.csv
-│   │   ├── selected_mutant_indices.txt
-│   │   └── ...
-│   ├── run_2/
-│   ├── ...
-│   └── run_10/
+data/
+├── Generator_Selection_Results/
+├── Input_Prioritization_Results/
+└── Paper-Figure_plots/
 ```
 
-Each **SUT (e.g., `CALC`, `BASIC`, `RHINO`)** has its own directory.  
-Results are produced from **10 independent runs** per SUT.
+Freshly reproduced Phase 1 results:
 
----
-
-### Where to Start (Recommended)
-
-For result verification, focus on:
-``` <SUT_NAME>/correlations_summary/ ```
-
-This folder contains **aggregated results across all 10 runs**, which are the
-values reported in the paper.
-
----
-
-### Key Files and How to Read Them
-
-#### 1. `final_correlation_summary.csv`
-
-**Purpose:**  
-Shows the relationship between **Cluster Coverage (CC)** and **Mutation Score (MS)**
-for each embedding model.
-
-**Columns:**
-- `Configuration`: embedding model and clustering algorithm pair
-- `Mean_Coverage–MS`: mean Spearman CC-MS correlation aggregated across runs
-- `Wilcoxon_p`: Wilcoxon signed-rank p-value against a zero-correlation baseline
-
-**How to interpret:**
-- Higher positive `Mean_Coverage–MS` values indicate that CC is a better proxy for mutation effectiveness.
-- Lower `Wilcoxon_p` values indicate stronger statistical evidence that the observed correlation is above the zero-correlation baseline.
-
-**Example (CALC):**
-- OpenAI shows a strong positive CC–MS correlation with a low p-value
-- Indicates CC is meaningful when computed using this embedding model
-
----
-
-#### 2. `jaccard_summary_by_model.csv`
-
-**Purpose:**  
-Measures how well **CC-based rankings** identify **top mutation-performing generators**.
-
-**Metric:**
-- `Jaccard@K` compares:
-  - Top-K generators by mutation score
-  - Top-K generators by cluster coverage
-
-**How to interpret:**
-- Values closer to `1.0` → stronger overlap
-
-**Example (CALC):**
-- OpenAI at `Top-3` has a Jaccard value of `0.46`
-- Indicates substantial agreement between CC-based and MS-based top generators
-
----
-
-#### 3. `cluster_coverage_summary_all_runs.csv`
-
-**Purpose:**  
-Shows **mean Cluster Coverage values** for each generator configuration,
-aggregated across all runs.
-
-**How to use this file:**
-1. Identify the **best-performing embedding model** (from correlation/Jaccard files)
-2. Filter CC values for that embedding
-3. Compare generators to select the one with the **highest CC**
-
-**Example (CALC):**
-- OpenAI selected as the representative embedding
-- Among 8 generators, `Fuzz_equal` achieves the highest mean CC (≈ 0.32)
-
----
-
-### Run-Level Results (`run_1/` … `run_10/`)
-
-Each `run_i/` folder contains **raw per-run data**, including:
-- CC values per generator
-- Mutation scores
-- Correlation tables
-- Selected mutant indices
-
-These files support:
-- Reproducibility
-- Variance and stability analysis
-However, **they are not required** to validate the paper’s main results.
-
----
-
-### Summary
-
-- Use `correlations_summary/` for **paper-level verification**
-- Use `run_i/` folders for **per-run inspection**
-- Generator selection follows:
-  1. Identify stable embedding model (correlation + Jaccard)
-  2. Select generator with highest aggregated CC for that model
-
-## Understanding Input Prioritization Results (Phase 2)
-
-This section explains how to inspect and interpret the results produced during
-the **Input Prioritization phase** of the study. These results correspond to
-RQ3 (effectiveness) and RQ4 (stability) in the paper.
-
-All results are **fully processed** and can be inspected without re-running
-any experiments.
-
----
-
-### Folder Structure
 ```tree
-data/Input_Prioritization_Results/
-├── AUC_AGGREGATED/                # Aggregated AUC (Area Under Curve) results
-│   ├── GLOBAL_AUC_SUMMARY.csv    # Overall summary across all experiments
-│   ├── CALC_AUC.csv              # AUC results for CALC experiments
-│   ├── BASIC_AUC.csv             # AUC results for BASIC experiments
-│   └── ...                       # Other aggregated metrics
-│
-├── CALC/                         # CALC-specific experiment results
-│   ├── OPENAI/                   # OpenAI model results
-│   ├── rq3_summary/              # Research Question 3 findings
-│   ├── rq4_summary/              # Research Question 4 findings
-│   └── tool_selection/           # Tool selection methodology results
-│
-├── BASIC/                        # BASIC-specific experiment results
-│   └── ...                       # (structure similar to CALC/)
-
+FUZZ_TOOL_SELECTION/result/<SUT>/
 ```
 
+Freshly reproduced Phase 2 results:
+
+```tree
+PRIORATIZATION/ALL_SUT_RESULTS/
+```
+
+The file names and interpretation are the same in the archived and reproduced result folders.
 
 ---
 
-## AUC_AGGREGATED — Overall Effectiveness (RQ3)
+## Phase 1: Generator Selection Results
 
-The `AUC_AGGREGATED/` directory contains **summary results** that compare
-SpreadEx with random selection across all SUTs.
+Phase 1 answers: **Which generator should be selected for a subject program?**
+
+Start with:
+
+```tree
+data/Generator_Selection_Results/<SUT>/correlations_summary/
+```
+
+or, after reproduction:
+
+```tree
+FUZZ_TOOL_SELECTION/result/<SUT>/correlations_summary/
+```
 
 ### Key Files
 
-- **`GLOBAL_AUC_SUMMARY.csv`**
-  - Aggregated results across **all SUTs and runs**
-  - Reports:
-    - Mean AUC for SpreadEx and Random
-    - Wilcoxon signed-rank test results  
-      (10 runs × 6 SUTs = 60 paired experiments)
-    - Cliff’s Delta (effect size)
+| File | Purpose | How to Read |
+|------|---------|-------------|
+| `final_correlation_summary.csv` | Aggregated relationship between Cluster Coverage (CC) and Mutation Score (MS) | Higher positive `Mean_Coverage–MS` means CC better tracks mutation effectiveness |
+| `jaccard_summary_by_model.csv` | Top-K agreement between CC-based and MS-based generator rankings | Higher `Jaccard` values mean stronger ranking agreement |
+| `cluster_coverage_summary_all_runs.csv` | Mean CC values per generator/model/cluster setting | Used to choose the highest-coverage generator once the embedding model is fixed |
+| `summary_plots/` | Visual summaries of CC-MS relations | Useful for quick inspection and paper-figure validation |
 
-  This file directly supports the **global AUC results** reported in the paper.
+### `final_correlation_summary.csv`
 
-- **`<SUT>_AUC.csv` (e.g., `CALC_AUC.csv`)**
-  - Mean AUC values for a **single SUT**
-  - Aggregated across the 10 independent runs
-  - Used to generate per-SUT comparisons and figures
+Important columns:
 
-### Interpretation
+- `Configuration`: embedding model and clustering algorithm pair.
+- `Mean_Coverage–MS`: mean Spearman correlation between CC and MS across runs.
+- `Wilcoxon_p`: Wilcoxon signed-rank p-value against a zero-correlation baseline.
 
-A higher AUC indicates **better cumulative fault detection** over budgets
-ranging from **5 to 100 inputs (step = 5)**.
+Interpretation:
 
----
+- Positive `Mean_Coverage–MS` means generators with higher CC tend to also have higher MS.
+- Smaller `Wilcoxon_p` gives stronger evidence that the correlation is above the zero baseline.
+- This file helps decide whether CC is a reliable proxy for mutation effectiveness.
 
-## Per-SUT Results (Detailed Analysis)
+### `jaccard_summary_by_model.csv`
 
-Each SUT folder (e.g., `CALC/`, `BASIC/`) contains detailed summaries for RQ3
-and RQ4.
+This file compares the Top-K generators selected by:
 
----
+- mutation score, and
+- cluster coverage.
 
-### rq3_summary — Effectiveness at Specific Budgets (RQ3)
+Interpretation:
 
-Example:
+- `Jaccard@K = 1.0`: perfect Top-K overlap.
+- `Jaccard@K = 0.0`: no Top-K overlap.
+- Higher values indicate that CC identifies the same high-performing generators as mutation testing.
 
-This file reports **early-budget effectiveness metrics**, including:
+### `cluster_coverage_summary_all_runs.csv`
 
-- **MS@K** — Mutation Score at budget K (K ∈ {5, 10, 20})
-- **T2K** — Tests-to-Kill (average number of tests required to kill a mutant)
+This file aggregates CC values across independent runs.
 
-These metrics are **averaged across 10 independent runs** for the given SUT.
+Use it after choosing a representative embedding model. For that model, compare generator columns and select the generator with the highest CC.
 
-Use this file to:
-- Compare early fault detection between SpreadEx and Random
-- Validate MS@K and T2K values reported in tables and figures
+Typical generator-selection logic:
 
----
+1. Use `final_correlation_summary.csv` and `jaccard_summary_by_model.csv` to identify a reliable embedding/model setting.
+2. Use `cluster_coverage_summary_all_runs.csv` to rank generators by CC.
+3. Carry the selected generator into Phase 2.
 
-### rq4_summary — Stability and Variability (RQ4)
+### Run-Level Folders
 
-Example:
+Run-level folders such as `run_1/` to `run_10/` contain:
 
-This file reports metrics related to **run-to-run stability**, including:
+- `cluster_coverage_summary_run_<N>.csv`
+- `mutation_metrics.csv`
+- `correlations_table.csv`
+- `selected_mutant_indices.txt`
+- `jaccard_similarity/topK_<K>.csv`
+- `analysis_plots/`
 
-- **STD@K** — Standard deviation of MS@K across runs
-- **PKHM@K** — Probability of Killing Half Mutants at budget K
-
-These values quantify the **instability of random selection** and the
-deterministic behavior of SpreadEx.
-
-Use this file to:
-- Inspect variance across runs
-- Validate claims about reproducibility and reliability
+Use these for debugging, variance inspection, and reproduction checks. For paper-level verification, start with `correlations_summary/`.
 
 ---
 
-### OPENAI / run_x
+## Phase 2: Input Prioritization Results
 
-The `OPENAI/` and `run_x/` directories document:
+Phase 2 answers: **Given the selected generator, does SpreadEx prioritize inputs better and more stably than Random?**
 
-- The **fixed embedding model** used for prioritization (OpenAI)
-- Each **independent experiment result of that SUT**
+Start with:
+
+```tree
+data/Input_Prioritization_Results/
+```
+
+or, after reproduction:
+
+```tree
+PRIORATIZATION/ALL_SUT_RESULTS/
+```
+
+### Key Folders
+
+| Folder | Purpose |
+|--------|---------|
+| `AUC_AGGREGATED/` | Global and per-SUT AUC comparison between SpreadEx and Random |
+| `<SUT>/<MODEL>/run_<N>/` | Per-run prioritization curves and AUC tables |
+| `<SUT>/rq3_summary/` | Aggregated early fault-detection results |
+| `<SUT>/rq4_summary/` | Aggregated stability results |
+| `<SUT>/tool_selection/` | Phase 1 RankSum-derived generator selection used by Phase 2 |
+
+### `AUC_AGGREGATED/GLOBAL_AUC_SUMMARY.csv`
+
+This file summarizes SpreadEx vs Random across all available Phase 2 experiments.
+
+Important rows:
+
+- `SpreadEx_mean_AUC`: mean normalized AUC for SpreadEx.
+- `Random_mean_AUC`: mean normalized AUC for Random.
+- `Mean_diff`: `SpreadEx_mean_AUC - Random_mean_AUC`.
+- `Wilcoxon_W`: Wilcoxon signed-rank statistic.
+- `p_greater`: one-sided p-value for SpreadEx being greater than Random.
+- `Cliffs_delta`: effect size.
+
+Interpretation:
+
+- Higher AUC means better cumulative mutation-score performance across budgets.
+- Positive `Mean_diff` favors SpreadEx.
+- Smaller `p_greater` gives stronger evidence that SpreadEx outperforms Random.
+- Positive `Cliffs_delta` indicates SpreadEx tends to have higher AUC than Random.
+
+### `AUC_AGGREGATED/<SUT>_AUC.csv`
+
+This file gives the same AUC comparison for one SUT.
+
+Use it to understand whether the global trend is consistent for each subject program.
+
+### `<SUT>/<MODEL>/run_<N>/`
+
+Each run folder contains:
+
+- `AUC_Summary.csv`: normalized AUC per approach for one run.
+- `SpreadEx_RR_AUC_Table.csv`: budget-by-budget mutation score for SpreadEx.
+- `Random_AUC_Table.csv`: budget-by-budget mutation score for Random.
+- `AUC_Clean.png`: MS-vs-budget plot.
+- `AUC_Shaded.png`: MS-vs-budget plot with variability shading.
+- `cluster_analysis/`: cluster-level mutation-diversity diagnostics.
+
+Use this folder when you want to inspect an individual experiment rather than aggregated results.
+
+### `<SUT>/rq3_summary/RQ3_GLOBAL_<SUT>.csv`
+
+RQ3 measures early fault detection.
+
+Important metrics:
+
+- `MS_K`: Mutation Score at budget `K`.
+- `T2K`: Tests-to-Kill, the average number of selected inputs needed to kill a mutant.
+
+Interpretation:
+
+- Higher `MS_K` is better.
+- Lower `T2K` is better.
+- Compare `SpreadEx_mean` and `Random_mean` to see which approach detects faults earlier.
+
+### `<SUT>/rq4_summary/RQ4_GLOBAL_<SUT>.csv`
+
+RQ4 measures stability and variability.
+
+Important metrics:
+
+- `STD`: standard deviation of Random mutation score at each budget.
+- `PEG`: Gaussian estimate of the probability that Random is at least as good as SpreadEx.
+- `PMR`: empirical probability that Random is better than SpreadEx.
+- `PKHM`: probability that Random kills at most half of its expected mutants.
+
+Interpretation:
+
+- Lower `STD` means Random is more stable.
+- Lower `PEG` and `PMR` mean Random is less likely to match or beat SpreadEx.
+- `PKHM` helps quantify poor Random outcomes under the same budget.
+
 ---
 
-## How to Use These Results
+## Smoke Tests vs Full Results
 
-- To **verify paper claims** → start with `AUC_AGGREGATED/`
-- To **inspect SUT-specific behavior** → open the corresponding SUT folder
-- To **analyze early-budget performance** → check `rq3_summary`
-- To **analyze stability and variance** → check `rq4_summary`
+The KarateJS smoke-test commands in the reproduction guide intentionally use tiny settings such as:
 
-No scripts or execution are required to validate the results.
+- one run,
+- three inputs,
+- budgets `1,2,3`,
+- two Random repeats.
+
+These smoke-test outputs are useful for checking that the pipeline works, but the values are not meaningful for paper-level interpretation.
+
+For paper-scale interpretation, use:
+
+- all independent runs,
+- the full input budget schedule,
+- the full selected generator/model configuration,
+- archived processed results in `data/`.
 
 ---
 
-If you wish to **reproduce the experiments from scratch**, follow the
-step-by-step instructions provided in:
+## Recommended Reading Order
+
+1. For paper-level validation, open `data/Generator_Selection_Results/<SUT>/correlations_summary/`.
+2. Read `final_correlation_summary.csv` and `jaccard_summary_by_model.csv`.
+3. Open `data/Input_Prioritization_Results/AUC_AGGREGATED/GLOBAL_AUC_SUMMARY.csv`.
+4. Inspect `<SUT>/rq3_summary/` for early fault-detection behavior.
+5. Inspect `<SUT>/rq4_summary/` for stability behavior.
+6. Use run-level folders only when debugging or checking a specific independent run.
 

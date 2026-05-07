@@ -1,0 +1,7 @@
+Metric,Value
+SpreadEx_mean_AUC,0.1666666666666666
+Random_mean_AUC,0.3333333333333333
+Mean_diff,-0.1666666666666667
+Wilcoxon_W,0.0
+p_greater,1.0
+Cliffs_delta,-1.0

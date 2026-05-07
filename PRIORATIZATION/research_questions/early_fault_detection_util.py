@@ -1,7 +1,10 @@
 import os
 import numpy as np
-import csv
 import pandas as pd
+from pathlib import Path
+
+
+PRIORITIZATION_ROOT = Path(__file__).resolve().parents[1]
 
 def save_rq3_table(metrics, subject_program, run_name):
     """
@@ -26,34 +29,19 @@ def save_rq3_table(metrics, subject_program, run_name):
     # Extract values (mean only, ignoring std for RQ3)
     rows = [
         ["Metrics", "SpreadEx", "Random"],
-        ["T2K",
-            metrics[spreadex]["T2K_mean"],
-            metrics[random_m]["T2K_mean"]],
-        ["MS_5",
-            metrics[spreadex]["MS_5"],
-            metrics[random_m]["MS_5"]],
-        ["MS_10",
-            metrics[spreadex]["MS_10"],
-            metrics[random_m]["MS_10"]],
-        ["MS_20",
-            metrics[spreadex]["MS_20"],
-            metrics[random_m]["MS_20"]],
-        #
-        # ["KP_5",
-        #     metrics[spreadex]["KP_5"],
-        #     metrics[random_m]["KP_5"]],
-        # ["KP_10",
-        #     metrics[spreadex]["KP_10"],
-        #     metrics[random_m]["KP_10"]],
-        # ["KP_20",
-        #     metrics[spreadex]["KP_20"],
-        #     metrics[random_m]["KP_20"]],
+        ["T2K", metrics[spreadex]["T2K_mean"], metrics[random_m]["T2K_mean"]],
     ]
+    budget_metrics = sorted(
+        key for key in metrics[spreadex].keys()
+        if key.startswith("MS_") and not key.endswith("_std")
+    )
+    for key in budget_metrics:
+        rows.append([key, metrics[spreadex][key], metrics[random_m][key]])
 
-    save_dir = f"ALL_SUT_RESULTS/{subject_program}/rq3_tables"
+    save_dir = PRIORITIZATION_ROOT / "ALL_SUT_RESULTS" / subject_program / "rq3_tables"
     os.makedirs(save_dir, exist_ok=True)
 
-    path = f"{save_dir}/RQ3_{run_name}.csv"
+    path = save_dir / f"RQ3_{run_name}.csv"
 
     import csv
     with open(path, "w", newline="") as f:
@@ -229,7 +217,7 @@ def compute_rq3_metrics(selection_sequences,
 
 
 
-def aggregate_rq3_for_sut(sut_name, base_dir="../ALL_SUT_RESULTS"):
+def aggregate_rq3_for_sut(sut_name, base_dir=None):
     """
     Aggregates the 10 independent RQ3 CSV files for a given SUT.
 
@@ -240,9 +228,18 @@ def aggregate_rq3_for_sut(sut_name, base_dir="../ALL_SUT_RESULTS"):
         ALL_SUT_RESULTS/{sut_name}/rq3_summary/RQ3_GLOBAL_{sut_name}.csv
     """
 
+    if base_dir is None:
+        base_dir = PRIORITIZATION_ROOT / "ALL_SUT_RESULTS"
+
     sut_dir = os.path.join(base_dir, sut_name, "rq3_tables")
     out_dir = os.path.join(base_dir, sut_name, "rq3_summary")
     os.makedirs(out_dir, exist_ok=True)
+
+    if not os.path.isdir(sut_dir):
+        raise FileNotFoundError(
+            f"RQ3 table folder not found: {sut_dir}. "
+            "Run Phase 2 Step 1 before aggregating RQ3."
+        )
 
     # collect all CSV filenames
     csv_files = [
@@ -272,6 +269,8 @@ def aggregate_rq3_for_sut(sut_name, base_dir="../ALL_SUT_RESULTS"):
 
         for df in dfs:
             row = df[df["Metrics"] == metric]
+            if row.empty:
+                raise ValueError(f"Metric {metric!r} missing in one of the RQ3 files.")
             spreadex_values.append(float(row["SpreadEx"].values[0]))
             random_values.append(float(row["Random"].values[0]))
 
@@ -301,4 +300,18 @@ def aggregate_rq3_for_sut(sut_name, base_dir="../ALL_SUT_RESULTS"):
 # aggregate_rq3_for_sut("NASHORN")
 # aggregate_rq3_for_sut("GRAALJS")
 # aggregate_rq3_for_sut("KARATEJS")
-#
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Aggregate Phase 2 RQ3 early fault detection tables.")
+    parser.add_argument("--subject", type=str, default="KARATEJS", help="Subject/SUT name, e.g., KARATEJS.")
+    parser.add_argument(
+        "--base-dir",
+        type=str,
+        default=str(PRIORITIZATION_ROOT / "ALL_SUT_RESULTS"),
+        help="Phase 2 ALL_SUT_RESULTS directory.",
+    )
+    args = parser.parse_args()
+
+    aggregate_rq3_for_sut(args.subject.upper(), base_dir=args.base_dir)

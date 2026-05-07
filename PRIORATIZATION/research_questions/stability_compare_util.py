@@ -2,6 +2,10 @@ from scipy.stats import norm
 import os
 import pandas as pd
 import numpy as np
+from pathlib import Path
+
+
+PRIORITIZATION_ROOT = Path(__file__).resolve().parents[1]
 def compute_rq4_metrics(selection_sequences,
                         filtered_profiles_dict,
                         results,
@@ -51,10 +55,10 @@ def compute_rq4_metrics(selection_sequences,
         # ============================================
         # B) PEG — Gaussian probability Random ≥ SpreadEx
         # ============================================
-        #if rnd_std > 0:
-        peg_gaussian = 1 - norm.cdf(our_ms, loc=rnd_ms, scale=rnd_std)
-        # else:
-        #     peg_gaussian =  0.0 #float(our_ms <= rnd_ms)
+        if rnd_std > 0:
+            peg_gaussian = 1 - norm.cdf(our_ms, loc=rnd_ms, scale=rnd_std)
+        else:
+            peg_gaussian = float(rnd_ms >= our_ms)
         rq4["PEG"][B] = float(peg_gaussian)
         # ============================================
         # C) PMR — Empirical probability Random > SpreadEx
@@ -64,12 +68,11 @@ def compute_rq4_metrics(selection_sequences,
         # ============================================
         # D) PKHM — Prob Random ≤ half of its mean
         # ============================================
-        # if rnd_std == 0:
-        #     # Degenerate case
-        #     rq4["PKHM"][B] = 1.0 if rnd_ms <= 0.5 * rnd_ms else 0.0
-        # else:
         half_point = 0.5 * rnd_ms
-        pkhm = norm.cdf(half_point, loc=rnd_ms, scale=rnd_std)
+        if rnd_std > 0:
+            pkhm = norm.cdf(half_point, loc=rnd_ms, scale=rnd_std)
+        else:
+            pkhm = float(rnd_ms <= half_point)
         rq4["PKHM"][B] = float(pkhm)
 
     return rq4
@@ -81,9 +84,9 @@ def save_rq4_table(rq4_dict, subject_program, run_name):
     """
 
     import csv, os
-    out_dir = f"ALL_SUT_RESULTS/{subject_program}/rq4_tables"
+    out_dir = PRIORITIZATION_ROOT / "ALL_SUT_RESULTS" / subject_program / "rq4_tables"
     os.makedirs(out_dir, exist_ok=True)
-    path = f"{out_dir}/RQ4_{run_name}.csv"
+    path = out_dir / f"RQ4_{run_name}.csv"
 
     rows = [["Metric", "B", "Value"]]
 
@@ -123,7 +126,7 @@ def save_rq4_table(rq4_dict, subject_program, run_name):
 
 
 
-def aggregate_rq4_for_sut(sut_name, base_dir="../ALL_SUT_RESULTS"):
+def aggregate_rq4_for_sut(sut_name, base_dir=None):
     """
     Aggregates the 10 independent RQ4 CSV files for a given SUT.
 
@@ -141,9 +144,18 @@ def aggregate_rq4_for_sut(sut_name, base_dir="../ALL_SUT_RESULTS"):
         ...
     """
 
+    if base_dir is None:
+        base_dir = PRIORITIZATION_ROOT / "ALL_SUT_RESULTS"
+
     sut_dir = os.path.join(base_dir, sut_name, "rq4_tables")
     out_dir = os.path.join(base_dir, sut_name, "rq4_summary")
     os.makedirs(out_dir, exist_ok=True)
+
+    if not os.path.isdir(sut_dir):
+        raise FileNotFoundError(
+            f"RQ4 table folder not found: {sut_dir}. "
+            "Run Phase 2 Step 1 before aggregating RQ4."
+        )
 
     # ---------------------------
     # 1. Collect all experiment files
@@ -178,6 +190,8 @@ def aggregate_rq4_for_sut(sut_name, base_dir="../ALL_SUT_RESULTS"):
 
         for df in dfs:
             row = df[(df["Metric"] == metric) & (df["B"] == B)]
+            if row.empty:
+                raise ValueError(f"Metric/Budget pair ({metric}, {B}) missing in one of the RQ4 files.")
             value = float(row["Value"].values[0])
             values_per_experiment.append(value)
 
@@ -207,3 +221,18 @@ def aggregate_rq4_for_sut(sut_name, base_dir="../ALL_SUT_RESULTS"):
 # aggregate_rq4_for_sut("NASHORN")
 # aggregate_rq4_for_sut("GRAALJS")
 # aggregate_rq4_for_sut("KARATEJS")
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Aggregate Phase 2 RQ4 stability-analysis tables.")
+    parser.add_argument("--subject", type=str, default="KARATEJS", help="Subject/SUT name, e.g., KARATEJS.")
+    parser.add_argument(
+        "--base-dir",
+        type=str,
+        default=str(PRIORITIZATION_ROOT / "ALL_SUT_RESULTS"),
+        help="Phase 2 ALL_SUT_RESULTS directory.",
+    )
+    args = parser.parse_args()
+
+    aggregate_rq4_for_sut(args.subject.upper(), base_dir=args.base_dir)
