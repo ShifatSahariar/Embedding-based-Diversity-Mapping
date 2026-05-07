@@ -1,0 +1,2 @@
+Model,Run,Cluster Algo,K_eff,Silhouette,DBI,CHI,fan_con,fan_no_con,fuzz_equal,fuzz_prob,isla_con,isla_no_con
+UNIXCODER,run_1,Affinity,5,0.10741884189905834,1.4401207044371684,2.2977338910286855,0.4,0.4,0.2,0.4,0.2,0.6

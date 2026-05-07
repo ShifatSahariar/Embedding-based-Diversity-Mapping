@@ -15,6 +15,7 @@ MUT_KILLING_PROFILE/jacoco.exec
 MUT_KILLING_PROFILE/jacoco.exec
 jacoco.exec
 .DS_Store
+.plot_cache/
 *.pth
 *.bin
 *.zip

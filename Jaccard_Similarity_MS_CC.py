@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
-import os
+import re
+import argparse
 import pandas as pd
-import numpy as np
 from pathlib import Path
+
+
+def natural_run_key(path_or_name):
+    name = path_or_name.name if hasattr(path_or_name, "name") else str(path_or_name)
+    return [int(part) if part.isdigit() else part.lower() for part in re.split(r"(\d+)", name)]
 
 
 def compute_jaccard_per_model(cluster_csv: Path, mutation_csv: Path, top_ks=(3,)):
@@ -65,8 +70,8 @@ def compute_jaccard_per_model(cluster_csv: Path, mutation_csv: Path, top_ks=(3,)
                 "Embedding_Model": model_name,
                 "TopK": K,
                 "Jaccard": round(jaccard, 4),
-                "Top_Cov_Tools": ", ".join(top_cov),
-                "Top_MS_Tools": ", ".join(top_ms),
+                "Top_Cov_Tools": ", ".join(sorted(top_cov)),
+                "Top_MS_Tools": ", ".join(sorted(top_ms)),
             })
 
         results_by_k[K] = pd.DataFrame(rows)
@@ -82,7 +87,10 @@ def compute_jaccard_for_run(run_dir: Path, top_ks=(3,)):
     out_dir.mkdir(exist_ok=True)
 
     if not cluster_csv.exists() or not mutation_csv.exists():
-        print(f"[SKIP] Missing files for {run_dir.name}")
+        print(
+            f"[SKIP] Missing files for {run_dir.name}. "
+            f"Expected {cluster_csv.name} and mutation_metrics.csv"
+        )
         return None
 
     print(f"[RUN] Computing Jaccard similarity for {run_dir.name}...")
@@ -97,12 +105,21 @@ def compute_jaccard_for_run(run_dir: Path, top_ks=(3,)):
     return all_paths
 
 
-def compute_jaccard_summary(subject: str, base_dir="FUZZ_TOOL_SELECTION/result", top_ks=(3,)):
+def compute_jaccard_summary(subject: str, base_dir="FUZZ_TOOL_SELECTION/result", top_ks=(3,), run_limit=None):
     """Compute Jaccard similarity summary across runs."""
     subject_dir = Path(base_dir) / subject.upper()
+    if not subject_dir.exists():
+        raise FileNotFoundError(
+            f"Subject result folder not found: {subject_dir}. "
+            "Run Steps 4 and 5 before Step 7."
+        )
+
     run_dirs = sorted(
-        [d for d in subject_dir.iterdir() if d.is_dir() and d.name.startswith("run_")]
+        [d for d in subject_dir.iterdir() if d.is_dir() and d.name.startswith("run_")],
+        key=natural_run_key,
     )
+    if run_limit is not None:
+        run_dirs = run_dirs[:run_limit]
     if not run_dirs:
         print(f"[WARN] No run folders found for {subject}")
         return
@@ -141,5 +158,15 @@ def compute_jaccard_summary(subject: str, base_dir="FUZZ_TOOL_SELECTION/result",
 
 
 if __name__ == "__main__":
-    SUBJECT = "GRAALJS" # RHINO BASIC #CALC GRAALJS NASHORN KARATEJS
-    compute_jaccard_summary(SUBJECT, top_ks=(1,2,3,4))
+    parser = argparse.ArgumentParser(description="Compute Top-K Jaccard agreement between CC and MS rankings.")
+    parser.add_argument("--subject", type=str, default="karatejs", help="Subject/SUT name, e.g., karatejs, calc, rhino.")
+    parser.add_argument("--runs", type=int, default=None, help="Limit to the first N result run folders for smoke testing.")
+    parser.add_argument(
+        "--top_ks",
+        type=str,
+        default="1,2,3,4",
+        help="Comma-separated Top-K values to evaluate, e.g., 1,2,3,4.",
+    )
+    args = parser.parse_args()
+    top_ks = tuple(int(k.strip()) for k in args.top_ks.split(",") if k.strip())
+    compute_jaccard_summary(args.subject, top_ks=top_ks, run_limit=args.runs)

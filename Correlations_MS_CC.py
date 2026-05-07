@@ -1,5 +1,6 @@
 
 import re
+import argparse
 import logging
 from pathlib import Path
 import pandas as pd
@@ -17,14 +18,29 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger("corr-builder")
 # ============================================================
 
-def combine_cluster_coverage_across_runs(subject_dir: Path):
+
+def natural_run_key(path_or_name):
+    name = path_or_name.name if hasattr(path_or_name, "name") else str(path_or_name)
+    return [int(part) if part.isdigit() else part.lower() for part in re.split(r"(\d+)", name)]
+
+
+def get_run_dirs(subject_dir: Path, run_limit: int | None = None) -> list[Path]:
+    run_dirs = sorted(
+        [d for d in subject_dir.iterdir() if d.is_dir() and d.name.startswith("run_")],
+        key=natural_run_key,
+    )
+    if run_limit is not None:
+        run_dirs = run_dirs[:run_limit]
+    return run_dirs
+
+def combine_cluster_coverage_across_runs(subject_dir: Path, run_limit: int | None = None):
     """
     Aggregate cluster_coverage_summary_*.csv files across all runs
     and compute mean and standard deviation of cluster coverage
     per model and generator.
     """
 
-    run_dirs = sorted([d for d in subject_dir.iterdir() if d.is_dir() and d.name.startswith("run_")])
+    run_dirs = get_run_dirs(subject_dir, run_limit=run_limit)
     if not run_dirs:
         raise FileNotFoundError(f"No run folders found under {subject_dir}")
 
@@ -213,9 +229,15 @@ def build_correlation_for_run(run_dir: Path):
 # ============================================================
 # Combine all runs to computer avg correlation score
 # ============================================================
-def combine_all_runs(subject_dir: Path):
+def combine_all_runs(subject_dir: Path, run_limit: int | None = None):
     """Aggregate correlation tables across all runs and compute final summary."""
-    run_dirs = sorted([d for d in subject_dir.iterdir() if d.is_dir() and d.name.startswith("run_")])
+    if not subject_dir.exists():
+        raise FileNotFoundError(
+            f"Subject result folder not found: {subject_dir}. "
+            "Run Step 4 and Step 5 before Step 6."
+        )
+
+    run_dirs = get_run_dirs(subject_dir, run_limit=run_limit)
     if not run_dirs:
         raise FileNotFoundError(f"No run folders found under {subject_dir}")
 
@@ -268,7 +290,7 @@ def combine_all_runs(subject_dir: Path):
     # --- Compute and save cluster coverage mean/std summary ---
     try:
         log.info("[RUN] Aggregating cluster coverage across runs...")
-        coverage_summary = combine_cluster_coverage_across_runs(subject_dir)
+        coverage_summary = combine_cluster_coverage_across_runs(subject_dir, run_limit=run_limit)
         log.info(f"[OK] Cluster coverage summary saved ({len(coverage_summary)} rows).")
     except Exception as e:
         log.warning(f"[WARN] Failed to compute cluster coverage summary: {e}")
@@ -281,10 +303,14 @@ def combine_all_runs(subject_dir: Path):
 #  Main Entry
 # ============================================================
 def main():
-    SUBJECT = "GRAALJS" # RHINO BASIC # CALC NASHORN GRAALJS KARATEJS
-    DATA_ROOT = Path("FUZZ_TOOL_SELECTION/result")
-    subject_dir = DATA_ROOT / SUBJECT
-    combine_all_runs(subject_dir)
+    parser = argparse.ArgumentParser(description="Compute CC-vs-MS correlations from Step 4 and Step 5 outputs.")
+    parser.add_argument("--subject", type=str, default="karatejs", help="Subject/SUT name, e.g., karatejs, calc, rhino.")
+    parser.add_argument("--runs", type=int, default=None, help="Limit to the first N result run folders for smoke testing.")
+    args = parser.parse_args()
+
+    data_root = Path("FUZZ_TOOL_SELECTION/result")
+    subject_dir = data_root / args.subject.upper()
+    combine_all_runs(subject_dir, run_limit=args.runs)
 
 
 if __name__ == "__main__":

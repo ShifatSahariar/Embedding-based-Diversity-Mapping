@@ -230,14 +230,14 @@ def main():
     # Default IDE Flags
     # -------------------------------
     coverage_mode = False
-    mutation_mode = False
+    mutation_mode = True
     subject_program = "karatejs" # nashorn | basic | CALC | rhino | graaljs | karatejs
 
     # Mutation phase flags
     generate_mutants_flag = False
     aggregate_mutants_flag = False
     selecting_mutants_flag = False
-    running_mutants_flag = False  # enable explicitly after fresh original outputs exist
+    running_mutants_flag = True  # enable explicitly after fresh original outputs exist
     filter_mutant_profile_flag = False
 
     # -------------------------------

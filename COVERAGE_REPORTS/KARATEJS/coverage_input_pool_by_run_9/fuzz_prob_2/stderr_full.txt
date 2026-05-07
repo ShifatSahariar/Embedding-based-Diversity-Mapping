@@ -1,1 +1,16 @@
-Usage: java JsRunner <script.js>
+JS ERROR: js failed:
+==========
+console.log(x) ;console.log(2) ;console.log("TypeError") ;
+x is not defined
+----------
+
+java.lang.RuntimeException: js failed:
+==========
+console.log(x) ;console.log(2) ;console.log("TypeError") ;
+x is not defined
+----------
+
+	at io.karatelabs.js.Engine.evalInternal(Engine.java:134)
+	at io.karatelabs.js.Engine.evalInternal(Engine.java:109)
+	at io.karatelabs.js.Engine.eval(Engine.java:54)
+	at io.karatelabs.js.JsLauncher.main(JsLauncher.java:21)

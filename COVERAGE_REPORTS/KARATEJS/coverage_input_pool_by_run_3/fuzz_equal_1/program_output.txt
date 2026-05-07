@@ -1,2 +1,8 @@
 Program Output:
-No output.
+[FN_EXPR] function j ( count ) { console.log(result) ;console.log(0) ;console.log("done") ;
+throw new ReferenceError ( "done" ) ;
+throw new ReferenceError ( "ok" ) ;
+i -- ;
+console.log(temp) ;console.log(7) ;console.log("test") ;
+console.log(temp) ;console.log(2) ;console.log("TypeError") ;
+return k . y = y . x ; }

@@ -1,1 +1,24 @@
-Usage: java JsRunner <script.js>
+JS ERROR: js failed:
+==========
+try{var s = "485wb";
+js failed:
+==========
+throw new ReferenceError("qy2o1");
+2:1 cannot read properties of null (reading 'ReferenceError')
+----------
+----------
+
+java.lang.RuntimeException: js failed:
+==========
+try{var s = "485wb";
+js failed:
+==========
+throw new ReferenceError("qy2o1");
+2:1 cannot read properties of null (reading 'ReferenceError')
+----------
+----------
+
+	at io.karatelabs.js.Engine.evalInternal(Engine.java:134)
+	at io.karatelabs.js.Engine.evalInternal(Engine.java:109)
+	at io.karatelabs.js.Engine.eval(Engine.java:54)
+	at io.karatelabs.js.JsLauncher.main(JsLauncher.java:21)

@@ -1,4 +1,6 @@
 import os
+import re
+import argparse
 import pandas as pd
 import multiprocessing
 from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -30,6 +32,11 @@ def get_cluster_algorithms() -> list:
 def get_k_values() -> list:
     """Define K values to try for K-based clustering."""
     return [100, 250, 500, 1000]
+
+
+def natural_run_key(run_name: str):
+    """Sort run_2 before run_10."""
+    return [int(part) if part.isdigit() else part.lower() for part in re.split(r"(\d+)", run_name)]
 
 
 # ============================================================
@@ -69,7 +76,9 @@ def process_model_for_run(model_name, model_dir, run_folder, algorithms, k_value
 # ============================================================
 #   Multi-Run Cluster Coverage Driver
 # ============================================================
-def run_cluster_coverage_multi_run(subject_program: str):
+def run_cluster_coverage_multi_run(subject_program: str,
+                                   run_limit: int | None = None,
+                                   parallel: bool = False):
     SUBJECT = subject_program.upper()
 
     ROOT = "EMBEDDINGS/VECTORS_COLLECTION/INPUT_SELECTOR"
@@ -96,7 +105,9 @@ def run_cluster_coverage_multi_run(subject_program: str):
     run_folders = sorted({
         f for model_path in embedding_models.values() if os.path.exists(model_path)
         for f in os.listdir(model_path) if f.startswith("run_")
-    })
+    }, key=natural_run_key)
+    if run_limit is not None:
+        run_folders = run_folders[:run_limit]
 
     if not run_folders:
         print("[WARN] No run folders found in any embedding model.")
@@ -108,9 +119,20 @@ def run_cluster_coverage_multi_run(subject_program: str):
     # ---------------------------------------------------------
     # Parallelism setup: per run → models in parallel
     # ---------------------------------------------------------
+    existing_models = {
+        name: path for name, path in embedding_models.items()
+        if os.path.exists(path)
+    }
+    if not existing_models:
+        print(f"[WARN] No embedding model folders found under {os.path.join(ROOT, SUBJECT)}.")
+        return
+
     available_cores = multiprocessing.cpu_count()
-    max_workers = min(len(embedding_models), available_cores)
-    print(f"[INFO] Using up to {max_workers} cores for parallel model processing per run.")
+    max_workers = min(len(existing_models), available_cores)
+    if parallel:
+        print(f"[INFO] Using up to {max_workers} cores for parallel model processing per run.")
+    else:
+        print("[INFO] Running models sequentially. Use --parallel true after smoke testing if desired.")
 
     # =======================================================
     #  LOOP OVER RUNS (sequential, but each run uses all cores)
@@ -121,32 +143,48 @@ def run_cluster_coverage_multi_run(subject_program: str):
         os.makedirs(run_output_dir, exist_ok=True)
         all_rows_for_run = []
 
-        # Parallelize over models for this run
-        with ProcessPoolExecutor(max_workers=max_workers) as executor:
-            futures = {
-                executor.submit(
-                    process_model_for_run,
+        if parallel:
+            # Parallelize over models for this run
+            with ProcessPoolExecutor(max_workers=max_workers) as executor:
+                futures = {
+                    executor.submit(
+                        process_model_for_run,
+                        model_name,
+                        model_dir,
+                        run_folder,
+                        algorithms,
+                        k_values,
+                        generator_order
+                    ): model_name
+                    for model_name, model_dir in existing_models.items()
+                }
+
+                for f in as_completed(futures):
+                    model = futures[f]
+                    try:
+                        rows = f.result()
+                        if rows:
+                            all_rows_for_run.extend(rows)
+                            print(f"[DONE] {model} completed for {run_folder}")
+                        else:
+                            print(f"[SKIP] No data for {model}")
+                    except Exception as e:
+                        print(f"[FAIL]  {model} → {e}")
+        else:
+            for model_name, model_dir in existing_models.items():
+                rows = process_model_for_run(
                     model_name,
                     model_dir,
                     run_folder,
                     algorithms,
                     k_values,
                     generator_order
-                ): model_name
-                for model_name, model_dir in embedding_models.items()
-            }
-
-            for f in as_completed(futures):
-                model = futures[f]
-                try:
-                    rows = f.result()
-                    if rows:
-                        all_rows_for_run.extend(rows)
-                        print(f"[DONE] {model} completed for {run_folder}")
-                    else:
-                        print(f"[SKIP] No data for {model}")
-                except Exception as e:
-                    print(f"[FAIL]  {model} → {e}")
+                )
+                if rows:
+                    all_rows_for_run.extend(rows)
+                    print(f"[DONE] {model_name} completed for {run_folder}")
+                else:
+                    print(f"[SKIP] No data for {model_name}")
 
         # --- Save combined results for this run ---
         if all_rows_for_run:
@@ -182,5 +220,11 @@ def run_cluster_coverage_multi_run(subject_program: str):
 #  Entry Point
 # ============================================================
 if __name__ == "__main__":
-    subject_program = "calc"  # or 'calc', 'rhino'
-    run_cluster_coverage_multi_run(subject_program)
+    parser = argparse.ArgumentParser(description="Compute cluster coverage from generated embeddings.")
+    parser.add_argument("--subject", type=str, default="karatejs", help="Subject/SUT name, e.g., karatejs, calc, rhino.")
+    parser.add_argument("--runs", type=int, default=None, help="Limit to the first N run folders for smoke testing.")
+    parser.add_argument("--parallel", type=lambda x: x.lower() == "true", default=False,
+                        help="Process embedding models in parallel. Keep false for first smoke tests.")
+    args = parser.parse_args()
+
+    run_cluster_coverage_multi_run(args.subject, run_limit=args.runs, parallel=args.parallel)

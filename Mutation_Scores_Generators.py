@@ -1,4 +1,6 @@
 import os
+import re
+import argparse
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
 import numpy as np
@@ -25,6 +27,11 @@ def mutation_analysis_run(subject_program: str, run_id: int = 1):
 
     print(f"\n====================  MUTATION ANALYSIS → {SUBJECT} (RUN {run_id}) ====================")
     print(f"[PATH] run_dir = {run_dir}")
+    if not os.path.isdir(run_dir):
+        raise FileNotFoundError(
+            f"Mutation profile run folder not found: {run_dir}. "
+            "Run Step 3 with --running_mutants true before Step 5."
+        )
 
     # --- Load all profiles from this run folder ---
     profiles_by_tool, tool_order, M = _load_profiles_from_run(run_dir)
@@ -44,6 +51,11 @@ def mutation_analysis_run(subject_program: str, run_id: int = 1):
     np.savetxt(selected_indices_out, selected_idx, fmt="%d")
 
     print(f"[INFO] Selected {len(selected_idx)} / {M} mutants after filtering.")
+    if len(selected_idx) == 0:
+        print(
+            "[WARN] No informative mutants remained after filtering. "
+            "Mutation metrics will be zero; check that Step 3 profiles contain non-zero kills."
+        )
 
     # --- Write global report ---
     os.makedirs(global_report_dir, exist_ok=True)
@@ -95,27 +107,60 @@ def mutation_analysis_run(subject_program: str, run_id: int = 1):
 # ============================================================
 #   PARALLEL EXECUTION FOR ALL RUNS
 # ============================================================
-def mutation_analysis_all_runs(subject_program: str):
+def natural_run_key(run_name: str):
+    return [int(part) if part.isdigit() else part.lower() for part in re.split(r"(\d+)", run_name)]
+
+
+def mutation_analysis_all_runs(subject_program: str,
+                               run_limit: int | None = None,
+                               parallel: bool = False):
     base_dir = f"MUT_KILLING_PROFILE/{subject_program.upper()}/main_mut_killing_profiles"
-    run_folders = sorted([f for f in os.listdir(base_dir) if f.startswith("mutants_profile_run_")])
+    if not os.path.isdir(base_dir):
+        raise FileNotFoundError(
+            f"Mutation profile root not found: {base_dir}. "
+            "Run Step 3 mutation killing before Step 5."
+        )
+
+    run_folders = sorted(
+        [f for f in os.listdir(base_dir) if f.startswith("mutants_profile_run_")],
+        key=natural_run_key,
+    )
+    if run_limit is not None:
+        run_folders = run_folders[:run_limit]
+    if not run_folders:
+        raise RuntimeError(f"No mutants_profile_run_<N> folders found under {base_dir}.")
+
     run_ids = [int(f.split("_")[-1]) for f in run_folders]
 
-    import multiprocessing
-    max_workers = min(len(run_ids), multiprocessing.cpu_count())
-    print(f"[INFO] Using up to {max_workers} cores for parallel mutation runs.")
+    if parallel:
+        import multiprocessing
+        max_workers = min(len(run_ids), multiprocessing.cpu_count())
+        print(f"[INFO] Using up to {max_workers} cores for parallel mutation-score runs.")
 
-    with ProcessPoolExecutor(max_workers=max_workers) as executor:
-        futures = {executor.submit(mutation_analysis_run, subject_program, rid): rid for rid in run_ids}
-        for f in as_completed(futures):
-            rid = futures[f]
-            try:
-                result = f.result()
-                print(f"[DONE]  {result}")
-            except Exception as e:
-                print(f"[FAIL] Run {rid} failed: {e}")
+        with ProcessPoolExecutor(max_workers=max_workers) as executor:
+            futures = {executor.submit(mutation_analysis_run, subject_program, rid): rid for rid in run_ids}
+            for f in as_completed(futures):
+                rid = futures[f]
+                try:
+                    f.result()
+                    print(f"[DONE] Run {rid} completed.")
+                except Exception as e:
+                    print(f"[FAIL] Run {rid} failed: {e}")
+    else:
+        print("[INFO] Running mutation-score runs sequentially. Use --parallel true after smoke testing if desired.")
+        for rid in run_ids:
+            mutation_analysis_run(subject_program, rid)
+            print(f"[DONE] Run {rid} completed.")
 
-    print("\n  All mutation analysis runs completed in parallel.")
+    print("\nAll mutation score runs completed.")
 
 
 if __name__ == "__main__":
-    mutation_analysis_all_runs("GRAALJS") # RHINO BASIC CALC NASHORN GRAALJS KARATEJS
+    parser = argparse.ArgumentParser(description="Compute per-generator mutation score metrics from mutation killing profiles.")
+    parser.add_argument("--subject", type=str, default="karatejs", help="Subject/SUT name, e.g., karatejs, calc, rhino.")
+    parser.add_argument("--runs", type=int, default=None, help="Limit to the first N mutation profile runs for smoke testing.")
+    parser.add_argument("--parallel", type=lambda x: x.lower() == "true", default=False,
+                        help="Process runs in parallel. Keep false for first smoke tests.")
+    args = parser.parse_args()
+
+    mutation_analysis_all_runs(args.subject, run_limit=args.runs, parallel=args.parallel)

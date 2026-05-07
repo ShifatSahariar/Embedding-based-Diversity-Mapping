@@ -1,0 +1,11 @@
+M_total: 100
+selected_after_band: 2
+selected_final: 2
+dropped_never_exact: 81
+dropped_always_exact: 2
+dropped_within_band: 98
+
+--- Percentage summary ---
+Equivalent (never killed): 81.00%
+Trivial (always killed): 2.00%
+Selected informative mutants: 2.00%

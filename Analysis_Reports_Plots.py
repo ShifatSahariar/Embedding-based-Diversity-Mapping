@@ -1,8 +1,17 @@
 #!/usr/bin/env python3
 import os, re
+import argparse
 from typing import List, Tuple, Optional, Dict
+
+LOCAL_CACHE_DIR = os.path.join(os.getcwd(), ".plot_cache")
+os.makedirs(LOCAL_CACHE_DIR, exist_ok=True)
+os.environ.setdefault("MPLCONFIGDIR", LOCAL_CACHE_DIR)
+os.environ.setdefault("XDG_CACHE_HOME", LOCAL_CACHE_DIR)
+
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from scipy.stats import spearmanr
@@ -509,9 +518,24 @@ from pathlib import Path
 # ===============================================================
 # Main driver
 # ===============================================================
-def generate_reports_for_all_runs(subject: str,BASE_DIR):
+def natural_run_key(path_or_name):
+    name = path_or_name.name if hasattr(path_or_name, "name") else str(path_or_name)
+    return [int(part) if part.isdigit() else part.lower() for part in re.split(r"(\d+)", name)]
 
-    run_dirs = sorted([d for d in BASE_DIR.iterdir() if d.is_dir() and d.name.startswith("run_")])
+
+def generate_reports_for_all_runs(subject: str, BASE_DIR, run_limit: int | None = None):
+    if not BASE_DIR.exists():
+        raise FileNotFoundError(
+            f"Subject result folder not found: {BASE_DIR}. "
+            "Run Steps 4-7 before generating plots."
+        )
+
+    run_dirs = sorted(
+        [d for d in BASE_DIR.iterdir() if d.is_dir() and d.name.startswith("run_")],
+        key=natural_run_key,
+    )
+    if run_limit is not None:
+        run_dirs = run_dirs[:run_limit]
     if not run_dirs:
         print(f"[WARN] No run directories found for {subject}")
         return
@@ -627,11 +651,16 @@ def plot_jaccard_trends(summary_csv: str, out_path: str = None):
 # Entry point
 # ===============================================================
 if __name__ == "__main__":
-    SUBJECT = "GRAALJS" #RHINO #KARATEJS #NASHORN
+    parser = argparse.ArgumentParser(description="Generate Phase 1 analysis plots from Step 4-7 outputs.")
+    parser.add_argument("--subject", type=str, default="karatejs", help="Subject/SUT name, e.g., karatejs, calc, rhino.")
+    parser.add_argument("--runs", type=int, default=None, help="Limit to the first N run folders for smoke testing.")
+    args = parser.parse_args()
+
+    SUBJECT = args.subject.upper()
     BASE_DIR = Path("FUZZ_TOOL_SELECTION/result") / SUBJECT
 
     print(f"[RUN] Generating analysis reports for {SUBJECT} ...")
-    generate_reports_for_all_runs(SUBJECT,BASE_DIR)
+    generate_reports_for_all_runs(SUBJECT, BASE_DIR, run_limit=args.runs)
     generate_summary_reports(BASE_DIR)
     # --- New: Plot Jaccard trend ---
     jaccard_summary_path = BASE_DIR / "correlations_summary" / "jaccard_summary_by_model.csv"

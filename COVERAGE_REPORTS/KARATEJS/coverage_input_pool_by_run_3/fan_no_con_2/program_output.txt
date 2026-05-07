@@ -1,2 +1,3 @@
 Program Output:
-No output.
+[FN_EXPR] function f(){g();throw new RangeError("VjlAj");
+return 4;}

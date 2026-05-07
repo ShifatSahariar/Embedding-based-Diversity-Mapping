@@ -1,0 +1,7 @@
+Tool,Tests,Mutants_Selected,MS,KI,SKI
+fan_con,3,3,0.666667,3,2.0
+fan_no_con,3,3,1.0,2,1.5
+fuzz_equal,3,3,0.666667,3,1.0
+fuzz_prob,3,3,0.333333,2,1.0
+isla_con,3,3,0.666667,3,2.0
+isla_no_con,3,3,0.0,0,0.0

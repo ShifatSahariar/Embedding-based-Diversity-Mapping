@@ -530,18 +530,60 @@ python Mutation_Analysis.py \
 Computes **cluster coverage metrics** for each generator and model across runs.
 
 Cluster coverage reflects how well a generator’s inputs cover the **clusters** identified in embedding space — acting as a diversity measure.
-only you can specify the sut name.
+
+### Before running
+Confirm that Step 2 has produced embedding vectors under:
+```
+EMBEDDINGS/VECTORS_COLLECTION/INPUT_SELECTOR/<SUT>/<MODEL>/run_<N>/
+```
+
+For example, for KarateJS and UNIXCODER:
+```
+EMBEDDINGS/VECTORS_COLLECTION/INPUT_SELECTOR/KARATEJS/UNIXCODER/run_1/
+```
+
+Each `run_<N>` folder should contain one `*_vector.txt` file for each generated input in the corresponding:
+```
+GENERATED_INPUTS/FUZZ_TOOL_SELECTOR/<SUT>/input_pool_by_run_<N>/
+```
+
+### Recommended smoke test
+First run only one run folder:
+```bash
+python Cluster_Coverage.py --subject karatejs --runs 1 --parallel false
+```
+
+This should create:
+```
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/cluster_coverage_summary_run_1.csv
+```
+
+Open the CSV and verify that it contains:
+- `Model`
+- `Run`
+- `Cluster Algo`
+- `K_eff`
+- cluster quality columns such as `Silhouette`, `DBI`, and `CHI`
+- one cluster-coverage column for each generator configuration
+
+### Full run
+After the smoke test succeeds:
+```bash
+python Cluster_Coverage.py --subject karatejs --parallel false
+```
+
+The script processes all available embedding `run_<N>` folders. Use `--parallel true` only after the sequential run works on your machine.
+
 ### Output
 Each run produces:
 ```
-cluster_coverage_summary_<model>.csv
-```
-with columns such as:
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/cluster_coverage_summary_run_<N>.csv
 ```
 
 where:
-- **Configuration**: input generator setup
-- **Cluster_Algo**: clustering algorithm used
+- **Model**: embedding model used
+- **Run**: input/embedding run identifier
+- **Cluster Algo**: clustering algorithm used
 - **K_eff**: effective number of clusters
 - Remaining columns report the **cluster coverage values** achieved by each generator configuration
 
@@ -550,39 +592,207 @@ These outputs are later used to:
 - compute correlations with mutation-based effectiveness,
 - and guide generator selection.
 
-```
-
 ---
 
 ## 🧬 Step 5 — Mutation Score Computation
 
 **Script:** `Mutation_Scores_Generators.py`
-only you can specify the sut name.
+
 ### Purpose
 Computes mutation-based effectiveness metrics:
 - **MS** (Mutation Score)
 - **KI** (Kill Index)
 - **SKI** (Strong Kill Index)
 
+This step reads the mutation killing profiles from Step 3 and summarizes them per generator. It writes the mutation metrics into the same per-run result folders created by Step 4, so the correlation step can compare Cluster Coverage (CC) and Mutation Score (MS) run by run.
+
+### Before running
+Confirm that Step 3 has produced mutation killing profiles under:
+```
+MUT_KILLING_PROFILE/<SUT>/main_mut_killing_profiles/mutants_profile_run_<N>/
+```
+
+For KarateJS, a run folder should look like:
+```
+MUT_KILLING_PROFILE/KARATEJS/main_mut_killing_profiles/mutants_profile_run_1/
+├── fan_con_1.txt
+├── fan_con_2.txt
+├── ...
+├── isla_no_con_3.txt
+```
+
+Each `.txt` file is one input's binary mutation-killing profile:
+```
+0 1 0 0 1 ...
+```
+
+Before computing mutation scores, quickly check that profiles are not all zero:
+```bash
+find MUT_KILLING_PROFILE/KARATEJS/main_mut_killing_profiles/mutants_profile_run_1 \
+  -type f -name "*.txt" | sort | head -5 | \
+  xargs -I{} awk '{s=0; for(i=1;i<=NF;i++) s+=int($i); print FILENAME, "len=" NF, "sum=" s}' {}
+```
+
+If every `sum` is `0`, rerun Step 3 mutation execution after regenerating the original baseline outputs.
+
+### Recommended smoke test from terminal
+Run only the first mutation-profile run:
+```bash
+python Mutation_Scores_Generators.py --subject karatejs --runs 1 --parallel false
+```
+
+With the PyCharm virtual environment used in this artifact:
+```bash
+/Users/usi/PyCharmMiscProject/.venv/bin/python Mutation_Scores_Generators.py \
+  --subject karatejs \
+  --runs 1 \
+  --parallel false
+```
+
+Expected output:
+```
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/mutation_metrics.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/selected_mutant_indices.txt
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/global_report/global_filter_report.txt
+```
+
+Open `mutation_metrics.csv` and confirm that it contains one row per generator:
+```
+Tool,Tests,Mutants_Selected,MS,KI,SKI
+fan_con,...
+fan_no_con,...
+...
+```
+
+Also inspect `global_filter_report.txt`. It explains how many mutants were removed as never killed, always killed, duplicate, or subsumed.
+
+### Running from an IDE such as PyCharm
+For a smoke test, open `Mutation_Scores_Generators.py` and use these script parameters in the Run Configuration:
+```bash
+--subject karatejs --runs 1 --parallel false
+```
+
+For the full Step 5 run:
+```bash
+--subject karatejs --parallel false
+```
+
+Recommended for first-time artifact checking: keep `--parallel false` so errors are printed in run order and are easier to debug. Once the sequential run works, `--parallel true` can be used to process runs concurrently.
+
+### Full run from terminal
+After the smoke test succeeds:
+```bash
+python Mutation_Scores_Generators.py --subject karatejs --parallel false
+```
+
+or with the artifact virtual environment:
+```bash
+/Users/usi/PyCharmMiscProject/.venv/bin/python Mutation_Scores_Generators.py \
+  --subject karatejs \
+  --parallel false
+```
+
 ### Output
 Each run produces:
 ```
-mutation_metrics.csv
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/mutation_metrics.csv
 ```
 with per-generator metrics.
+
+It also writes:
+```
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/selected_mutant_indices.txt
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/global_report/global_filter_report.txt
+```
+
+Meaning of the main columns:
+- **Tool**: generator configuration, such as `fan_con` or `isla_no_con`
+- **Tests**: number of inputs available for that generator in the run
+- **Mutants_Selected**: number of informative mutants retained after global filtering
+- **MS**: fraction of retained mutants killed by at least one input from the generator
+- **KI**: number of inputs that kill at least one retained mutant
+- **SKI**: average number of retained mutants killed by the KI-positive inputs
+
+These files are required by Step 6.
 
 ---
 
 ## 📈 Step 6 — Correlation Analysis (MS vs CC)
 
 **Script:** `Correlations_MS_CC.py`
-only you can specify the sut name.
+
 ### Purpose
 Computes **Spearman correlation** between:
 - Cluster coverage (CC)
 - Mutation score (MS)
 
 across multiple runs and embedding models.
+
+This step combines the Step 4 cluster coverage files and the Step 5 mutation metrics files.
+
+### Before running
+Confirm that every run folder under:
+```
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/
+```
+contains both files:
+```
+cluster_coverage_summary_run_<N>.csv
+mutation_metrics.csv
+```
+
+For KarateJS:
+```
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/cluster_coverage_summary_run_1.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/mutation_metrics.csv
+```
+
+If one of these files is missing, rerun Step 4 or Step 5 before correlation analysis.
+
+### Recommended smoke test from terminal
+Run only the first result run:
+```bash
+python Correlations_MS_CC.py --subject karatejs --runs 1
+```
+
+With the PyCharm virtual environment used in this artifact:
+```bash
+/Users/usi/PyCharmMiscProject/.venv/bin/python Correlations_MS_CC.py \
+  --subject karatejs \
+  --runs 1
+```
+
+Expected smoke-test outputs:
+```
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/correlations_table.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/correlations_summary/final_correlation_summary.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/correlations_summary/cluster_coverage_summary_all_runs.csv
+```
+
+The one-run smoke test may leave `Wilcoxon_p` empty because Wilcoxon needs multiple runs.
+
+### Running from an IDE such as PyCharm
+Open `Correlations_MS_CC.py` and use these script parameters in the Run Configuration for a smoke test:
+```bash
+--subject karatejs --runs 1
+```
+
+For the full Step 6 run:
+```bash
+--subject karatejs
+```
+
+### Full run from terminal
+After the smoke test succeeds:
+```bash
+python Correlations_MS_CC.py --subject karatejs
+```
+
+or with the artifact virtual environment:
+```bash
+/Users/usi/PyCharmMiscProject/.venv/bin/python Correlations_MS_CC.py \
+  --subject karatejs
+```
 
 ### How it works
 1. For each run:
@@ -601,40 +811,356 @@ across multiple runs and embedding models.
 
 ### Output
 ```
-correlations_summary/final_correlation_summary.csv
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/correlations_table.csv
+FUZZ_TOOL_SELECTION/result/<SUT>/correlations_summary/final_correlation_summary.csv
+FUZZ_TOOL_SELECTION/result/<SUT>/correlations_summary/cluster_coverage_summary_all_runs.csv
 ```
+
+where:
+- **correlations_table.csv**: per-run correlation between CC and MS for each model/cluster configuration
+- **final_correlation_summary.csv**: mean `Coverage–MS` across runs plus `Wilcoxon_p`
+- **cluster_coverage_summary_all_runs.csv**: mean and standard deviation of CC across runs
+
+If only one embedding model has embeddings available, the summary will contain only that model's configurations. For example, if only UNIXCODER vectors exist, the final table will only include rows such as `UNIXCODER + Affinity`.
 
 ---
 
 ## 🥉 Step 7 — Jaccard Similarity (Top-K Agreement)
 
 **Script:** `Jaccard_Similarity_MS_CC.py`
-only you can specify the sut name.
+
 ### Purpose
 Evaluates **ranking consistency** between MS and CC across generators using **Top-K Jaccard similarity**.
 
-### Configuration
-Specify:
-- `K_list = [2, 3]` (or other)
-- Runs across all embedding models and generators
+This step compares:
+- the Top-K generators ranked by Cluster Coverage (CC)
+- the Top-K generators ranked by Mutation Score (MS)
+
+The Jaccard score is:
+```
+|TopK_CC ∩ TopK_MS| / |TopK_CC ∪ TopK_MS|
+```
+
+### Before running
+Confirm that Step 4 and Step 5 have produced, for each run:
+```
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/cluster_coverage_summary_run_<N>.csv
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/mutation_metrics.csv
+```
+
+For KarateJS:
+```
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/cluster_coverage_summary_run_1.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/mutation_metrics.csv
+```
+
+### Recommended smoke test from terminal
+Run only the first result run:
+```bash
+python Jaccard_Similarity_MS_CC.py --subject karatejs --runs 1 --top_ks 1,2,3,4
+```
+
+With the PyCharm virtual environment used in this artifact:
+```bash
+/Users/usi/PyCharmMiscProject/.venv/bin/python Jaccard_Similarity_MS_CC.py \
+  --subject karatejs \
+  --runs 1 \
+  --top_ks 1,2,3,4
+```
+
+Expected smoke-test outputs:
+```
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/jaccard_similarity/topK_1.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/jaccard_similarity/topK_2.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/jaccard_similarity/topK_3.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/jaccard_similarity/topK_4.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/correlations_summary/jaccard_summary_by_model.csv
+```
+
+### Running from an IDE such as PyCharm
+Open `Jaccard_Similarity_MS_CC.py` and use these script parameters for a smoke test:
+```bash
+--subject karatejs --runs 1 --top_ks 1,2,3,4
+```
+
+For the full Step 7 run:
+```bash
+--subject karatejs --top_ks 1,2,3,4
+```
+
+### Full run from terminal
+After the smoke test succeeds:
+```bash
+python Jaccard_Similarity_MS_CC.py --subject karatejs --top_ks 1,2,3,4
+```
+
+or with the artifact virtual environment:
+```bash
+/Users/usi/PyCharmMiscProject/.venv/bin/python Jaccard_Similarity_MS_CC.py \
+  --subject karatejs \
+  --top_ks 1,2,3,4
+```
 
 ### Output
+Each run produces one file per K:
 ```
-jaccard_summary_topK.csv
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/jaccard_similarity/topK_<K>.csv
 ```
-with similarity scores for each model and run.
+
+Each `topK_<K>.csv` contains:
+- **Embedding_Model**: embedding model used
+- **TopK**: K value
+- **Jaccard**: Top-K overlap score
+- **Top_Cov_Tools**: generators selected by cluster coverage
+- **Top_MS_Tools**: generators selected by mutation score
+
+The subject-level summary is:
+```
+FUZZ_TOOL_SELECTION/result/<SUT>/correlations_summary/jaccard_summary_by_model.csv
+```
+
+with:
+- **Embedding_Model**
+- **TopK**
+- **Jaccard_Mean**
+- **Jaccard_Std**
+
+If only one embedding model has embeddings available, the summary will contain only that model.
 
 ---
 
-## 🧩 Adding a New Subject Program
+## 📊 Step 8 — Analysis Reports and Plots
 
-When introducing a new subject program (SUT):
-1. **Prepare grammar** under `GRAMMARS/` with Fandango or probabilistic format.  
-   - Ensure type consistency and define constraints (`LET`, `FOR`, etc.).
-2. **Configure generation** in `Generation_Test_Inputs.py`  
-   - Add program name to supported subjects.
-3. **Adjust mutation class filters** in `Mutation_Analysis.py`
-4. **Run the pipeline sequentially** following the steps above.
+**Script:** `Analysis_Reports_Plots.py`
+
+### Purpose
+Generates visual reports after Phase 1 analysis is complete.
+
+This step should be run after:
+- Step 4: cluster coverage
+- Step 5: mutation score computation
+- Step 6: correlation analysis
+- Step 7: Jaccard similarity
+
+The script creates:
+- per-run correlation boxplots
+- per-run mutation score bar plots
+- summary correlation plots
+- Jaccard trend plots across Top-K values
+
+### Before running
+Confirm that these files exist:
+```
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/correlations_table.csv
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/mutation_metrics.csv
+FUZZ_TOOL_SELECTION/result/<SUT>/correlations_summary/final_correlation_summary.csv
+FUZZ_TOOL_SELECTION/result/<SUT>/correlations_summary/jaccard_summary_by_model.csv
+```
+
+For KarateJS:
+```
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/correlations_table.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/mutation_metrics.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/correlations_summary/final_correlation_summary.csv
+FUZZ_TOOL_SELECTION/result/KARATEJS/correlations_summary/jaccard_summary_by_model.csv
+```
+
+### Recommended smoke test from terminal
+Run plots for the first run only:
+```bash
+python Analysis_Reports_Plots.py --subject karatejs --runs 1
+```
+
+With the PyCharm virtual environment used in this artifact:
+```bash
+/Users/usi/PyCharmMiscProject/.venv/bin/python Analysis_Reports_Plots.py \
+  --subject karatejs \
+  --runs 1
+```
+
+Expected smoke-test outputs:
+```
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/analysis_plots/mutation_scores.png
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/analysis_plots/Coverage–MS_by_Embedding_Model.png
+FUZZ_TOOL_SELECTION/result/KARATEJS/run_1/analysis_plots/Coverage–MS_by_Cluster_Algo.png
+FUZZ_TOOL_SELECTION/result/KARATEJS/correlations_summary/summary_plots/
+FUZZ_TOOL_SELECTION/result/KARATEJS/correlations_summary/jaccard_similarity_trends.png
+```
+
+### Running from an IDE such as PyCharm
+Open `Analysis_Reports_Plots.py` and use these script parameters for a smoke test:
+```bash
+--subject karatejs --runs 1
+```
+
+For the full Step 8 run:
+```bash
+--subject karatejs
+```
+
+The script uses a local `.plot_cache/` folder for Matplotlib cache files, so it can run in headless or restricted environments without needing access to the user's home cache directory.
+
+### Full run from terminal
+After the smoke test succeeds:
+```bash
+python Analysis_Reports_Plots.py --subject karatejs
+```
+
+or with the artifact virtual environment:
+```bash
+/Users/usi/PyCharmMiscProject/.venv/bin/python Analysis_Reports_Plots.py \
+  --subject karatejs
+```
+
+### Output
+Per-run plots:
+```
+FUZZ_TOOL_SELECTION/result/<SUT>/run_<N>/analysis_plots/
+├── Coverage–MS_by_Embedding_Model.png
+├── Coverage–MS_by_Cluster_Algo.png
+└── mutation_scores.png
+```
+
+Summary plots:
+```
+FUZZ_TOOL_SELECTION/result/<SUT>/correlations_summary/summary_plots/
+├── Mean_Coverage–MS_by_Embedding_Model.png
+└── Mean_Coverage–MS_by_Cluster_Algo.png
+```
+
+Jaccard trend plot:
+```
+FUZZ_TOOL_SELECTION/result/<SUT>/correlations_summary/jaccard_similarity_trends.png
+```
+
+If only one embedding model or one clustering algorithm is available, some plots will contain only one category. This is expected for smoke tests or partial embedding runs.
+
+---
+
+## 🧩 Step 9 — Adding a New Subject Program
+
+Use this checklist when introducing a new SUT. The safest path is to add one thing at a time and run a small smoke test after each stage.
+
+### 1. Prepare the Grammar
+Place the grammar files under:
+```
+GRAMMARS/<SUT>/
+```
+
+Check:
+- grammar can generate valid inputs
+- constraints are type-consistent
+- generated files can be executed by the SUT
+- a tiny pool, such as 2-3 inputs, works before full generation
+
+### 2. Configure Test Input Generation
+Update:
+```
+Generation_Test_Inputs.py
+```
+
+Add or verify:
+- subject name
+- grammar paths
+- output folder naming
+- generator configurations
+- number of runs and number of inputs per generator
+
+Smoke test:
+```bash
+python Generation_Test_Inputs.py
+```
+
+Expected output:
+```
+GENERATED_INPUTS/FUZZ_TOOL_SELECTOR/<SUT>/input_pool_by_run_1/
+```
+
+### 3. Configure Embedding Generation
+Update or verify:
+```
+Generation_Embeddings.py
+EMBEDDINGS/VECTOR_MODELS/
+```
+
+Check:
+- selected embedding models are installed
+- required API keys are configured when using remote APIs
+- vector files are produced for every generated input
+
+Expected output:
+```
+EMBEDDINGS/VECTORS_COLLECTION/INPUT_SELECTOR/<SUT>/<MODEL>/run_1/
+```
+
+### 4. Configure Original Execution and Coverage
+Update:
+```
+Helper_Functions/configs/coverage_configs.py
+```
+
+Check:
+- `classes_root`
+- `source_classes_directory`
+- `main_class`
+- `dependencies`
+- `package_prefix`
+- `input_execution_mode`
+
+Use `input_execution_mode: file_arg` when the SUT expects the input file path as a command-line argument, such as KarateJS. Leave it unset for subjects that read input from stdin.
+
+Smoke test original execution:
+```bash
+python Mutation_Analysis.py --subject <sut> --coverage_only true --runs 1 --parallel false --generate_coverage false
+```
+
+Expected output:
+```
+COVERAGE_REPORTS/<SUT>/coverage_input_pool_by_run_1/
+```
+
+Open a few `program_output.txt`, `return_code.txt`, and `stderr_full.txt` files to confirm the SUT is actually executing the input, not only printing a usage message.
+
+### 5. Configure Mutation Generation and Execution
+Update:
+```
+Helper_Functions/configs/mutation_configs.py
+Mutation_Analysis.py
+```
+
+Check:
+- target classes
+- compiled classes path
+- dependencies
+- PIT jars and plugins if PIT is used for mutant export
+- whether mutants should be generated, aggregated, selected, or only executed
+
+Recommended smoke sequence:
+```bash
+python Mutation_Analysis.py --subject <sut> --mutation_only true --generate_mutants true --aggregate_mutants false --selecting_mutants false --running_mutants false --target_classes <one.class.Name>
+```
+
+Then aggregate/select/run a small subset before the full experiment.
+
+Expected mutation killing output:
+```
+MUT_KILLING_PROFILE/<SUT>/main_mut_killing_profiles/mutants_profile_run_1/
+```
+
+Check that mutation profiles are not all zero before continuing to Step 5.
+
+### 6. Run Phase 1 Sequentially
+After the SUT-specific configuration works, run:
+1. Step 1: input generation
+2. Step 2: embedding generation
+3. Step 3: mutation analysis
+4. Step 4: cluster coverage
+5. Step 5: mutation scores
+6. Step 6: correlation analysis
+7. Step 7: Jaccard agreement
+8. Step 8: plots
+
+For each step, use `--runs 1` first when available, inspect the output, and only then run the full experiment.
 
 ---
 
@@ -652,10 +1178,15 @@ RESULTS/
 │   └── cluster_coverage_summary_*.csv
 ├── CORRELATIONS/
 │   └── correlations_summary/
-│       ├── average_correlation.csv
+│       ├── cluster_coverage_summary_all_runs.csv
 │       └── final_correlation_summary.csv
-└── JACCARD/
-    └── jaccard_summary_topK.csv
+├── JACCARD/
+│   ├── run_<N>/jaccard_similarity/topK_<K>.csv
+│   └── correlations_summary/jaccard_summary_by_model.csv
+└── PLOTS/
+    ├── run_<N>/analysis_plots/
+    ├── correlations_summary/summary_plots/
+    └── correlations_summary/jaccard_similarity_trends.png
 ```
 
 ---

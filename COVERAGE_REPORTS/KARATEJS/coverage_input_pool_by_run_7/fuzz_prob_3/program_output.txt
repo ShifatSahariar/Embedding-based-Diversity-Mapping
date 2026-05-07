@@ -1,2 +1,4 @@
 Program Output:
-No output.
+[FN_EXPR] function flag ( j , sum ) { sum = y ;
+var x = 7 ;
+return ; }
