@@ -1,0 +1,2 @@
+let b = 15; if (b > 20) { return 1; } else { return 0; }
+bye

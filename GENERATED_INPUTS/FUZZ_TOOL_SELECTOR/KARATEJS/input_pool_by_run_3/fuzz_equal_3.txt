@@ -1,0 +1,2 @@
+console.log(i) ;console.log(3) ;console.log("TypeError") ;
+

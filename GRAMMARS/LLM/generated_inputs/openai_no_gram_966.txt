@@ -1,0 +1,3 @@
+let odd = 7;
+if (odd % 2 != 0) { return 'odd'; } else { return 'even'; }
+bye

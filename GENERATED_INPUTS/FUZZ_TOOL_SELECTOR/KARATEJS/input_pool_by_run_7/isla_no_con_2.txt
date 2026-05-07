@@ -1,0 +1,3 @@
+function f(n, j){record.value;var name = "hdlic";
+
+}

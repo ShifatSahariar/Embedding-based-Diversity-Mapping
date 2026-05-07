@@ -1,0 +1,2 @@
+let b = 6; b = b - 2; return b;
+bye

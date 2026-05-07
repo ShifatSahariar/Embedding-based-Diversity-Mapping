@@ -1,0 +1,5 @@
+switch ( flag ) { case 1 : total ++ ; break ; default : count = j . y (  ) ; }
+function k ( j , count ) { var k = i * flag ;
+throw new Error ( "error" ) ;
+return j + i ; }
+

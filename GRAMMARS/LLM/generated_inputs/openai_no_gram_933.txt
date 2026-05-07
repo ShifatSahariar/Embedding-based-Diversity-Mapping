@@ -1,0 +1,3 @@
+let jump = true;
+if (jump) { return 10; } else { return 0; }
+bye

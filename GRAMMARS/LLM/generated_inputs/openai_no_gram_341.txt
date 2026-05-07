@@ -1,0 +1,2 @@
+function always42() { return 42; }
+bye

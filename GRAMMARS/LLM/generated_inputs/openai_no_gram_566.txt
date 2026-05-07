@@ -1,0 +1,2 @@
+let p = 10; while (p > 0) { p = p - 5; } return p;
+bye

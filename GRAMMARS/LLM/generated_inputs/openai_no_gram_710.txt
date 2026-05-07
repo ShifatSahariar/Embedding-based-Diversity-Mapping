@@ -1,0 +1,2 @@
+function bitwiseOr(a, b) { return a | b; }
+bye

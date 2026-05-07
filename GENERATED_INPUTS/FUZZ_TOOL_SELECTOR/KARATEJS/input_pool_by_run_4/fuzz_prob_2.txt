@@ -1,0 +1,5 @@
+flag = sum [ temp ] ;
+for ( var total = 9 ; k ; y ++ ) { throw new ReferenceError ( "error" ) ; }
+var sum = "test" ;
+sum ++ ;
+

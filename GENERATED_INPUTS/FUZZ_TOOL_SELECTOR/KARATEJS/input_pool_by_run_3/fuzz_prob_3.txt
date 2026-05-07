@@ -1,0 +1,3 @@
+i ++ ;
+console.log(y) ;console.log(6) ;console.log("ok") ;
+

@@ -1,0 +1,2 @@
+let p = 25; if (p > 25) { return 1; } else { return 0; }
+bye

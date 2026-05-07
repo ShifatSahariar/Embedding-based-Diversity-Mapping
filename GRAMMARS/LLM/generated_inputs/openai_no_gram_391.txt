@@ -1,0 +1,2 @@
+function sumOdd(n) { var s = 0; for (var i = 1; i <= n; i = i + 2) { s = s + i; } return s; }
+bye

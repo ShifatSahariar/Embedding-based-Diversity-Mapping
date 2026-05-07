@@ -1,0 +1,2 @@
+function containsA(str) { return str[0] == "A"; }
+bye

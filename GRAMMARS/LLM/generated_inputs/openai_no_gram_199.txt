@@ -1,0 +1,2 @@
+let s = "na".repeat(4) + " batman";
+bye

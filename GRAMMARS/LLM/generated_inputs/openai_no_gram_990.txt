@@ -1,0 +1,3 @@
+let color = 'red';
+if (color == 'red') { return 'stop'; } else { return 'go'; }
+bye

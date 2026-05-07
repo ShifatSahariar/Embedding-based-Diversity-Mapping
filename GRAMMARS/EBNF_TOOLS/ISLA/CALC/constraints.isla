@@ -1,0 +1,4 @@
+forall <atom> A:
+  exists <define_var> D: (
+    before(D, A) and D.<VAR> = A.<VAR>
+  )

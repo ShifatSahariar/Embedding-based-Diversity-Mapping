@@ -1,0 +1,2 @@
+function productFirstN(n) { var p = 1; var i = 1; while (i <= n) { p = p * i; i = i + 1; } return p; }
+bye

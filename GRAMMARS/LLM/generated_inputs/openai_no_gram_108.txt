@@ -1,0 +1,2 @@
+let ans = Math.min(8, -2, 0);
+bye

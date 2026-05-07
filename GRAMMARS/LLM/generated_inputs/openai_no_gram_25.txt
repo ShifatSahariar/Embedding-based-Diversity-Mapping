@@ -1,0 +1,4 @@
+function isZero(x) {
+  return x === 0;
+}
+bye

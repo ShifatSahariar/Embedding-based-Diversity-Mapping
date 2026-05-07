@@ -1,0 +1,6 @@
+var state = {length : m - j, z : z};
+function f(){m--;
+return;}
+j++;
+n--;
+p--;

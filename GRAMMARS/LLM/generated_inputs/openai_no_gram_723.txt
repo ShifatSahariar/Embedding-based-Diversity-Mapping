@@ -1,0 +1,2 @@
+function logicalAnd(a, b) { return a && b; }
+bye

@@ -1,0 +1,5 @@
+var eG = "eyyKr";
+
+var Ro = "rhy70";
+
+k = Number("Ka7o7");

@@ -1,0 +1,2 @@
+let z = 8; z = z * 2; return z;
+bye

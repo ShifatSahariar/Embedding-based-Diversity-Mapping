@@ -1,0 +1,2 @@
+let steps = 0; let i = 0; while (i < 3) { steps = steps + i; i = i + 1; } return steps;
+bye

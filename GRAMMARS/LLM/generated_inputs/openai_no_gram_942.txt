@@ -1,0 +1,2 @@
+let alive = true;
+bye

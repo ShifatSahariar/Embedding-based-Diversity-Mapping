@@ -1,0 +1,2 @@
+function div(p, q) { if (q != 0) { return p / q; } else { return 0; } }
+bye

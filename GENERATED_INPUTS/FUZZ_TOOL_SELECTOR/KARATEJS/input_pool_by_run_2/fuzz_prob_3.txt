@@ -1,0 +1,6 @@
+try { throw new Error ( "error" ) ;
+var sum = "TypeError" ; } catch ( count ) { console.log(result) ;console.log(9) ;console.log("error") ;
+throw new ReferenceError ( "error" ) ; }
+for ( var y = 2 ; temp ; result ++ ) { z -- ; }
+console.log(y) ;console.log(9) ;console.log("done") ;
+

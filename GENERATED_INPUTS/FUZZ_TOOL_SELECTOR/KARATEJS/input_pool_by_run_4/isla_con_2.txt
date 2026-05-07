@@ -1,0 +1,3 @@
+var name = "dxy1m";
+
+console.log(" nc82");

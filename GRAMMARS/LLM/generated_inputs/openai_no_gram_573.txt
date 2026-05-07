@@ -1,0 +1,2 @@
+let a = 6; let b = 7; let c = 8; return a + b + c;
+bye

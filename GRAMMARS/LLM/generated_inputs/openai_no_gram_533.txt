@@ -1,0 +1,2 @@
+let time = 60; let hour = time / 60; return hour;
+bye

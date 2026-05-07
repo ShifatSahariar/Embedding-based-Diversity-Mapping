@@ -1,0 +1,2 @@
+function invert(b) { if (b) { return false; } return true; }
+bye

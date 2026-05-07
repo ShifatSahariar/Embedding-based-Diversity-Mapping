@@ -1,0 +1,6 @@
+switch(n){case 3: y++;break;
+case 4: n--;break;
+default: j--;
+y--;}
+var vals = [m];
+var obj = {length : 1};

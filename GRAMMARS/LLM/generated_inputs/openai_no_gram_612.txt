@@ -1,0 +1,2 @@
+function pow(x, y) { var r = 1; var i = 0; while (i < y) { r = r * x; i = i + 1; } return r; }
+bye

@@ -1,0 +1,4 @@
+var x = [ i . name , j [ j > temp ] , k ] ;
+if ( total (  ) ) { j ++ ;
+throw new Error ( "loop" ) ; }
+

@@ -1,0 +1,2 @@
+var state = {value : Number("8iNLP"), z : 9};
+xV = "RtsVM";

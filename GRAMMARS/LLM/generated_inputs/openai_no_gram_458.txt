@@ -1,0 +1,2 @@
+let b = 3; b = b * b * b; return b;
+bye

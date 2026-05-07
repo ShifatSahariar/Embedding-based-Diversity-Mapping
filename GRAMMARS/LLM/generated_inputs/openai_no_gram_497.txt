@@ -1,0 +1,2 @@
+let temp = 7; if (temp < 0) { return -1; } else { return 1; }
+bye

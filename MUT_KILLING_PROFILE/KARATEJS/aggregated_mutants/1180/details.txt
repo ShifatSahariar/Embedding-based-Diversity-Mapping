@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.JsProperty, method=get, methodDesc=()Ljava/lang/Object;], indexes=[91], mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator], filename=JsProperty.java, block=[13], lineNumber=184, description=Replaced bitwise AND with OR, testsInOrder=[]]

@@ -1,0 +1,100 @@
+# =====================================================
+#              RHINO CONSTRAINTS (ISLA FORMAT)
+# =====================================================
+
+# ---------- 1. DEF–BEFORE–USE (numeric expressions) ----------
+forall <numericExp> NumExp:(
+  exists <variableStatement> VarDeclNum:(
+    before(VarDeclNum, NumExp) and VarDeclNum.<IDENT_NUM> = NumExp.<IDENT_NUM>)
+or
+  exists <assignmentStmt> AssignNum:(
+    before(AssignNum, NumExp) and AssignNum.<IDENT_NUM> = NumExp.<IDENT_NUM>)
+
+or
+  exists <paramList> ParamNum:(
+    ParamNum.<IDENT_NUM> = NumExp.<IDENT_NUM>))
+
+and
+
+
+# ---------- 2. DEF–BEFORE–USE (string expressions) ----------
+forall <stringExp> StrExp:(
+  exists <variableStatement> VarDeclStr:(
+    before(VarDeclStr, StrExp) and VarDeclStr.<IDENT_STR> = StrExp.<IDENT_STR>)
+or
+  exists <assignmentStmt> AssignStr:(
+    before(AssignStr, StrExp) and AssignStr.<IDENT_STR> = StrExp.<IDENT_STR>))
+
+and
+
+
+# ---------- 3. ARRAYS: must be declared before access ----------
+forall <arrayAccess> ArrAccess:
+  exists <array_init> ArrDecl:(
+    before(ArrDecl, ArrAccess) and ArrDecl.<IDENT_ARR> = ArrAccess.<IDENT_ARR>)
+
+and
+
+
+# ---------- 4. OBJECTS: must be declared before access ----------
+forall <memberAccess> ObjMem:
+  exists <object_init> ObjDecl:(
+    before(ObjDecl, ObjMem) and ObjDecl.<IDENT_OBJ> = ObjMem.<IDENT_OBJ>)
+and
+
+forall <memberAccess_num> ObjMemNum:
+  exists <object_init> ObjDeclNum:(
+    before(ObjDeclNum, ObjMemNum) and ObjDeclNum.<IDENT_OBJ> = ObjMemNum.<IDENT_OBJ>)
+and
+
+forall <memberAccess_str> ObjMemStr:
+  exists <object_init> ObjDeclStr:(
+    before(ObjDeclStr, ObjMemStr) and ObjDeclStr.<IDENT_OBJ> = ObjMemStr.<IDENT_OBJ>)
+
+and
+
+
+# ---------- 5. FUNCTIONS: must be declared before being called ----------
+forall <callExp> Call:
+  exists <functionDeclaration> FuncDecl:(
+    before(FuncDecl, Call) and FuncDecl.<IDENT_FUN> = Call.<IDENT_FUN>)
+and
+
+
+# ---------- 6. RETURNS: must appear inside a function ----------
+forall <returnMaybe> Ret:
+  exists <functionDeclaration> FuncScope:(
+    inside(Ret, FuncScope))
+
+and
+
+
+# ---------- 7. INCREMENT / DECREMENT only on declared variables ----------
+forall <incdecStmt> IncStmt:(
+  exists <variableStatement> DeclN:(
+    before(DeclN, IncStmt) and DeclN.<IDENT_NUM> = IncStmt.<IDENT_NUM>)
+or
+  exists <assignmentStmt> AssignN:(
+    before(AssignN, IncStmt) and AssignN.<IDENT_NUM> = IncStmt.<IDENT_NUM>)
+or
+  exists <paramList> ParamN:(
+    ParamN.<IDENT_NUM> = IncStmt.<IDENT_NUM>))
+
+
+and
+
+# ---------- 8. PRINT statements: identifiers must be declared ----------
+forall <printable> PrNum:(
+  exists <variableStatement> DeclPN:(
+    before(DeclPN, PrNum) and DeclPN.<IDENT_NUM> = PrNum.<numericExp>.<IDENT_NUM>)
+or
+  exists <assignmentStmt> AssignPN:(
+    before(AssignPN, PrNum) and AssignPN.<IDENT_NUM> = PrNum.<numericExp>.<IDENT_NUM>))
+and
+
+forall <printable> PrStr:(
+  exists <variableStatement> DeclPS:(
+    before(DeclPS, PrStr) and DeclPS.<IDENT_STR> = PrStr.<stringExp>.<IDENT_STR>)
+or
+  exists <assignmentStmt> AssignPS:(
+    before(AssignPS, PrStr) and AssignPS.<IDENT_STR> = PrStr.<stringExp>.<IDENT_STR>))

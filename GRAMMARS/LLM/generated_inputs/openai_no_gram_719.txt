@@ -1,0 +1,2 @@
+function maxAbs(a, b) { return max(abs(a), abs(b)); }
+bye

@@ -1,0 +1,8 @@
+for ( var x = 4 ; x ; i ++ ) { throw new ReferenceError ( "test" ) ;
+throw new ReferenceError ( "loop" ) ;
+throw new Error ( "error" ) ;
+console.log(i) ;console.log(7) ;console.log("loop") ;
+var i = 4 ;
+sum ++ ; }
+for ( var j = 0 ; count ( i - i ) ; k ++ ) { z -- ; }
+

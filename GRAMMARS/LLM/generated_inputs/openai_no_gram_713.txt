@@ -1,0 +1,2 @@
+function leftShift(x, n) { return x << n; }
+bye

@@ -1,0 +1,2 @@
+var arr = [2];
+if(x != n || p == x && p == i){arr[7];}

@@ -1,0 +1,2 @@
+if((x == j && n > i) || z != p){m++;p++;throw new Error("ry9p3");
+m--;}else{y++;}

@@ -1,0 +1,5 @@
+var PC = "7Jt5Y";
+
+var L = "h2LpL";
+
+console.log(Number("bHMSg"));

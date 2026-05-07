@@ -1,0 +1,2 @@
+let k = 1; while (k < 6) { k = k + 2; } return k;
+bye

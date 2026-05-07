@@ -1,0 +1,2 @@
+let limit = 30; if (limit > 20) { return 10; } else { return 5; }
+bye

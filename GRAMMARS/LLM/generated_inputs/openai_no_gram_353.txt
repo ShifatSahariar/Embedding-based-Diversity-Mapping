@@ -1,0 +1,2 @@
+function stringLength(s) { return s.length; }
+bye

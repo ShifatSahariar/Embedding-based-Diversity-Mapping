@@ -1,0 +1,2 @@
+let a = 5; let b = 6; if (a < b) { return 1; } else { return 0; }
+bye

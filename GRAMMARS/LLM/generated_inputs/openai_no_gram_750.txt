@@ -1,0 +1,2 @@
+function subtractTen(x) { return x - 10; }
+bye

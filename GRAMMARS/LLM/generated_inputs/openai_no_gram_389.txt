@@ -1,0 +1,2 @@
+function main() { var x = 100; var y = 200; return x + y; }
+bye

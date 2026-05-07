@@ -1,0 +1,2 @@
+let len = 12; let wid = 2; let area = len * wid; return area;
+bye

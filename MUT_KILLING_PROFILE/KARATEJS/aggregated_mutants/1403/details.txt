@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Terms, method=div, methodDesc=()Ljava/lang/Object;], indexes=[66], mutator=org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_IF], filename=Terms.java, block=[20], lineNumber=235, description=removed conditional - replaced comparison check with true, testsInOrder=[]]

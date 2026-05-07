@@ -1,0 +1,4 @@
+function cube(v) {
+  return v*v*v;
+}
+bye

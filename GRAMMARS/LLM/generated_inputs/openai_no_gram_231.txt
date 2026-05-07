@@ -1,0 +1,2 @@
+function allTrue(a, b, c) { return a && b && c; }
+bye

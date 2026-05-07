@@ -1,0 +1,3 @@
+let n = 21;
+if (n % 7 == 0) { return true; } else { return false; }
+bye

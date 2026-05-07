@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Terms, method=add, methodDesc=(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;], indexes=[35], mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator], filename=Terms.java, block=[9], lineNumber=265, description=Replaced double addition with subtraction, testsInOrder=[]]

@@ -1,0 +1,3 @@
+let pass = true;
+if (pass) { return 100; } else { return -100; }
+bye

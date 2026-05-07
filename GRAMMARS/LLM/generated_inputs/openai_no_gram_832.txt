@@ -1,0 +1,3 @@
+let temp = 29;
+if (temp >= 30) { return 'hot'; } else { return 'cool'; }
+bye

@@ -1,0 +1,5 @@
+console.log(x) ;console.log(2) ;console.log("TypeError") ;
+while ( k + x ) { var i = sum * count ;
+sum -- ;
+throw new Error ( "error" ) ; }
+

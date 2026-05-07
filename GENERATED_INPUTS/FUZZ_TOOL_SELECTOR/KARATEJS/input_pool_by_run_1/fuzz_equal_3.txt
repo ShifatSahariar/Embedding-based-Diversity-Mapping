@@ -1,0 +1,6 @@
+if ( z * z ) { throw new ReferenceError ( "error" ) ;
+k -- ; } else { throw new ReferenceError ( "error" ) ; }
+flag ++ ;
+for ( var i = 8 ; 2 ; sum ++ ) { x -- ; }
+sum ++ ;
+

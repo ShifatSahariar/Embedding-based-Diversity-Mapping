@@ -1,0 +1,2 @@
+let t = 13; if (t == 13) { return 1; } else { return 0; }
+bye

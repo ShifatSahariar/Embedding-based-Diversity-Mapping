@@ -1,0 +1,2 @@
+function averageAbs(a, b) { return (abs(a) + abs(b)) / 2; }
+bye

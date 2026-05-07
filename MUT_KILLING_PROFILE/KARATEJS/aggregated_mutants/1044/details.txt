@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.JsParser, method=for_stmt, methodDesc=()Z], indexes=[165], mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator], filename=JsParser.java, block=[33], lineNumber=198, description=removed call to io/karatelabs/js/JsParser::error, testsInOrder=[]]

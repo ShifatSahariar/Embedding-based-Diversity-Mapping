@@ -1,0 +1,2 @@
+while ( y * count ) { throw new ReferenceError ( "loop" ) ; }
+

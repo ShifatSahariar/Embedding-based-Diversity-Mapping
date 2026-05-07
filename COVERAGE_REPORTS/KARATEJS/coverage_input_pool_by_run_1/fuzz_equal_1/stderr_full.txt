@@ -1,0 +1,24 @@
+JS ERROR: js failed:
+==========
+try { y -- ; } catch ( sum ) { var total = "done" ;
+js failed:
+==========
+try { y -- ; } catch ( sum ) { var total = "done" ;
+cannot read properties of null (reading 'y')
+----------
+----------
+
+java.lang.RuntimeException: js failed:
+==========
+try { y -- ; } catch ( sum ) { var total = "done" ;
+js failed:
+==========
+try { y -- ; } catch ( sum ) { var total = "done" ;
+cannot read properties of null (reading 'y')
+----------
+----------
+
+	at io.karatelabs.js.Engine.evalInternal(Engine.java:134)
+	at io.karatelabs.js.Engine.evalInternal(Engine.java:109)
+	at io.karatelabs.js.Engine.eval(Engine.java:54)
+	at io.karatelabs.js.JsLauncher.main(JsLauncher.java:21)

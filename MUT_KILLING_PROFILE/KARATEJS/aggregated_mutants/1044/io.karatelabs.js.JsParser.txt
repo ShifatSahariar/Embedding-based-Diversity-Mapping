@@ -1,0 +1,3329 @@
+// class version 65.0 (65)
+// access flags 0x21
+public class io/karatelabs/js/JsParser extends io/karatelabs/js/Parser {
+
+  // compiled from: JsParser.java
+  // access flags 0x4018
+  final static enum INNERCLASS io/karatelabs/js/Parser$Shift io/karatelabs/js/Parser Shift
+  // access flags 0x19
+  public final static INNERCLASS java/lang/invoke/MethodHandles$Lookup java/lang/invoke/MethodHandles Lookup
+
+  // access flags 0x1
+  public <init>(Lio/karatelabs/common/Resource;)V
+   L0
+    LINENUMBER 33 L0
+    ALOAD 0
+    ALOAD 1
+    ICONST_0
+    INVOKESPECIAL io/karatelabs/js/Parser.<init> (Lio/karatelabs/common/Resource;Z)V
+   L1
+    LINENUMBER 34 L1
+    RETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L2 0
+    LOCALVARIABLE resource Lio/karatelabs/common/Resource; L0 L2 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x1
+  public parse()Lio/karatelabs/js/Node;
+   L0
+    LINENUMBER 37 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.PROGRAM : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L1
+    LINENUMBER 38 L1
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.markerNode ()Lio/karatelabs/js/Node;
+    ASTORE 1
+   L2
+    LINENUMBER 40 L2
+   FRAME FULL [io/karatelabs/js/JsParser io/karatelabs/js/Node] []
+    ALOAD 0
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.statement (Z)Z
+    IFNE L2
+   L3
+    LINENUMBER 41 L3
+    GOTO L4
+   L4
+    LINENUMBER 44 L4
+   FRAME FULL [io/karatelabs/js/JsParser io/karatelabs/js/Node] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.EOF : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L5
+   L6
+    LINENUMBER 45 L6
+    ALOAD 0
+    LDC "cannot parse statement"
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error (Ljava/lang/String;)V
+   L5
+    LINENUMBER 47 L5
+   FRAME FULL [io/karatelabs/js/JsParser io/karatelabs/js/Node] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    POP
+   L7
+    LINENUMBER 48 L7
+    ALOAD 1
+    ARETURN
+   L8
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L8 0
+    LOCALVARIABLE program Lio/karatelabs/js/Node; L2 L8 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 0x2
+  private statement(Z)Z
+   L0
+    LINENUMBER 52 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.STATEMENT : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L1
+    LINENUMBER 53 L1
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.if_stmt ()Z
+    IFNE L2
+    ALOAD 0
+    ICONST_0
+   L3
+    LINENUMBER 54 L3
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.var_stmt (Z)Z
+    IFEQ L4
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.eos ()Z
+    IFNE L2
+   L4
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+   L5
+    LINENUMBER 55 L5
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.return_stmt ()Z
+    IFEQ L6
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.eos ()Z
+    IFNE L2
+   L6
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+   L7
+    LINENUMBER 56 L7
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.throw_stmt ()Z
+    IFEQ L8
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.eos ()Z
+    IFNE L2
+   L8
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+   L9
+    LINENUMBER 57 L9
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.try_stmt ()Z
+    IFNE L2
+    ALOAD 0
+   L10
+    LINENUMBER 58 L10
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.for_stmt ()Z
+    IFNE L2
+    ALOAD 0
+   L11
+    LINENUMBER 59 L11
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.while_stmt ()Z
+    IFNE L2
+    ALOAD 0
+   L12
+    LINENUMBER 60 L12
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.do_while_stmt ()Z
+    IFNE L2
+    ALOAD 0
+   L13
+    LINENUMBER 61 L13
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.switch_stmt ()Z
+    IFNE L2
+    ALOAD 0
+   L14
+    LINENUMBER 62 L14
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.break_stmt ()Z
+    IFEQ L15
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.eos ()Z
+    IFNE L2
+   L15
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+   L16
+    LINENUMBER 63 L16
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.continue_stmt ()Z
+    IFEQ L17
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.eos ()Z
+    IFNE L2
+   L17
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+   L18
+    LINENUMBER 64 L18
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.delete_stmt ()Z
+    IFEQ L19
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.eos ()Z
+    IFNE L2
+   L19
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+   L20
+    LINENUMBER 65 L20
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr_list ()Z
+    IFEQ L21
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.eos ()Z
+    IFNE L2
+   L21
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    ICONST_0
+   L22
+    LINENUMBER 66 L22
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.block (Z)Z
+    IFNE L2
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.SEMI : Lio/karatelabs/js/TokenType;
+   L23
+    LINENUMBER 67 L23
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L24
+   L2
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ICONST_1
+    GOTO L25
+   L24
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ICONST_0
+   L25
+   FRAME FULL [io/karatelabs/js/JsParser I] [I]
+    ISTORE 2
+   L26
+    LINENUMBER 68 L26
+    ALOAD 0
+    ILOAD 2
+    ILOAD 1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (ZZ)Z
+    IRETURN
+   L27
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L27 0
+    LOCALVARIABLE mandatory Z L0 L27 1
+    LOCALVARIABLE result Z L26 L27 2
+    MAXSTACK = 3
+    MAXLOCALS = 3
+
+  // access flags 0x2
+  private eos()Z
+   L0
+    LINENUMBER 72 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.EOS : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.SEMI : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L1
+   L2
+    LINENUMBER 73 L2
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L1
+    LINENUMBER 75 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekToken ()Lio/karatelabs/js/Token;
+    ASTORE 1
+   L3
+    LINENUMBER 76 L3
+    ALOAD 1
+    GETFIELD io/karatelabs/js/Token.type : Lio/karatelabs/js/TokenType;
+    GETSTATIC io/karatelabs/js/TokenType.R_CURLY : Lio/karatelabs/js/TokenType;
+    IF_ACMPEQ L4
+    ALOAD 1
+    GETFIELD io/karatelabs/js/Token.type : Lio/karatelabs/js/TokenType;
+    GETSTATIC io/karatelabs/js/TokenType.EOF : Lio/karatelabs/js/TokenType;
+    IF_ACMPNE L5
+   L4
+    LINENUMBER 77 L4
+   FRAME FULL [io/karatelabs/js/JsParser io/karatelabs/js/Token] []
+    ICONST_1
+    IRETURN
+   L5
+    LINENUMBER 79 L5
+   FRAME FULL [io/karatelabs/js/JsParser io/karatelabs/js/Token] []
+    ALOAD 1
+    GETFIELD io/karatelabs/js/Token.prev : Lio/karatelabs/js/Token;
+    GETFIELD io/karatelabs/js/Token.type : Lio/karatelabs/js/TokenType;
+    GETSTATIC io/karatelabs/js/TokenType.WS_LF : Lio/karatelabs/js/TokenType;
+    IF_ACMPNE L6
+    ICONST_1
+    GOTO L7
+   L6
+   FRAME FULL [io/karatelabs/js/JsParser io/karatelabs/js/Token] []
+    ICONST_0
+   L7
+   FRAME FULL [io/karatelabs/js/JsParser io/karatelabs/js/Token] [I]
+    IRETURN
+   L8
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L8 0
+    LOCALVARIABLE next Lio/karatelabs/js/Token; L3 L8 1
+    MAXSTACK = 6
+    MAXLOCALS = 2
+
+  // access flags 0x2
+  private expr_list()Z
+   L0
+    LINENUMBER 83 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.EXPR_LIST : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L1
+    LINENUMBER 84 L1
+    ICONST_0
+    ISTORE 1
+   L2
+    LINENUMBER 86 L2
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    ICONST_M1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    IFEQ L3
+   L4
+    LINENUMBER 87 L4
+    ICONST_1
+    ISTORE 1
+   L5
+    LINENUMBER 91 L5
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COMMA : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L2
+   L6
+    LINENUMBER 92 L6
+    GOTO L3
+   L3
+    LINENUMBER 95 L3
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    ILOAD 1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (ZZ)Z
+    IRETURN
+   L7
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L7 0
+    LOCALVARIABLE atLeastOne Z L2 L7 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x2
+  private if_stmt()Z
+   L0
+    LINENUMBER 99 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.IF_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.IF : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 100 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 102 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L3
+    LINENUMBER 103 L3
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L4
+    LINENUMBER 104 L4
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L5
+    LINENUMBER 105 L5
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.statement (Z)Z
+    POP
+   L6
+    LINENUMBER 106 L6
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.ELSE : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L7
+   L8
+    LINENUMBER 107 L8
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.statement (Z)Z
+    POP
+   L7
+    LINENUMBER 109 L7
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L9
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L9 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private var_stmt(Z)Z
+   L0
+    LINENUMBER 113 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.VAR_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_3
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.VAR : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.CONST : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_2
+    GETSTATIC io/karatelabs/js/TokenType.LET : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 114 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 116 L1
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lastConsumed ()Lio/karatelabs/js/TokenType;
+    ASTORE 2
+   L3
+    LINENUMBER 117 L3
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lit_array ()Z
+    IFNE L4
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lit_object ()Z
+    IFNE L4
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.var_names ()Z
+    IFNE L4
+   L5
+    LINENUMBER 118 L5
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/NodeType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/NodeType.VAR_NAMES : Lio/karatelabs/js/NodeType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/NodeType;)V
+   L4
+    LINENUMBER 120 L4
+   FRAME FULL [io/karatelabs/js/JsParser I io/karatelabs/js/TokenType] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.EQ : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L6
+   L7
+    LINENUMBER 121 L7
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+    GOTO L8
+   L6
+    LINENUMBER 122 L6
+   FRAME FULL [io/karatelabs/js/JsParser I io/karatelabs/js/TokenType] []
+    ALOAD 2
+    GETSTATIC io/karatelabs/js/TokenType.CONST : Lio/karatelabs/js/TokenType;
+    IF_ACMPNE L8
+    ILOAD 1
+    IFNE L8
+   L9
+    LINENUMBER 123 L9
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/TokenType;)V
+   L8
+    LINENUMBER 125 L8
+   FRAME FULL [io/karatelabs/js/JsParser I io/karatelabs/js/TokenType] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L10
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L10 0
+    LOCALVARIABLE forLoop Z L0 L10 1
+    LOCALVARIABLE varType Lio/karatelabs/js/TokenType; L3 L10 2
+    MAXSTACK = 6
+    MAXLOCALS = 3
+
+  // access flags 0x2
+  private var_names()Z
+   L0
+    LINENUMBER 129 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.VAR_NAMES : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 130 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 132 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COMMA : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L3
+   L4
+    LINENUMBER 133 L4
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+    GOTO L1
+   L3
+    LINENUMBER 135 L3
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L5
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L5 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private return_stmt()Z
+   L0
+    LINENUMBER 139 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.RETURN_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.RETURN : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 140 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 142 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_M1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 143 L3
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L4
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L4 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private throw_stmt()Z
+   L0
+    LINENUMBER 147 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.THROW_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.THROW : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 148 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 150 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 151 L3
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L4
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L4 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private try_stmt()Z
+   L0
+    LINENUMBER 155 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.TRY_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.TRY : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 156 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 158 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.block (Z)Z
+    POP
+   L3
+    LINENUMBER 159 L3
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.CATCH : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L4
+   L5
+    LINENUMBER 160 L5
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L6
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L6
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L6
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.block (Z)Z
+    IFEQ L6
+   L7
+    LINENUMBER 161 L7
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.FINALLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L8
+   L9
+    LINENUMBER 162 L9
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.block (Z)Z
+    POP
+    GOTO L8
+   L6
+    LINENUMBER 164 L6
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.block (Z)Z
+    IFNE L8
+   L10
+    LINENUMBER 165 L10
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.CATCH : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/TokenType;)V
+    GOTO L8
+   L4
+    LINENUMBER 167 L4
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.FINALLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L11
+   L12
+    LINENUMBER 168 L12
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.block (Z)Z
+    POP
+    GOTO L8
+   L11
+    LINENUMBER 170 L11
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.CATCH : Lio/karatelabs/js/TokenType;
+    INVOKESTATIC java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;
+    GETSTATIC io/karatelabs/js/TokenType.FINALLY : Lio/karatelabs/js/TokenType;
+    INVOKESTATIC java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;
+    INVOKEDYNAMIC makeConcatWithConstants(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      "expected \u0001 or \u0001"
+    ]
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error (Ljava/lang/String;)V
+   L8
+    LINENUMBER 172 L8
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L13
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L13 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private for_stmt()Z
+   L0
+    LINENUMBER 176 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.FOR_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.FOR : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 177 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 179 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L3
+    LINENUMBER 180 L3
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.SEMI : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L4
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.var_stmt (Z)Z
+    IFNE L4
+    ALOAD 0
+    ICONST_M1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    IFNE L4
+   L5
+    LINENUMBER 181 L5
+    ALOAD 0
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/NodeType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/NodeType.VAR_STMT : Lio/karatelabs/js/NodeType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/NodeType.EXPR : Lio/karatelabs/js/NodeType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/NodeType;)V
+   L4
+    LINENUMBER 183 L4
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.SEMI : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L6
+   L7
+    LINENUMBER 184 L7
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.SEMI : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L8
+    ALOAD 0
+    ICONST_M1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    IFEQ L9
+   L8
+    LINENUMBER 185 L8
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.SEMI : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L10
+   L11
+    LINENUMBER 186 L11
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L12
+    ALOAD 0
+    ICONST_M1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    IFNE L12
+   L13
+    LINENUMBER 187 L13
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/NodeType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/NodeType.EXPR : Lio/karatelabs/js/NodeType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/NodeType;)V
+    GOTO L12
+   L10
+    LINENUMBER 190 L10
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.SEMI : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/TokenType;)V
+    GOTO L12
+   L9
+    LINENUMBER 193 L9
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/NodeType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/NodeType.EXPR : Lio/karatelabs/js/NodeType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/NodeType;)V
+    GOTO L12
+   L6
+    LINENUMBER 195 L6
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.IN : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.OF : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.anyOf ([Lio/karatelabs/js/TokenType;)Z
+    IFEQ L14
+   L15
+    LINENUMBER 196 L15
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+    GOTO L12
+   L14
+    LINENUMBER 198 L14
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_3
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.SEMI : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.IN : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_2
+    GETSTATIC io/karatelabs/js/TokenType.OF : Lio/karatelabs/js/TokenType;
+    AASTORE
+    POP
+    POP
+   L12
+    LINENUMBER 200 L12
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L16
+    LINENUMBER 201 L16
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.statement (Z)Z
+    POP
+   L17
+    LINENUMBER 202 L17
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L18
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L18 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private while_stmt()Z
+   L0
+    LINENUMBER 206 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.WHILE_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.WHILE : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 207 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 209 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L3
+    LINENUMBER 210 L3
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L4
+    LINENUMBER 211 L4
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L5
+    LINENUMBER 212 L5
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.statement (Z)Z
+    POP
+   L6
+    LINENUMBER 213 L6
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L7
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L7 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private do_while_stmt()Z
+   L0
+    LINENUMBER 217 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.DO_WHILE_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.DO : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 218 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 220 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.statement (Z)Z
+    POP
+   L3
+    LINENUMBER 221 L3
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.WHILE : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L4
+    LINENUMBER 222 L4
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L5
+    LINENUMBER 223 L5
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L6
+    LINENUMBER 224 L6
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L7
+    LINENUMBER 225 L7
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L8
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L8 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private switch_stmt()Z
+   L0
+    LINENUMBER 229 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.SWITCH_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.SWITCH : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 230 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 232 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L3
+    LINENUMBER 233 L3
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L4
+    LINENUMBER 234 L4
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L5
+    LINENUMBER 235 L5
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.L_CURLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L6
+    LINENUMBER 237 L6
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.case_block ()Z
+    IFNE L6
+   L7
+    LINENUMBER 238 L7
+    GOTO L8
+   L8
+    LINENUMBER 241 L8
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.default_block ()V
+   L9
+    LINENUMBER 242 L9
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_CURLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L10
+    LINENUMBER 243 L10
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L11
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L11 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private case_block()Z
+   L0
+    LINENUMBER 247 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.CASE_BLOCK : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.CASE : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 248 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 250 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 251 L3
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COLON : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L4
+    LINENUMBER 253 L4
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.statement (Z)Z
+    IFNE L4
+   L5
+    LINENUMBER 254 L5
+    GOTO L6
+   L6
+    LINENUMBER 257 L6
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L7
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L7 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private default_block()V
+   L0
+    LINENUMBER 261 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.DEFAULT_BLOCK : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.DEFAULT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 262 L2
+    RETURN
+   L1
+    LINENUMBER 264 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COLON : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L3
+    LINENUMBER 266 L3
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.statement (Z)Z
+    IFNE L3
+   L4
+    LINENUMBER 267 L4
+    GOTO L5
+   L5
+    LINENUMBER 270 L5
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    POP
+   L6
+    LINENUMBER 271 L6
+    RETURN
+   L7
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L7 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private break_stmt()Z
+   L0
+    LINENUMBER 274 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.BREAK_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.BREAK : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 275 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 277 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L3
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L3 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private continue_stmt()Z
+   L0
+    LINENUMBER 281 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.CONTINUE_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.CONTINUE : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 282 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 284 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L3
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L3 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private delete_stmt()Z
+   L0
+    LINENUMBER 289 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.DELETE_STMT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.DELETE : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 290 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 292 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    BIPUSH 13
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 293 L3
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L4
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L4 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private block(Z)Z
+   L0
+    LINENUMBER 297 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.BLOCK : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.L_CURLY : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 298 L2
+    ILOAD 1
+    IFEQ L3
+   L4
+    LINENUMBER 299 L4
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/NodeType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/NodeType.BLOCK : Lio/karatelabs/js/NodeType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/NodeType;)V
+   L3
+    LINENUMBER 301 L3
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 304 L1
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.statement (Z)Z
+    IFNE L1
+   L5
+    LINENUMBER 305 L5
+    GOTO L6
+   L6
+    LINENUMBER 308 L6
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_CURLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L7
+    LINENUMBER 309 L7
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L8
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L8 0
+    LOCALVARIABLE mandatory Z L0 L8 1
+    MAXSTACK = 6
+    MAXLOCALS = 2
+
+  // access flags 0x2
+  private expr(IZ)Z
+   L0
+    LINENUMBER 315 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.EXPR : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L1
+    LINENUMBER 316 L1
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.ref_expr ()Z
+    IFNE L2
+    ALOAD 0
+   L3
+    LINENUMBER 317 L3
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lit_expr ()Z
+    IFNE L2
+    ALOAD 0
+   L4
+    LINENUMBER 318 L4
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.fn_expr ()Z
+    IFNE L2
+    ALOAD 0
+   L5
+    LINENUMBER 319 L5
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.fn_arrow_expr ()Z
+    IFNE L2
+    ALOAD 0
+   L6
+    LINENUMBER 320 L6
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.paren_expr ()Z
+    IFNE L2
+    ALOAD 0
+   L7
+    LINENUMBER 321 L7
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.unary_expr ()Z
+    IFNE L2
+    ALOAD 0
+   L8
+    LINENUMBER 322 L8
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.math_pre_expr ()Z
+    IFNE L2
+    ALOAD 0
+   L9
+    LINENUMBER 323 L9
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.new_expr ()Z
+    IFNE L2
+    ALOAD 0
+   L10
+    LINENUMBER 324 L10
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.typeof_expr ()Z
+    IFEQ L11
+   L2
+   FRAME FULL [io/karatelabs/js/JsParser I I] []
+    ICONST_1
+    GOTO L12
+   L11
+   FRAME FULL [io/karatelabs/js/JsParser I I] []
+    ICONST_0
+   L12
+   FRAME FULL [io/karatelabs/js/JsParser I I] [I]
+    ISTORE 3
+   L13
+    LINENUMBER 325 L13
+    ILOAD 3
+    IFEQ L14
+   L15
+    LINENUMBER 326 L15
+    ALOAD 0
+    ILOAD 1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr_rhs (I)V
+   L14
+    LINENUMBER 328 L14
+   FRAME FULL [io/karatelabs/js/JsParser I I I] []
+    ALOAD 0
+    ILOAD 3
+    ILOAD 2
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (ZZ)Z
+    IRETURN
+   L16
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L16 0
+    LOCALVARIABLE priority I L0 L16 1
+    LOCALVARIABLE mandatory Z L0 L16 2
+    LOCALVARIABLE result Z L13 L16 3
+    MAXSTACK = 3
+    MAXLOCALS = 4
+
+  // access flags 0x2
+  private expr_rhs(I)V
+   L0
+    LINENUMBER 333 L0
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    IFGE L1
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.ASSIGN_EXPR : Lio/karatelabs/js/NodeType;
+    BIPUSH 10
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.PLUS_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_2
+    GETSTATIC io/karatelabs/js/TokenType.MINUS_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_3
+    GETSTATIC io/karatelabs/js/TokenType.STAR_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_4
+    GETSTATIC io/karatelabs/js/TokenType.SLASH_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_5
+    GETSTATIC io/karatelabs/js/TokenType.PERCENT_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    BIPUSH 6
+    GETSTATIC io/karatelabs/js/TokenType.STAR_STAR_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    BIPUSH 7
+    GETSTATIC io/karatelabs/js/TokenType.GT_GT_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    BIPUSH 8
+    GETSTATIC io/karatelabs/js/TokenType.LT_LT_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    BIPUSH 9
+    GETSTATIC io/karatelabs/js/TokenType.GT_GT_GT_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L1
+   L2
+    LINENUMBER 337 L2
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 338 L3
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.RIGHT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L1
+    LINENUMBER 339 L1
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    ICONST_1
+    IF_ICMPGE L4
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LOGIC_TERN_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.QUES : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L4
+   L5
+    LINENUMBER 340 L5
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L6
+    LINENUMBER 341 L6
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COLON : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L7
+    LINENUMBER 342 L7
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L8
+    LINENUMBER 343 L8
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.RIGHT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L4
+    LINENUMBER 344 L4
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    ICONST_2
+    IF_ICMPGE L9
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LOGIC_AND_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.PIPE_PIPE : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L9
+   L10
+    LINENUMBER 345 L10
+    ALOAD 0
+    ICONST_2
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L11
+    LINENUMBER 346 L11
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L9
+    LINENUMBER 347 L9
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    ICONST_3
+    IF_ICMPGE L12
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LOGIC_AND_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.AMP_AMP : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L12
+   L13
+    LINENUMBER 348 L13
+    ALOAD 0
+    ICONST_3
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L14
+    LINENUMBER 349 L14
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L12
+    LINENUMBER 350 L12
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    ICONST_4
+    IF_ICMPGE L15
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LOGIC_BIT_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.PIPE : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L15
+   L16
+    LINENUMBER 351 L16
+    ALOAD 0
+    ICONST_4
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L17
+    LINENUMBER 352 L17
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L15
+    LINENUMBER 353 L15
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    ICONST_5
+    IF_ICMPGE L18
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LOGIC_BIT_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.CARET : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L18
+   L19
+    LINENUMBER 354 L19
+    ALOAD 0
+    ICONST_5
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L20
+    LINENUMBER 355 L20
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L18
+    LINENUMBER 356 L18
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    BIPUSH 6
+    IF_ICMPGE L21
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LOGIC_BIT_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.AMP : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L21
+   L22
+    LINENUMBER 357 L22
+    ALOAD 0
+    BIPUSH 6
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L23
+    LINENUMBER 358 L23
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L21
+    LINENUMBER 359 L21
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    BIPUSH 7
+    IF_ICMPGE L24
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LOGIC_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_4
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.EQ_EQ_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.NOT_EQ_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_2
+    GETSTATIC io/karatelabs/js/TokenType.EQ_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_3
+    GETSTATIC io/karatelabs/js/TokenType.NOT_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L24
+   L25
+    LINENUMBER 361 L25
+    ALOAD 0
+    BIPUSH 7
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L26
+    LINENUMBER 362 L26
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L24
+    LINENUMBER 363 L24
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    BIPUSH 8
+    IF_ICMPGE L27
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LOGIC_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_4
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.LT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.GT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_2
+    GETSTATIC io/karatelabs/js/TokenType.LT_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_3
+    GETSTATIC io/karatelabs/js/TokenType.GT_EQ : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L27
+   L28
+    LINENUMBER 365 L28
+    ALOAD 0
+    BIPUSH 8
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L29
+    LINENUMBER 366 L29
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L27
+    LINENUMBER 367 L27
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    BIPUSH 9
+    IF_ICMPGE L30
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LOGIC_BIT_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_3
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.GT_GT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.LT_LT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_2
+    GETSTATIC io/karatelabs/js/TokenType.GT_GT_GT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L30
+   L31
+    LINENUMBER 369 L31
+    ALOAD 0
+    BIPUSH 9
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L32
+    LINENUMBER 370 L32
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L30
+    LINENUMBER 371 L30
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    BIPUSH 10
+    IF_ICMPGE L33
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.MATH_ADD_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.PLUS : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.MINUS : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L33
+   L34
+    LINENUMBER 372 L34
+    ALOAD 0
+    BIPUSH 10
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L35
+    LINENUMBER 373 L35
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L33
+    LINENUMBER 374 L33
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    BIPUSH 11
+    IF_ICMPGE L36
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.MATH_MUL_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_3
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.STAR : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.SLASH : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_2
+    GETSTATIC io/karatelabs/js/TokenType.PERCENT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L36
+   L37
+    LINENUMBER 375 L37
+    ALOAD 0
+    BIPUSH 11
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L38
+    LINENUMBER 376 L38
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L36
+    LINENUMBER 377 L36
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    BIPUSH 12
+    IF_ICMPGE L39
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.STAR_STAR : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L39
+   L40
+    LINENUMBER 379 L40
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.MATH_EXP_EXPR : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L41
+    LINENUMBER 380 L41
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeNext ()V
+   L42
+    LINENUMBER 381 L42
+    ALOAD 0
+    BIPUSH 12
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L43
+    LINENUMBER 382 L43
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.RIGHT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+   L44
+    LINENUMBER 383 L44
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.STAR_STAR : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L40
+    GOTO L0
+   L39
+    LINENUMBER 384 L39
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.FN_CALL_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L45
+   L46
+    LINENUMBER 385 L46
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.fn_call_args ()V
+   L47
+    LINENUMBER 386 L47
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L48
+    LINENUMBER 387 L48
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L45
+    LINENUMBER 388 L45
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.REF_DOT_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.DOT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.QUES_DOT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L49
+   L50
+    LINENUMBER 389 L50
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lastConsumed ()Lio/karatelabs/js/TokenType;
+    ASTORE 2
+   L51
+    LINENUMBER 391 L51
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peek ()Lio/karatelabs/js/TokenType;
+    ASTORE 3
+   L52
+    LINENUMBER 392 L52
+    ALOAD 3
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    IF_ACMPEQ L53
+    ALOAD 3
+    GETFIELD io/karatelabs/js/TokenType.keyword : Z
+    IFEQ L54
+   L53
+    LINENUMBER 393 L53
+   FRAME FULL [io/karatelabs/js/JsParser I io/karatelabs/js/TokenType io/karatelabs/js/TokenType] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeNext ()V
+    GOTO L55
+   L54
+    LINENUMBER 394 L54
+   FRAME FULL [io/karatelabs/js/JsParser I io/karatelabs/js/TokenType io/karatelabs/js/TokenType] []
+    ALOAD 2
+    GETSTATIC io/karatelabs/js/TokenType.QUES_DOT : Lio/karatelabs/js/TokenType;
+    IF_ACMPNE L56
+   L57
+    LINENUMBER 395 L57
+    ALOAD 3
+    GETSTATIC io/karatelabs/js/TokenType.L_BRACKET : Lio/karatelabs/js/TokenType;
+    IF_ACMPEQ L58
+    ALOAD 3
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    IF_ACMPNE L59
+   L58
+    LINENUMBER 396 L58
+   FRAME FULL [io/karatelabs/js/JsParser I io/karatelabs/js/TokenType io/karatelabs/js/TokenType] []
+    ALOAD 0
+    BIPUSH 12
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr_rhs (I)V
+    GOTO L55
+   L59
+    LINENUMBER 398 L59
+   FRAME FULL [io/karatelabs/js/JsParser I io/karatelabs/js/TokenType io/karatelabs/js/TokenType] []
+    ALOAD 0
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.L_BRACKET : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/TokenType;)V
+    GOTO L55
+   L56
+    LINENUMBER 401 L56
+   FRAME FULL [io/karatelabs/js/JsParser I io/karatelabs/js/TokenType io/karatelabs/js/TokenType] []
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/TokenType;)V
+   L55
+    LINENUMBER 403 L55
+   FRAME FULL [io/karatelabs/js/JsParser I io/karatelabs/js/TokenType io/karatelabs/js/TokenType] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+   L60
+    LINENUMBER 404 L60
+    GOTO L0
+   L49
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.REF_BRACKET_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.L_BRACKET : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L61
+   L62
+    LINENUMBER 405 L62
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L63
+    LINENUMBER 406 L63
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_BRACKET : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L64
+    LINENUMBER 407 L64
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L61
+    LINENUMBER 408 L61
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.MATH_POST_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.PLUS_PLUS : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.MINUS_MINUS : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L65
+   L66
+    LINENUMBER 409 L66
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L65
+    LINENUMBER 410 L65
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    BIPUSH 8
+    IF_ICMPGE L67
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.INSTANCEOF_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.INSTANCEOF : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L67
+   L68
+    LINENUMBER 411 L68
+    ALOAD 0
+    BIPUSH 8
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L69
+    LINENUMBER 412 L69
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L0
+   L67
+    LINENUMBER 417 L67
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    RETURN
+   L70
+    LOCALVARIABLE dotType Lio/karatelabs/js/TokenType; L51 L60 2
+    LOCALVARIABLE dotNext Lio/karatelabs/js/TokenType; L52 L60 3
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L70 0
+    LOCALVARIABLE priority I L0 L70 1
+    MAXSTACK = 6
+    MAXLOCALS = 4
+
+  // access flags 0x2
+  private fn_arrow_expr()Z
+   L0
+    LINENUMBER 420 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.FN_ARROW_EXPR : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L1
+    LINENUMBER 424 L1
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.fn_decl_args ()Z
+    IFEQ L2
+   L3
+    LINENUMBER 425 L3
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.EQ_GT : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L2
+   L4
+    LINENUMBER 426 L4
+    ALOAD 0
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.block (Z)Z
+    IFNE L5
+    ALOAD 0
+    ICONST_M1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    IFEQ L6
+   L5
+    LINENUMBER 427 L5
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L6
+    LINENUMBER 429 L6
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/NodeType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/NodeType.BLOCK : Lio/karatelabs/js/NodeType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/NodeType.EXPR : Lio/karatelabs/js/NodeType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/NodeType;)V
+   L2
+    LINENUMBER 432 L2
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_0
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (ZZ)Z
+    IRETURN
+   L7
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L7 0
+    MAXSTACK = 5
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private fn_expr()Z
+   L0
+    LINENUMBER 436 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.FN_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.FUNCTION : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 437 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 439 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    POP
+   L3
+    LINENUMBER 440 L3
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.fn_decl_args ()Z
+    POP
+   L4
+    LINENUMBER 441 L4
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.block (Z)Z
+    POP
+   L5
+    LINENUMBER 442 L5
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L6
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L6 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private fn_decl_args()Z
+   L0
+    LINENUMBER 446 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.FN_DECL_ARGS : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 447 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 450 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L3
+   L4
+    LINENUMBER 451 L4
+    GOTO L5
+   L3
+    LINENUMBER 453 L3
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.fn_decl_arg ()Z
+    IFNE L1
+   L6
+    LINENUMBER 454 L6
+    GOTO L5
+   L5
+    LINENUMBER 457 L5
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (ZZ)Z
+    IRETURN
+   L7
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L7 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private fn_decl_arg()Z
+   L0
+    LINENUMBER 461 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.FN_DECL_ARG : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L1
+    LINENUMBER 462 L1
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.DOT_DOT_DOT : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L2
+   L3
+    LINENUMBER 463 L3
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L4
+    LINENUMBER 464 L4
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L5
+   L6
+    LINENUMBER 465 L6
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/TokenType;)V
+   L5
+    LINENUMBER 467 L5
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L2
+    LINENUMBER 469 L2
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L7
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lit_array ()Z
+    IFNE L7
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lit_object ()Z
+    IFEQ L8
+   L7
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ICONST_1
+    GOTO L9
+   L8
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ICONST_0
+   L9
+   FRAME FULL [io/karatelabs/js/JsParser] [I]
+    ISTORE 1
+   L10
+    LINENUMBER 470 L10
+    ILOAD 1
+    IFEQ L11
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.EQ : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L11
+   L12
+    LINENUMBER 471 L12
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L11
+    LINENUMBER 473 L11
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    IFEQ L13
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COMMA : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L14
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L13
+   L14
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ICONST_1
+    GOTO L15
+   L13
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ICONST_0
+   L15
+   FRAME FULL [io/karatelabs/js/JsParser I] [I]
+    ISTORE 1
+   L16
+    LINENUMBER 474 L16
+    ALOAD 0
+    ILOAD 1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (ZZ)Z
+    IRETURN
+   L17
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L17 0
+    LOCALVARIABLE result Z L10 L17 1
+    MAXSTACK = 5
+    MAXLOCALS = 2
+
+  // access flags 0x2
+  private fn_call_args()V
+   L0
+    LINENUMBER 478 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.FN_CALL_ARGS : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L1
+    LINENUMBER 480 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L2
+   L3
+    LINENUMBER 481 L3
+    GOTO L4
+   L2
+    LINENUMBER 483 L2
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.fn_call_arg ()Z
+    IFNE L1
+   L5
+    LINENUMBER 484 L5
+    GOTO L4
+   L4
+    LINENUMBER 487 L4
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    POP
+   L6
+    LINENUMBER 488 L6
+    RETURN
+   L7
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L7 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private fn_call_arg()Z
+   L0
+    LINENUMBER 491 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.FN_CALL_ARG : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L1
+    LINENUMBER 492 L1
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.DOT_DOT_DOT : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    POP
+   L2
+    LINENUMBER 493 L2
+    ALOAD 0
+    ICONST_M1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    ISTORE 1
+   L3
+    LINENUMBER 494 L3
+    ILOAD 1
+    IFEQ L4
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COMMA : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L5
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L4
+   L5
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ICONST_1
+    GOTO L6
+   L4
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ICONST_0
+   L6
+   FRAME FULL [io/karatelabs/js/JsParser I] [I]
+    ISTORE 1
+   L7
+    LINENUMBER 495 L7
+    ALOAD 0
+    ILOAD 1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (ZZ)Z
+    IRETURN
+   L8
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L8 0
+    LOCALVARIABLE result Z L3 L8 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x2
+  private new_expr()Z
+   L0
+    LINENUMBER 499 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.NEW_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.NEW : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 500 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 502 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    BIPUSH 13
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 503 L3
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L4
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L4 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private typeof_expr()Z
+   L0
+    LINENUMBER 507 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.TYPEOF_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.TYPEOF : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 508 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 510 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    BIPUSH 13
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 511 L3
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L4
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L4 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private ref_expr()Z
+   L0
+    LINENUMBER 515 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.REF_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 516 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 518 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.FN_ARROW_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.EQ_GT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFEQ L3
+   L4
+    LINENUMBER 519 L4
+    ALOAD 0
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.block (Z)Z
+    IFNE L5
+    ALOAD 0
+    ICONST_M1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    IFEQ L6
+   L5
+    LINENUMBER 520 L5
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Parser$Shift.LEFT : Lio/karatelabs/js/Parser$Shift;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (Lio/karatelabs/js/Parser$Shift;)V
+    GOTO L3
+   L6
+    LINENUMBER 522 L6
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/NodeType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/NodeType.BLOCK : Lio/karatelabs/js/NodeType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/NodeType.EXPR : Lio/karatelabs/js/NodeType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/NodeType;)V
+   L3
+    LINENUMBER 525 L3
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L7
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L7 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private lit_expr()Z
+   L0
+    LINENUMBER 529 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LIT_EXPR : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L1
+    LINENUMBER 530 L1
+    ALOAD 0
+    BIPUSH 6
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.S_STRING : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.D_STRING : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_2
+    GETSTATIC io/karatelabs/js/TokenType.NUMBER : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_3
+    GETSTATIC io/karatelabs/js/TokenType.TRUE : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_4
+    GETSTATIC io/karatelabs/js/TokenType.FALSE : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_5
+    GETSTATIC io/karatelabs/js/TokenType.NULL : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.anyOf ([Lio/karatelabs/js/TokenType;)Z
+    IFNE L2
+    ALOAD 0
+   L3
+    LINENUMBER 531 L3
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lit_object ()Z
+    IFNE L2
+    ALOAD 0
+   L4
+    LINENUMBER 532 L4
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lit_array ()Z
+    IFNE L2
+    ALOAD 0
+   L5
+    LINENUMBER 533 L5
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lit_template ()Z
+    IFNE L2
+    ALOAD 0
+   L6
+    LINENUMBER 534 L6
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lit_regex ()Z
+    IFEQ L7
+   L2
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ICONST_1
+    GOTO L8
+   L7
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ICONST_0
+   L8
+   FRAME FULL [io/karatelabs/js/JsParser] [I]
+    ISTORE 1
+   L9
+    LINENUMBER 535 L9
+    ALOAD 0
+    ILOAD 1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (ZZ)Z
+    IRETURN
+   L10
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L10 0
+    LOCALVARIABLE result Z L9 L10 1
+    MAXSTACK = 5
+    MAXLOCALS = 2
+
+  // access flags 0x2
+  private lit_template()Z
+   L0
+    LINENUMBER 539 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LIT_TEMPLATE : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.BACKTICK : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 540 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 543 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peek ()Lio/karatelabs/js/TokenType;
+    GETSTATIC io/karatelabs/js/TokenType.EOF : Lio/karatelabs/js/TokenType;
+    IF_ACMPNE L3
+   L4
+    LINENUMBER 544 L4
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.BACKTICK : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/TokenType;)V
+   L3
+    LINENUMBER 546 L3
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.BACKTICK : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L5
+   L6
+    LINENUMBER 547 L6
+    GOTO L7
+   L5
+    LINENUMBER 549 L5
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.T_STRING : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L8
+    LINENUMBER 550 L8
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.DOLLAR_L_CURLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L1
+   L9
+    LINENUMBER 551 L9
+    ALOAD 0
+    ICONST_M1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L10
+    LINENUMBER 552 L10
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_CURLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+    GOTO L1
+   L7
+    LINENUMBER 556 L7
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L11
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L11 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private unary_expr()Z
+   L0
+    LINENUMBER 560 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.UNARY_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.NOT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.TILDE : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 561 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 563 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    BIPUSH 13
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 564 L3
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L4
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L4 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private math_pre_expr()Z
+   L0
+    LINENUMBER 568 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.MATH_PRE_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_4
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.PLUS_PLUS : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.MINUS_MINUS : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_2
+    GETSTATIC io/karatelabs/js/TokenType.MINUS : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_3
+    GETSTATIC io/karatelabs/js/TokenType.PLUS : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 569 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 571 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    BIPUSH 13
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    IFNE L3
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.NUMBER : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L3
+   L4
+    LINENUMBER 572 L4
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/NodeType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/NodeType.EXPR : Lio/karatelabs/js/NodeType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/NodeType;)V
+   L3
+    LINENUMBER 574 L3
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L5
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L5 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private lit_object()Z
+   L0
+    LINENUMBER 578 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LIT_OBJECT : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.L_CURLY : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 579 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 582 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_CURLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L3
+   L4
+    LINENUMBER 583 L4
+    GOTO L5
+   L3
+    LINENUMBER 585 L3
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.object_elem ()Z
+    IFNE L1
+   L6
+    LINENUMBER 586 L6
+    GOTO L5
+   L5
+    LINENUMBER 589 L5
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_CURLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    ISTORE 1
+   L7
+    LINENUMBER 590 L7
+    ALOAD 0
+    ILOAD 1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (ZZ)Z
+    IRETURN
+   L8
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L8 0
+    LOCALVARIABLE result Z L7 L8 1
+    MAXSTACK = 6
+    MAXLOCALS = 2
+
+  // access flags 0x2
+  private object_elem()Z
+   L0
+    LINENUMBER 594 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.OBJECT_ELEM : Lio/karatelabs/js/NodeType;
+    ICONST_5
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.S_STRING : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_2
+    GETSTATIC io/karatelabs/js/TokenType.D_STRING : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_3
+    GETSTATIC io/karatelabs/js/TokenType.NUMBER : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_4
+    GETSTATIC io/karatelabs/js/TokenType.DOT_DOT_DOT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 595 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 597 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.EQ : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L3
+   L4
+    LINENUMBER 598 L4
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 600 L3
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COMMA : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L5
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_CURLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L6
+   L5
+    LINENUMBER 601 L5
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L6
+    LINENUMBER 603 L6
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ICONST_0
+    ISTORE 1
+   L7
+    LINENUMBER 604 L7
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COLON : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L8
+   L9
+    LINENUMBER 605 L9
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.lastConsumed ()Lio/karatelabs/js/TokenType;
+    GETSTATIC io/karatelabs/js/TokenType.DOT_DOT_DOT : Lio/karatelabs/js/TokenType;
+    IF_ACMPNE L10
+   L11
+    LINENUMBER 606 L11
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L12
+   L13
+    LINENUMBER 607 L13
+    ICONST_1
+    ISTORE 1
+    GOTO L8
+   L12
+    LINENUMBER 609 L12
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.IDENT : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/TokenType;)V
+    GOTO L8
+   L10
+    LINENUMBER 612 L10
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    ICONST_0
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit (ZZ)Z
+    IRETURN
+   L8
+    LINENUMBER 615 L8
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ILOAD 1
+    IFNE L14
+   L15
+    LINENUMBER 616 L15
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L14
+    LINENUMBER 618 L14
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COMMA : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L16
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_CURLY : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L16
+   L17
+    LINENUMBER 619 L17
+    ALOAD 0
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.COMMA : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.R_CURLY : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/TokenType;)V
+   L16
+    LINENUMBER 621 L16
+   FRAME FULL [io/karatelabs/js/JsParser I] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L18
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L18 0
+    LOCALVARIABLE spread Z L7 L18 1
+    MAXSTACK = 6
+    MAXLOCALS = 2
+
+  // access flags 0x2
+  private lit_array()Z
+   L0
+    LINENUMBER 625 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LIT_ARRAY : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.L_BRACKET : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 626 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 629 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_BRACKET : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFEQ L3
+   L4
+    LINENUMBER 630 L4
+    GOTO L5
+   L3
+    LINENUMBER 632 L3
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.array_elem ()Z
+    IFNE L1
+   L6
+    LINENUMBER 633 L6
+    GOTO L5
+   L5
+    LINENUMBER 636 L5
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_BRACKET : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L7
+    LINENUMBER 637 L7
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L8
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L8 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private array_elem()Z
+   L0
+    LINENUMBER 641 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.ARRAY_ELEM : Lio/karatelabs/js/NodeType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;)V
+   L1
+    LINENUMBER 642 L1
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.DOT_DOT_DOT : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    POP
+   L2
+    LINENUMBER 643 L2
+    ALOAD 0
+    ICONST_M1
+    ICONST_0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 644 L3
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.COMMA : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consumeIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L4
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_BRACKET : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.peekIf (Lio/karatelabs/js/TokenType;)Z
+    IFNE L4
+   L5
+    LINENUMBER 645 L5
+    ALOAD 0
+    ICONST_2
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.COMMA : Lio/karatelabs/js/TokenType;
+    AASTORE
+    DUP
+    ICONST_1
+    GETSTATIC io/karatelabs/js/TokenType.R_BRACKET : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.error ([Lio/karatelabs/js/TokenType;)V
+   L4
+    LINENUMBER 647 L4
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L6
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L6 0
+    MAXSTACK = 5
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private lit_regex()Z
+   L0
+    LINENUMBER 651 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.LIT_REGEX : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.REGEX : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 652 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 654 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L3
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L3 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  private paren_expr()Z
+   L0
+    LINENUMBER 658 L0
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/NodeType.PAREN_EXPR : Lio/karatelabs/js/NodeType;
+    ICONST_1
+    ANEWARRAY io/karatelabs/js/TokenType
+    DUP
+    ICONST_0
+    GETSTATIC io/karatelabs/js/TokenType.L_PAREN : Lio/karatelabs/js/TokenType;
+    AASTORE
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.enter (Lio/karatelabs/js/NodeType;[Lio/karatelabs/js/TokenType;)Z
+    IFNE L1
+   L2
+    LINENUMBER 659 L2
+    ICONST_0
+    IRETURN
+   L1
+    LINENUMBER 661 L1
+   FRAME FULL [io/karatelabs/js/JsParser] []
+    ALOAD 0
+    ICONST_M1
+    ICONST_1
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.expr (IZ)Z
+    POP
+   L3
+    LINENUMBER 662 L3
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/TokenType.R_PAREN : Lio/karatelabs/js/TokenType;
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.consume (Lio/karatelabs/js/TokenType;)V
+   L4
+    LINENUMBER 663 L4
+    ALOAD 0
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.exit ()Z
+    IRETURN
+   L5
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L5 0
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 0x1041
+  public synthetic bridge toString()Ljava/lang/String;
+   L0
+    LINENUMBER 30 L0
+    ALOAD 0
+    INVOKESPECIAL io/karatelabs/js/Parser.toString ()Ljava/lang/String;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/JsParser; L0 L1 0
+    MAXSTACK = 1
+    MAXLOCALS = 1
+}
+

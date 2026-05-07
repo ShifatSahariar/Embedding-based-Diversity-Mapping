@@ -1,0 +1,3 @@
+let arr = [0,0,1];
+let c = arr[2] === 1;
+bye

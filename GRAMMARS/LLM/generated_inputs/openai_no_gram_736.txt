@@ -1,0 +1,2 @@
+function falseToZero(x) { if (x) { return x; } else { return 0; } }
+bye

@@ -1,0 +1,9 @@
+function temp (  ) { console.log(sum) ;console.log(8) ;console.log("loop") ;
+x -- ;
+return k . z ; }
+console.log(total) ;console.log(8) ;console.log("TypeError") ;
+function i (  ) { throw new ReferenceError ( "ok" ) ;
+return ; }
+temp ++ ;
+x ++ ;
+

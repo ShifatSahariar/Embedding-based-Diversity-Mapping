@@ -1,0 +1,2 @@
+function second(a, b) { return b; }
+bye

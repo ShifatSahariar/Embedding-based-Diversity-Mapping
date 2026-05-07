@@ -1,0 +1,5 @@
+var W = Number("vyDiu");
+
+var vq = "czPAh";
+
+console.log(0);

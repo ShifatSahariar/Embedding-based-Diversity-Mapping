@@ -1,0 +1,2 @@
+try { var y = 6 ; } catch ( count ) { var y = "loop" ; }
+

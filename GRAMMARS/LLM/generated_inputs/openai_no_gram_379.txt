@@ -1,0 +1,2 @@
+function qux(d) { return d - 5; }
+bye

@@ -1,0 +1,2 @@
+function ok(x) { return x == x; }
+bye

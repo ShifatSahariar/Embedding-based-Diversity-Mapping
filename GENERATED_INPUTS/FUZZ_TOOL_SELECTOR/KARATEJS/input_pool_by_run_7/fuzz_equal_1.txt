@@ -1,0 +1,6 @@
+switch ( j ) { case 8 : throw new Error ( "loop" ) ;
+var result = 1 ;
+throw new ReferenceError ( "TypeError" ) ; break ; default : console.log(i) ;console.log(6) ;console.log("test") ; }
+if ( result < flag ) { var i = 1 ;
+console.log(k) ;console.log(8) ;console.log("done") ; }
+

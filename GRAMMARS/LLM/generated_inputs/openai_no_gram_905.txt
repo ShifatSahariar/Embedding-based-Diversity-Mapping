@@ -1,0 +1,3 @@
+let msg = 'oss!';
+let repeat = msg + msg;
+bye

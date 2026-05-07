@@ -1,0 +1,7 @@
+switch ( y ) { case 0 : count -- ;
+j -- ; break ; default : throw new Error ( "test" ) ;
+throw new Error ( "TypeError" ) ; }
+while ( count . name ) { z -- ;
+z -- ; }
+y -- ;
+

@@ -1,0 +1,2 @@
+let val = 12; val = val - 4; return val;
+bye

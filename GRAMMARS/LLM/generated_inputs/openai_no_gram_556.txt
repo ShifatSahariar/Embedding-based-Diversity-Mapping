@@ -1,0 +1,2 @@
+let n = 14; n = n / 2; return n;
+bye

@@ -1,0 +1,2 @@
+let a = 7; let b = 10; return a + b;
+bye

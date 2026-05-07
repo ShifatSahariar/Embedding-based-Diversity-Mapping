@@ -1,0 +1,2 @@
+let down = 10; while (down > 0) { down = down - 2; } return down;
+bye

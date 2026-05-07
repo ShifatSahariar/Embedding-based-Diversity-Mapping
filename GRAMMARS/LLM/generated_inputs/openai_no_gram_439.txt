@@ -1,0 +1,2 @@
+let color = 1; if (color == 1) { return 255; } else { return 0; }
+bye

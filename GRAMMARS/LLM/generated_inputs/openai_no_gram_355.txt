@@ -1,0 +1,2 @@
+function constantPi() { return 3.14; }
+bye

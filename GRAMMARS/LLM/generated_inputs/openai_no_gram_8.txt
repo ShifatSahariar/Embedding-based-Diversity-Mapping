@@ -1,0 +1,4 @@
+function mult(a, b, c) {
+  return a * b * c;
+}
+bye

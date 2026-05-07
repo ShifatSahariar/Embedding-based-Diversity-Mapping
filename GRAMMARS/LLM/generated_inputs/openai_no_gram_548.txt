@@ -1,0 +1,2 @@
+let m = 2; m = m + 2; return m;
+bye

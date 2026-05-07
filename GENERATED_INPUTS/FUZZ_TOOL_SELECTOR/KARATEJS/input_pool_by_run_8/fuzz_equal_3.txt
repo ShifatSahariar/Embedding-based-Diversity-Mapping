@@ -1,0 +1,5 @@
+switch ( i ) { case 3 : console.log(sum) ;console.log(5) ;console.log("done") ;
+temp -- ;
+throw new ReferenceError ( "loop" ) ;
+throw new Error ( "test" ) ; break ; default : var k = "done" ; }
+

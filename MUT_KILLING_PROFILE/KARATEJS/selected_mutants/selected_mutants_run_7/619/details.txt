@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.JsParser, method=for_stmt, methodDesc=()Z], indexes=[69], mutator=org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_EQUAL_ELSE], filename=JsParser.java, block=[16], lineNumber=184, description=removed conditional - replaced equality check with false, testsInOrder=[]]

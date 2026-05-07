@@ -1,0 +1,2 @@
+function timesTen(x) { return x * 10; }
+bye

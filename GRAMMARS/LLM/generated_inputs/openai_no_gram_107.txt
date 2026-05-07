@@ -1,0 +1,2 @@
+let ans = Math.max(7, 13);
+bye

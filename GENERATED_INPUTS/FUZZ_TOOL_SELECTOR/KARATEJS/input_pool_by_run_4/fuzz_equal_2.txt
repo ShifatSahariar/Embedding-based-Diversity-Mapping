@@ -1,0 +1,7 @@
+console.log(count) ;console.log(2) ;console.log("test") ;
+try { throw new ReferenceError ( "done" ) ;
+result ++ ;
+throw new Error ( "TypeError" ) ; } catch ( z ) { console.log(sum) ;console.log(4) ;console.log("TypeError") ; }
+var k = [ x . y = typeof total , 6 , typeof y ] ;
+var flag = { length : k - y } ;
+

@@ -1,0 +1,2 @@
+let k = 10; k = k / 2; return k;
+bye

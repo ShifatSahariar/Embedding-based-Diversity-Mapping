@@ -1,0 +1,3 @@
+let i = 1;
+let double = i * 2;
+bye

@@ -1,0 +1,2 @@
+let max = Math.max(6,3,17);
+bye

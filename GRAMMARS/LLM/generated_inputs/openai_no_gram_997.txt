@@ -1,0 +1,3 @@
+let s = 'katana';
+let n = s.length;
+bye

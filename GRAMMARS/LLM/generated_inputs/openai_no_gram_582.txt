@@ -1,0 +1,2 @@
+let n = 12; while (n > 6) { n = n - 2; } return n;
+bye

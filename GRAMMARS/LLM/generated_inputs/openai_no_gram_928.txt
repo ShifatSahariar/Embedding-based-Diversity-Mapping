@@ -1,0 +1,3 @@
+let ta = 'ek';
+ta = ta + 'wondo';
+bye

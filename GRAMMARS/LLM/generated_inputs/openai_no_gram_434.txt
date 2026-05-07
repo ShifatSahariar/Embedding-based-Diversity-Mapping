@@ -1,0 +1,2 @@
+let foo = 3; let bar = 9; return bar - foo;
+bye

@@ -1,0 +1,2 @@
+function toggleBit(x, n) { return x ^ (1 << n); }
+bye

@@ -1,0 +1,2 @@
+let p = 2 * 3; let r = p + 4; return r;
+bye

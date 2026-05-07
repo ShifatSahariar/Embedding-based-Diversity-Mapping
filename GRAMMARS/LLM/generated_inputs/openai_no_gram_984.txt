@@ -1,0 +1,3 @@
+let flag = true;
+if (!flag) { return 0; } else { return 1; }
+bye

@@ -1,0 +1,2 @@
+function absDiff(a, b) { return abs(a - b); }
+bye

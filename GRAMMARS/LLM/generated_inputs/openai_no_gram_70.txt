@@ -1,0 +1,4 @@
+function mod(n, d) {
+  return n % d;
+}
+bye

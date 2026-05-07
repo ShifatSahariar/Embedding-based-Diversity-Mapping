@@ -1,0 +1,5 @@
+try { var k = 2 ;
+throw new Error ( "TypeError" ) ; } catch ( k ) { throw new ReferenceError ( "done" ) ;
+console.log(k) ;console.log(6) ;console.log("error") ; } finally { var temp = temp * k ; }
+count -- ;
+

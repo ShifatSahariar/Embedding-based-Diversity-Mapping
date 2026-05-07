@@ -1,0 +1,3 @@
+var x = { value : temp . x (  ) , value : flag , z : y } ;
+var flag = { y : total - k , name : 3 } ;
+

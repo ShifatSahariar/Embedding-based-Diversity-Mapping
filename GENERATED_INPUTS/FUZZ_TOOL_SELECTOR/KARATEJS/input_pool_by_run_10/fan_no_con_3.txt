@@ -1,0 +1,3 @@
+console.log(vals[6]);
+var gC = "kMsMM";
+

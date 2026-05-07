@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Terms, method=bitNot, methodDesc=(Ljava/lang/Object;)Ljava/lang/Object;], indexes=[11], mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator], filename=Terms.java, block=[2], lineNumber=219, description=Replaced XOR with AND, testsInOrder=[]]

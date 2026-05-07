@@ -1,0 +1,2 @@
+function main() { return abs(-5); }
+bye

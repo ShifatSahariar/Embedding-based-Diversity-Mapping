@@ -1,0 +1,2 @@
+function pow2(x) { return x << 1; }
+bye

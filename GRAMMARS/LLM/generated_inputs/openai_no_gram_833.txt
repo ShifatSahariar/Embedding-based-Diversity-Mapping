@@ -1,0 +1,3 @@
+let alpha = 4;
+let beta = 5;
+bye

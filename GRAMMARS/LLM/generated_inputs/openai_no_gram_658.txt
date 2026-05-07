@@ -1,0 +1,2 @@
+function remainder10(n) { return n % 10; }
+bye

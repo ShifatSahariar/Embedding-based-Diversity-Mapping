@@ -1,0 +1,2 @@
+function total(x, y, z) { return x * y + z; }
+bye

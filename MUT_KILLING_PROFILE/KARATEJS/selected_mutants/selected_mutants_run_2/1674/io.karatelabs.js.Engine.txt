@@ -1,0 +1,513 @@
+// class version 65.0 (65)
+// access flags 0x21
+public class io/karatelabs/js/Engine {
+
+  // compiled from: Engine.java
+  // access flags 0x19
+  public final static INNERCLASS java/lang/invoke/MethodHandles$Lookup java/lang/invoke/MethodHandles Lookup
+
+  // access flags 0x9
+  public static Z DEBUG
+
+  // access flags 0x12
+  private final Lio/karatelabs/js/ContextRoot; root
+
+  // access flags 0x12
+  // signature Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;
+  // declaration: bindings extends java.util.Map<java.lang.String, java.lang.Object>
+  private final Ljava/util/Map; bindings
+
+  // access flags 0x1
+  public <init>()V
+   L0
+    LINENUMBER 33 L0
+    ALOAD 0
+    INVOKESPECIAL java/lang/Object.<init> ()V
+   L1
+    LINENUMBER 37 L1
+    ALOAD 0
+    NEW io/karatelabs/js/ContextRoot
+    DUP
+    ALOAD 0
+    INVOKESPECIAL io/karatelabs/js/ContextRoot.<init> (Lio/karatelabs/js/Engine;)V
+    PUTFIELD io/karatelabs/js/Engine.root : Lio/karatelabs/js/ContextRoot;
+   L2
+    LINENUMBER 39 L2
+    ALOAD 0
+    NEW java/util/HashMap
+    DUP
+    INVOKESPECIAL java/util/HashMap.<init> ()V
+    PUTFIELD io/karatelabs/js/Engine.bindings : Ljava/util/Map;
+    RETURN
+   L3
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L3 0
+    MAXSTACK = 4
+    MAXLOCALS = 1
+
+  // access flags 0x1
+  public eval(Lio/karatelabs/js/Node;)Ljava/lang/Object;
+   L0
+    LINENUMBER 42 L0
+    ALOAD 0
+    ALOAD 1
+    ACONST_NULL
+    INVOKEVIRTUAL io/karatelabs/js/Engine.evalInternal (Lio/karatelabs/js/Node;Ljava/util/Map;)Ljava/lang/Object;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L1 0
+    LOCALVARIABLE program Lio/karatelabs/js/Node; L0 L1 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x1
+  public eval(Lio/karatelabs/common/Resource;)Ljava/lang/Object;
+   L0
+    LINENUMBER 46 L0
+    ALOAD 0
+    ALOAD 1
+    ACONST_NULL
+    INVOKEVIRTUAL io/karatelabs/js/Engine.evalInternal (Lio/karatelabs/common/Resource;Ljava/util/Map;)Ljava/lang/Object;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L1 0
+    LOCALVARIABLE resource Lio/karatelabs/common/Resource; L0 L1 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x1
+  public eval(Ljava/io/File;)Ljava/lang/Object;
+   L0
+    LINENUMBER 50 L0
+    ALOAD 0
+    ALOAD 1
+    INVOKEVIRTUAL java/io/File.toPath ()Ljava/nio/file/Path;
+    INVOKESTATIC io/karatelabs/common/Resource.from (Ljava/nio/file/Path;)Lio/karatelabs/common/Resource; (itf)
+    ACONST_NULL
+    INVOKEVIRTUAL io/karatelabs/js/Engine.evalInternal (Lio/karatelabs/common/Resource;Ljava/util/Map;)Ljava/lang/Object;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L1 0
+    LOCALVARIABLE file Ljava/io/File; L0 L1 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x1
+  public eval(Ljava/lang/String;)Ljava/lang/Object;
+   L0
+    LINENUMBER 54 L0
+    ALOAD 0
+    ALOAD 1
+    INVOKESTATIC io/karatelabs/common/Resource.text (Ljava/lang/String;)Lio/karatelabs/common/Resource; (itf)
+    ACONST_NULL
+    INVOKEVIRTUAL io/karatelabs/js/Engine.evalInternal (Lio/karatelabs/common/Resource;Ljava/util/Map;)Ljava/lang/Object;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L1 0
+    LOCALVARIABLE text Ljava/lang/String; L0 L1 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x1
+  // signature (Lio/karatelabs/js/Node;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)Ljava/lang/Object;
+  // declaration:  evalWith(io.karatelabs.js.Node, java.util.Map<java.lang.String, java.lang.Object>)
+  public evalWith(Lio/karatelabs/js/Node;Ljava/util/Map;)Ljava/lang/Object;
+   L0
+    LINENUMBER 58 L0
+    ALOAD 0
+    ALOAD 1
+    ALOAD 2
+    INVOKEVIRTUAL io/karatelabs/js/Engine.evalInternal (Lio/karatelabs/js/Node;Ljava/util/Map;)Ljava/lang/Object;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L1 0
+    LOCALVARIABLE program Lio/karatelabs/js/Node; L0 L1 1
+    LOCALVARIABLE vars Ljava/util/Map; L0 L1 2
+    // signature Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;
+    // declaration: vars extends java.util.Map<java.lang.String, java.lang.Object>
+    MAXSTACK = 3
+    MAXLOCALS = 3
+
+  // access flags 0x1
+  // signature (Ljava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)Ljava/lang/Object;
+  // declaration:  evalWith(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)
+  public evalWith(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/Object;
+   L0
+    LINENUMBER 62 L0
+    ALOAD 0
+    ALOAD 1
+    INVOKESTATIC io/karatelabs/common/Resource.text (Ljava/lang/String;)Lio/karatelabs/common/Resource; (itf)
+    ALOAD 2
+    INVOKEVIRTUAL io/karatelabs/js/Engine.evalInternal (Lio/karatelabs/common/Resource;Ljava/util/Map;)Ljava/lang/Object;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L1 0
+    LOCALVARIABLE text Ljava/lang/String; L0 L1 1
+    LOCALVARIABLE vars Ljava/util/Map; L0 L1 2
+    // signature Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;
+    // declaration: vars extends java.util.Map<java.lang.String, java.lang.Object>
+    MAXSTACK = 3
+    MAXLOCALS = 3
+
+  // access flags 0x1
+  public get(Ljava/lang/String;)Ljava/lang/Object;
+   L0
+    LINENUMBER 66 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.bindings : Ljava/util/Map;
+    ALOAD 1
+    INVOKEINTERFACE java/util/Map.get (Ljava/lang/Object;)Ljava/lang/Object; (itf)
+    INVOKESTATIC io/karatelabs/js/Engine.toJava (Ljava/lang/Object;)Ljava/lang/Object;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L1 0
+    LOCALVARIABLE name Ljava/lang/String; L0 L1 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 0x1
+  public put(Ljava/lang/String;Ljava/lang/Object;)V
+   L0
+    LINENUMBER 70 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.bindings : Ljava/util/Map;
+    ALOAD 1
+    ALOAD 2
+    INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; (itf)
+    POP
+   L1
+    LINENUMBER 71 L1
+    RETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L2 0
+    LOCALVARIABLE name Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE value Ljava/lang/Object; L0 L2 2
+    MAXSTACK = 3
+    MAXLOCALS = 3
+
+  // access flags 0x1
+  public remove(Ljava/lang/String;)V
+   L0
+    LINENUMBER 74 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.bindings : Ljava/util/Map;
+    ALOAD 1
+    INVOKEINTERFACE java/util/Map.remove (Ljava/lang/Object;)Ljava/lang/Object; (itf)
+    POP
+   L1
+    LINENUMBER 75 L1
+    RETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L2 0
+    LOCALVARIABLE name Ljava/lang/String; L0 L2 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 0x1
+  // signature (Ljava/util/function/Consumer<Ljava/lang/String;>;)V
+  // declaration: void setOnConsoleLog(java.util.function.Consumer<java.lang.String>)
+  public setOnConsoleLog(Ljava/util/function/Consumer;)V
+   L0
+    LINENUMBER 78 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.root : Lio/karatelabs/js/ContextRoot;
+    ALOAD 1
+    POP
+    POP
+   L1
+    LINENUMBER 79 L1
+    RETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L2 0
+    LOCALVARIABLE onConsoleLog Ljava/util/function/Consumer; L0 L2 1
+    // signature Ljava/util/function/Consumer<Ljava/lang/String;>;
+    // declaration: onConsoleLog extends java.util.function.Consumer<java.lang.String>
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 0x1
+  // signature ()Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;
+  // declaration: java.util.Map<java.lang.String, java.lang.Object> getBindings()
+  public getBindings()Ljava/util/Map;
+   L0
+    LINENUMBER 82 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.bindings : Ljava/util/Map;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L1 0
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 0x1
+  public getRootContext()Lio/karatelabs/js/Context;
+   L0
+    LINENUMBER 86 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.root : Lio/karatelabs/js/ContextRoot;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L1 0
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 0x1
+  public setListener(Lio/karatelabs/js/ContextListener;)V
+   L0
+    LINENUMBER 90 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.root : Lio/karatelabs/js/ContextRoot;
+    ALOAD 1
+    PUTFIELD io/karatelabs/js/ContextRoot.listener : Lio/karatelabs/js/ContextListener;
+   L1
+    LINENUMBER 91 L1
+    RETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L2 0
+    LOCALVARIABLE listener Lio/karatelabs/js/ContextListener; L0 L2 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 0x1
+  public setExternalBridge(Lio/karatelabs/js/ExternalBridge;)V
+   L0
+    LINENUMBER 94 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.root : Lio/karatelabs/js/ContextRoot;
+    ALOAD 1
+    PUTFIELD io/karatelabs/js/ContextRoot.bridge : Lio/karatelabs/js/ExternalBridge;
+   L1
+    LINENUMBER 95 L1
+    RETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L2 0
+    LOCALVARIABLE bridge Lio/karatelabs/js/ExternalBridge; L0 L2 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 0x8
+  static toJava(Ljava/lang/Object;)Ljava/lang/Object;
+   L0
+    LINENUMBER 98 L0
+    ALOAD 0
+    INSTANCEOF io/karatelabs/js/JavaMirror
+    IFEQ L1
+   L2
+    LINENUMBER 99 L2
+    ALOAD 0
+    CHECKCAST io/karatelabs/js/JavaMirror
+    INVOKEINTERFACE io/karatelabs/js/JavaMirror.toJava ()Ljava/lang/Object; (itf)
+    ARETURN
+   L1
+    LINENUMBER 101 L1
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Terms.UNDEFINED : Ljava/lang/Object;
+    IF_ACMPNE L3
+   L4
+    LINENUMBER 102 L4
+    ACONST_NULL
+    ARETURN
+   L3
+    LINENUMBER 104 L3
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    ARETURN
+   L5
+    LOCALVARIABLE value Ljava/lang/Object; L0 L5 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x2
+  // signature (Lio/karatelabs/common/Resource;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)Ljava/lang/Object;
+  // declaration:  evalInternal(io.karatelabs.common.Resource, java.util.Map<java.lang.String, java.lang.Object>)
+  private evalInternal(Lio/karatelabs/common/Resource;Ljava/util/Map;)Ljava/lang/Object;
+   L0
+    LINENUMBER 108 L0
+    NEW io/karatelabs/js/JsParser
+    DUP
+    ALOAD 1
+    INVOKESPECIAL io/karatelabs/js/JsParser.<init> (Lio/karatelabs/common/Resource;)V
+    ASTORE 3
+   L1
+    LINENUMBER 109 L1
+    ALOAD 0
+    ALOAD 3
+    INVOKEVIRTUAL io/karatelabs/js/JsParser.parse ()Lio/karatelabs/js/Node;
+    ALOAD 2
+    INVOKEVIRTUAL io/karatelabs/js/Engine.evalInternal (Lio/karatelabs/js/Node;Ljava/util/Map;)Ljava/lang/Object;
+    ARETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L2 0
+    LOCALVARIABLE resource Lio/karatelabs/common/Resource; L0 L2 1
+    LOCALVARIABLE localVars Ljava/util/Map; L0 L2 2
+    // signature Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;
+    // declaration: localVars extends java.util.Map<java.lang.String, java.lang.Object>
+    LOCALVARIABLE parser Lio/karatelabs/js/JsParser; L1 L2 3
+    MAXSTACK = 3
+    MAXLOCALS = 4
+
+  // access flags 0x2
+  // signature (Lio/karatelabs/js/Node;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)Ljava/lang/Object;
+  // declaration:  evalInternal(io.karatelabs.js.Node, java.util.Map<java.lang.String, java.lang.Object>)
+  private evalInternal(Lio/karatelabs/js/Node;Ljava/util/Map;)Ljava/lang/Object;
+    TRYCATCHBLOCK L0 L1 L2 java/lang/Throwable
+   L0
+    LINENUMBER 115 L0
+    ALOAD 2
+    IFNONNULL L3
+   L4
+    LINENUMBER 116 L4
+    NEW io/karatelabs/js/CoreContext
+    DUP
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.root : Lio/karatelabs/js/ContextRoot;
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.root : Lio/karatelabs/js/ContextRoot;
+    ICONST_0
+    ALOAD 1
+    GETSTATIC io/karatelabs/js/ContextScope.GLOBAL : Lio/karatelabs/js/ContextScope;
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.bindings : Ljava/util/Map;
+    INVOKESPECIAL io/karatelabs/js/CoreContext.<init> (Lio/karatelabs/js/ContextRoot;Lio/karatelabs/js/CoreContext;ILio/karatelabs/js/Node;Lio/karatelabs/js/ContextScope;Ljava/util/Map;)V
+    ASTORE 3
+   L5
+    GOTO L6
+   L3
+    LINENUMBER 118 L3
+   FRAME FULL [io/karatelabs/js/Engine io/karatelabs/js/Node java/util/Map] []
+    NEW io/karatelabs/js/CoreContext
+    DUP
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.root : Lio/karatelabs/js/ContextRoot;
+    ACONST_NULL
+    ICONST_M1
+    NEW io/karatelabs/js/Node
+    DUP
+    GETSTATIC io/karatelabs/js/NodeType.ROOT : Lio/karatelabs/js/NodeType;
+    INVOKESPECIAL io/karatelabs/js/Node.<init> (Lio/karatelabs/js/NodeType;)V
+    GETSTATIC io/karatelabs/js/ContextScope.GLOBAL : Lio/karatelabs/js/ContextScope;
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.bindings : Ljava/util/Map;
+    INVOKESPECIAL io/karatelabs/js/CoreContext.<init> (Lio/karatelabs/js/ContextRoot;Lio/karatelabs/js/CoreContext;ILio/karatelabs/js/Node;Lio/karatelabs/js/ContextScope;Ljava/util/Map;)V
+    ASTORE 4
+   L7
+    LINENUMBER 119 L7
+    NEW io/karatelabs/js/CoreContext
+    DUP
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Engine.root : Lio/karatelabs/js/ContextRoot;
+    ALOAD 4
+    ICONST_0
+    ALOAD 1
+    GETSTATIC io/karatelabs/js/ContextScope.GLOBAL : Lio/karatelabs/js/ContextScope;
+    ALOAD 2
+    INVOKESPECIAL io/karatelabs/js/CoreContext.<init> (Lio/karatelabs/js/ContextRoot;Lio/karatelabs/js/CoreContext;ILio/karatelabs/js/Node;Lio/karatelabs/js/ContextScope;Ljava/util/Map;)V
+    ASTORE 3
+   L6
+    LINENUMBER 121 L6
+   FRAME FULL [io/karatelabs/js/Engine io/karatelabs/js/Node java/util/Map io/karatelabs/js/CoreContext] []
+    ALOAD 3
+    GETSTATIC io/karatelabs/js/EventType.CONTEXT_ENTER : Lio/karatelabs/js/EventType;
+    ALOAD 1
+    INVOKEVIRTUAL io/karatelabs/js/CoreContext.event (Lio/karatelabs/js/EventType;Lio/karatelabs/js/Node;)V
+   L8
+    LINENUMBER 122 L8
+    ALOAD 1
+    ALOAD 3
+    INVOKESTATIC io/karatelabs/js/Interpreter.eval (Lio/karatelabs/js/Node;Lio/karatelabs/js/CoreContext;)Ljava/lang/Object;
+    ASTORE 4
+   L9
+    LINENUMBER 123 L9
+    ALOAD 3
+    GETSTATIC io/karatelabs/js/EventType.CONTEXT_EXIT : Lio/karatelabs/js/EventType;
+    ALOAD 1
+    INVOKEVIRTUAL io/karatelabs/js/CoreContext.event (Lio/karatelabs/js/EventType;Lio/karatelabs/js/Node;)V
+   L10
+    LINENUMBER 124 L10
+    ALOAD 4
+    INVOKESTATIC io/karatelabs/js/Engine.toJava (Ljava/lang/Object;)Ljava/lang/Object;
+   L1
+    ARETURN
+   L2
+    LINENUMBER 125 L2
+   FRAME FULL [io/karatelabs/js/Engine io/karatelabs/js/Node java/util/Map] [java/lang/Throwable]
+    ASTORE 3
+   L11
+    LINENUMBER 126 L11
+    ALOAD 3
+    INVOKEVIRTUAL java/lang/Throwable.getMessage ()Ljava/lang/String;
+    ASTORE 4
+   L12
+    LINENUMBER 127 L12
+    ALOAD 4
+    IFNONNULL L13
+   L14
+    LINENUMBER 128 L14
+    ALOAD 3
+    INVOKESTATIC java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;
+    INVOKEDYNAMIC makeConcatWithConstants(Ljava/lang/String;)Ljava/lang/String; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      "\u0001"
+    ]
+    ASTORE 4
+   L13
+    LINENUMBER 130 L13
+   FRAME FULL [io/karatelabs/js/Engine io/karatelabs/js/Node java/util/Map java/lang/Throwable java/lang/String] []
+    ALOAD 1
+    INVOKEVIRTUAL io/karatelabs/js/Node.getFirstToken ()Lio/karatelabs/js/Token;
+    GETFIELD io/karatelabs/js/Token.resource : Lio/karatelabs/common/Resource;
+    ASTORE 5
+   L15
+    LINENUMBER 131 L15
+    ALOAD 5
+    INVOKEINTERFACE io/karatelabs/common/Resource.isFile ()Z (itf)
+    IFEQ L16
+   L17
+    LINENUMBER 132 L17
+    ALOAD 4
+    ALOAD 5
+    INVOKEINTERFACE io/karatelabs/common/Resource.getRelativePath ()Ljava/lang/String; (itf)
+    INVOKEDYNAMIC makeConcatWithConstants(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      "\u0001\n\u0001"
+    ]
+    ASTORE 4
+   L16
+    LINENUMBER 134 L16
+   FRAME FULL [io/karatelabs/js/Engine io/karatelabs/js/Node java/util/Map java/lang/Throwable java/lang/String io/karatelabs/common/Resource] []
+    NEW java/lang/RuntimeException
+    DUP
+    ALOAD 4
+    INVOKESPECIAL java/lang/RuntimeException.<init> (Ljava/lang/String;)V
+    ATHROW
+   L18
+    LOCALVARIABLE context Lio/karatelabs/js/CoreContext; L5 L3 3
+    LOCALVARIABLE parent Lio/karatelabs/js/CoreContext; L7 L6 4
+    LOCALVARIABLE context Lio/karatelabs/js/CoreContext; L6 L2 3
+    LOCALVARIABLE result Ljava/lang/Object; L9 L2 4
+    LOCALVARIABLE message Ljava/lang/String; L12 L18 4
+    LOCALVARIABLE resource Lio/karatelabs/common/Resource; L15 L18 5
+    LOCALVARIABLE e Ljava/lang/Throwable; L11 L18 3
+    LOCALVARIABLE this Lio/karatelabs/js/Engine; L0 L18 0
+    LOCALVARIABLE program Lio/karatelabs/js/Node; L0 L18 1
+    LOCALVARIABLE localVars Ljava/util/Map; L0 L18 2
+    // signature Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;
+    // declaration: localVars extends java.util.Map<java.lang.String, java.lang.Object>
+    MAXSTACK = 8
+    MAXLOCALS = 6
+
+  // access flags 0x8
+  static <clinit>()V
+   L0
+    LINENUMBER 35 L0
+    ICONST_0
+    PUTSTATIC io/karatelabs/js/Engine.DEBUG : Z
+    RETURN
+    MAXSTACK = 1
+    MAXLOCALS = 0
+}
+

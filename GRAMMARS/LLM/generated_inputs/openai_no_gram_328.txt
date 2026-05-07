@@ -1,0 +1,2 @@
+function alwaysReturnX(x) { return x; }
+bye

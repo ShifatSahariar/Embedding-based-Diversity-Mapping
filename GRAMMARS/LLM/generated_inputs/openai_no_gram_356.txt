@@ -1,0 +1,2 @@
+function negateBool(b) { return !b; }
+bye

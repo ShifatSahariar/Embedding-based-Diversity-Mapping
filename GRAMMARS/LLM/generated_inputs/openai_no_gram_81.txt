@@ -1,0 +1,5 @@
+let temp = 30;
+if (temp > 25) {
+  return "Hot";
+} return "Cool";
+bye

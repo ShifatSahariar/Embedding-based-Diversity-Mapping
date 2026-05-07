@@ -1,0 +1,2 @@
+function areaRectangle(w, h) { return w * h; }
+bye

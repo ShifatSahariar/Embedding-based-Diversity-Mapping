@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Terms, method=narrow, methodDesc=(D)Ljava/lang/Number;], indexes=[18], mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator], filename=Terms.java, block=[5], lineNumber=273, description=Replaced double modulus with multiplication, testsInOrder=[]]

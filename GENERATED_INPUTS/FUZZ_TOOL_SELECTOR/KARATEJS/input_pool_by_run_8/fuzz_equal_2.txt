@@ -1,0 +1,7 @@
+var temp = y < j ;
+switch ( result ) { case 9 : console.log(temp) ;console.log(3) ;console.log("done") ;
+y -- ; break ; default : console.log(result) ;console.log(4) ;console.log("loop") ;
+console.log(i) ;console.log(4) ;console.log("done") ;
+x ++ ;
+flag ++ ; }
+

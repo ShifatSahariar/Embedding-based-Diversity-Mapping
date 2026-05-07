@@ -1,0 +1,2 @@
+function perimeterRectangle(w, h) { return 2 * (w + h); }
+bye

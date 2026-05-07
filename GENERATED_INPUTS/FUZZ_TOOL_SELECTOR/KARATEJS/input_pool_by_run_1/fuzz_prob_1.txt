@@ -1,0 +1,3 @@
+for ( var result = 9 ; flag - z ; result ++ ) { var total = "TypeError" ;
+sum ++ ; }
+

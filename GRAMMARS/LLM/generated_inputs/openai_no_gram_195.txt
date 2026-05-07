@@ -1,0 +1,3 @@
+let foo = 8;
+if (foo == 8) { foo = 0; }
+bye

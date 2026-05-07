@@ -1,0 +1,3 @@
+let t = false;
+if (!t) { return 100; } else { return 200; }
+bye

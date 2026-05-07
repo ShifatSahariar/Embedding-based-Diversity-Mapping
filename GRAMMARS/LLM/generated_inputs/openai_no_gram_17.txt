@@ -1,0 +1,2 @@
+let result = 7 == 7;
+bye

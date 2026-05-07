@@ -1,0 +1,2 @@
+Spearman Corr (size vs Ki/Ci): ρ=-0.092, p=0.3634
+Spearman Corr (size vs Gini): ρ=0.223, p=0.0257

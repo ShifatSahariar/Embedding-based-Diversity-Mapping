@@ -1,0 +1,2 @@
+let x = 3; let result = x * x * x; return result;
+bye

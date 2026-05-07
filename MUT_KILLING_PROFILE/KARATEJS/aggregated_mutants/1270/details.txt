@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Parser, method=consumeIf, methodDesc=(Lio/karatelabs/js/TokenType;)Z], indexes=[10], mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator], filename=Parser.java, block=[2], lineNumber=307, description=removed call to io/karatelabs/js/Parser::consumeNext, testsInOrder=[]]

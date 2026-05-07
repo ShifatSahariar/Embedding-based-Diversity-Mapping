@@ -1,0 +1,2 @@
+let y = 15; if (y < 10) { return 0; } else { return 1; }
+bye

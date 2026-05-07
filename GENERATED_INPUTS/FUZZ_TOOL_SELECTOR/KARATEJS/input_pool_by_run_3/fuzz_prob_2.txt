@@ -1,0 +1,3 @@
+for ( var count = 1 ; x - sum ; j ++ ) { total -- ; }
+switch ( total ) { case 6 : throw new TypeError ( "error" ) ; break ; default : throw new Error ( "test" ) ; }
+

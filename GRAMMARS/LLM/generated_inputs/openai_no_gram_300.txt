@@ -1,0 +1,2 @@
+function isHundred(x) { return x == 100; }
+bye

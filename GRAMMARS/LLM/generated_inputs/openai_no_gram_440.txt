@@ -1,0 +1,2 @@
+let p = 3; let q = 4; let r = 5; return p + q + r;
+bye

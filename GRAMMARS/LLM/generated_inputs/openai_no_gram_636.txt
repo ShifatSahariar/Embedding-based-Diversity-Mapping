@@ -1,0 +1,2 @@
+function muladd(a, b, c) { return a * b + c; }
+bye

@@ -1,0 +1,2 @@
+let price = 30; let discount = 4; return price - discount;
+bye

@@ -1,0 +1,9 @@
+,OpenAI,CODESTRAL,GraphCodeBERT,UNIXCODER,QWEN3
+fan_con,64.0,62.0,33.0,70.0,50.0
+fan_no_con,70.0,64.0,34.0,64.0,53.0
+fuzz_equal,26.0,21.0,48.0,28.0,34.0
+fuzz_prob,43.0,30.0,61.0,29.0,42.0
+isla_con,64.0,54.0,51.0,59.0,20.0
+isla_no_con,15.0,70.0,16.0,45.0,10.0
+openai_gram,28.0,29.0,77.0,17.0,60.0
+openai_no_gram,49.0,29.0,35.0,44.0,54.0

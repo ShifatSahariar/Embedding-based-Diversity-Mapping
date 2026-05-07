@@ -1,0 +1,2 @@
+let price = 20; let tax = 2; return price + tax;
+bye

@@ -1,0 +1,3 @@
+console.log(vw - Na);
+var config = {length : (8)};
+Ev--;

@@ -1,0 +1,2 @@
+let num = 8; if (num % 4 == 0) { return 2; } else { return 1; }
+bye

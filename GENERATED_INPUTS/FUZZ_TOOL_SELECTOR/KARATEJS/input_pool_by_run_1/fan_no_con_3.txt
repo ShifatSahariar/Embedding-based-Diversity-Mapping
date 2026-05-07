@@ -1,0 +1,3 @@
+record.compute(q, String(TU - Bm));
+console.log(qN);
+dN--;

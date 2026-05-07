@@ -1,0 +1,6 @@
+try{list[5];}catch(err){z--;y--;throw new ReferenceError("j1x28");
+m--;var x = 9;
+
+p++;
+i--;
+j++;}

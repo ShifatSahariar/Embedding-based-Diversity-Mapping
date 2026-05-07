@@ -1,0 +1,2 @@
+let h = 7; h = h * h; return h;
+bye

@@ -1,0 +1,2 @@
+function main() { var n = 5; return factorial(n); }
+bye

@@ -1,0 +1,2 @@
+let c = 3; let d = 4; if (c < d) { return 1; } else { return 0; }
+bye

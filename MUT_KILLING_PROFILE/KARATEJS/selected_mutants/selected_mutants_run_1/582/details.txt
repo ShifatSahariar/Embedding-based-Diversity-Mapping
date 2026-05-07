@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.JsParser, method=eos, methodDesc=()Z], indexes=[17], mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanFalseReturnValsMutator], filename=JsParser.java, block=[3], lineNumber=73, description=replaced boolean return with false for io/karatelabs/js/JsParser::eos, testsInOrder=[]]

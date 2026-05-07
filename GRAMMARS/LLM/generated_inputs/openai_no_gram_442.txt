@@ -1,0 +1,2 @@
+let val = 7; val = val * 5; return val;
+bye

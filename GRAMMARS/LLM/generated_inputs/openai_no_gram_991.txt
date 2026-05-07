@@ -1,0 +1,3 @@
+let n = 15;
+let t = 10;
+bye

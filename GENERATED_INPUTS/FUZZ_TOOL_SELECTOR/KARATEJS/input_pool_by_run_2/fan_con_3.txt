@@ -1,0 +1,4 @@
+var arr = [4];
+var B = "NHnBs";
+
+arr[Ks];

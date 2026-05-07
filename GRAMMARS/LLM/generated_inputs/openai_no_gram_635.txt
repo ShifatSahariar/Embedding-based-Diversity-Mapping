@@ -1,0 +1,2 @@
+function clamp(x, minVal, maxVal) { if (x < minVal) { return minVal; } else if (x > maxVal) { return maxVal; } else { return x; } }
+bye

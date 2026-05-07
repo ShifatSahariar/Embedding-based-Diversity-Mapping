@@ -1,0 +1,3 @@
+let w = 'a';
+if (w == 'a') { return 10; } else { return 0; }
+bye

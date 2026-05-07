@@ -1,0 +1,2 @@
+function notAllEqual(a, b, c) { return !(a == b && b == c); }
+bye

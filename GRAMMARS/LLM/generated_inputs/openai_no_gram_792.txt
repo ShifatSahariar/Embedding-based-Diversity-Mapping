@@ -1,0 +1,2 @@
+function setBit(x, n) { return x | (1 << n); }
+bye

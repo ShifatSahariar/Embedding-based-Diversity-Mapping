@@ -1,0 +1,2 @@
+function countUpTo(n) { var count = 0; for (var i = 1; i <= n; i = i + 1) { count = count + 1; } return count; }
+bye

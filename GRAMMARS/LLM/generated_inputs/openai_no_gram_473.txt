@@ -1,0 +1,2 @@
+let f = 7; if (f < 5) { return 0; } else { return 2; }
+bye

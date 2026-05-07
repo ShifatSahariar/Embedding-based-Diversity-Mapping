@@ -1,0 +1,3 @@
+var vals = [Number("qid7u")];
+for(var n = 0; n > j; p++){
+z++;}

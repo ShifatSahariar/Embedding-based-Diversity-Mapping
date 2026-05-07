@@ -1,0 +1,3 @@
+let arr = [11,12,13];
+arr.shift();
+bye

@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Parser, method=getTokens, methodDesc=(Lio/karatelabs/common/Resource;Z)Ljava/util/List;], indexes=[124], mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator], filename=Parser.java, block=[20], lineNumber=242, description=Changed increment from 1 to -1, testsInOrder=[]]

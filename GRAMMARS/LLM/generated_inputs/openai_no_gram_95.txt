@@ -1,0 +1,4 @@
+let v = 5;
+let w = 3;
+if (v > w) return v - w; return w - v;
+bye

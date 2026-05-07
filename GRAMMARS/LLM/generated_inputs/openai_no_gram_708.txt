@@ -1,0 +1,2 @@
+function productRange(a, b) { var p = 1; var i = a; while (i <= b) { p = p * i; i = i + 1; } return p; }
+bye

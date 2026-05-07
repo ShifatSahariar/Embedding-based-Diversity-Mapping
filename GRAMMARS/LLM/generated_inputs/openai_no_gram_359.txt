@@ -1,0 +1,2 @@
+function maxAbsDiff(a, b, c) { var d1 = abs(a - b); var d2 = abs(a - c); var d3 = abs(b - c); return max3(d1, d2, d3); }
+bye

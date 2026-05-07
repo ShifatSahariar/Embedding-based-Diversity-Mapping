@@ -1,0 +1,2 @@
+function between(a, x, b) { return (x >= a) && (x <= b); }
+bye

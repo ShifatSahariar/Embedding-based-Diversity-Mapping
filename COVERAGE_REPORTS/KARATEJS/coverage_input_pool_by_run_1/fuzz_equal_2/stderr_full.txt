@@ -1,0 +1,24 @@
+JS ERROR: js failed:
+==========
+try { var flag = "ok" ; } catch ( y ) { var y = "test" ;
+js failed:
+==========
+throw new TypeError ( "TypeError" ) ; } finally { var flag = temp * total ;
+2:51 temp is not defined
+----------
+----------
+
+java.lang.RuntimeException: js failed:
+==========
+try { var flag = "ok" ; } catch ( y ) { var y = "test" ;
+js failed:
+==========
+throw new TypeError ( "TypeError" ) ; } finally { var flag = temp * total ;
+2:51 temp is not defined
+----------
+----------
+
+	at io.karatelabs.js.Engine.evalInternal(Engine.java:134)
+	at io.karatelabs.js.Engine.evalInternal(Engine.java:109)
+	at io.karatelabs.js.Engine.eval(Engine.java:54)
+	at io.karatelabs.js.JsLauncher.main(JsLauncher.java:21)

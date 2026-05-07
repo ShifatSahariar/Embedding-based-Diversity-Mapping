@@ -1,0 +1,2 @@
+function isCube(n) { var i = 0; while (i * i * i <= n) { if (i * i * i == n) { return true; } i = i + 1; } return false; }
+bye

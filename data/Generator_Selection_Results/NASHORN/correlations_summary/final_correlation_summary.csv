@@ -1,0 +1,6 @@
+Configuration,Mean_Coverage–MS,Wilcoxon_p
+CODESTRAL + Affinity,0.25934,0.052734
+GraphCodeBERT + Affinity,0.45377,0.001953
+OpenAI + Affinity,0.29857,0.019531
+QWEN3 + Affinity,0.23493,0.035156
+UNIXCODER + Affinity,0.32891,0.037109

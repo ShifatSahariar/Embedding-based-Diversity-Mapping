@@ -1,0 +1,2 @@
+function reciprocal(x) { if (x != 0) { return 1 / x; } else { return 0; } }
+bye

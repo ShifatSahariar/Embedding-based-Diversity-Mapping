@@ -1,0 +1,2 @@
+function getBit(x, n) { return (x >> n) & 1; }
+bye

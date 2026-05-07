@@ -1,0 +1,3 @@
+let i = 8;
+let j = i - 3;
+bye

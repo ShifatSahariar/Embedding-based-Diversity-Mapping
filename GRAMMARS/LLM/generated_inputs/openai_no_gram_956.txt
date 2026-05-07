@@ -1,0 +1,3 @@
+let message = 'karatejs';
+let len = message.length;
+bye

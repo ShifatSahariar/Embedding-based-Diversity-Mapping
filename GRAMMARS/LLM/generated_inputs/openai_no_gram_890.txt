@@ -1,0 +1,2 @@
+let color = 'blue';
+bye

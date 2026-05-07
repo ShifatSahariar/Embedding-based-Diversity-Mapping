@@ -1,0 +1,2 @@
+let answer = 25 % 4;
+bye

@@ -1,0 +1,2 @@
+function squarePlusOne(x) { return x * x + 1; }
+bye

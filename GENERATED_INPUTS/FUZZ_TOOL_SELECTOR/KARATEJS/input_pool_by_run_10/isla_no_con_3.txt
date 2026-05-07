@@ -1,0 +1,7 @@
+var point = {z : j + p, y : j / y};
+try{j--;}catch(err){p--;
+p++;}
+switch(m){case 5: y++;break;
+default: y--;}
+i++;
+m++;

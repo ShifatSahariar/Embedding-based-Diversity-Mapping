@@ -1,0 +1,2 @@
+function charCode(c) { return c.charCodeAt(0); }
+bye

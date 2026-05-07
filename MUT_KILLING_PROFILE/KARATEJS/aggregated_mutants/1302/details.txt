@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Parser, method=exit, methodDesc=(ZZ)Z], indexes=[8], mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanTrueReturnValsMutator], filename=Parser.java, block=[1], lineNumber=171, description=replaced boolean return with true for io/karatelabs/js/Parser::exit, testsInOrder=[]]

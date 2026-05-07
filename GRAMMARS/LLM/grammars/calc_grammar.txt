@@ -1,0 +1,31 @@
+<start> ::= <stmts> "exit" <newline>
+
+<stmts> ::= <stmt> | <stmt> <stmts>
+
+<stmt> ::= <letExp> <newline>
+          | <printExp> <newline>
+          | <sumExp> <newline>
+          | <avgExp> <newline>
+
+<letExp> ::= <LET> <VAR> " = " <exp>
+
+<exp> ::= <term> (("+" | "-") <term>)*
+<term> ::= <factor> (("*" | "/") <factor>)*
+<factor> ::= <VAR> | <DIGIT> | <TRIG> "(" <exp> ")" | "(" <exp> ")"
+
+<sumExp> ::= <SUM> <listExp>
+<listExp> ::= <exp> ("," <exp>)*
+
+<avgExp> ::= <AVG> "(" <avgCalc> ")"
+<avgCalc> ::= <exp> ("," <exp>)*
+
+<printExp> ::= <PRINT> <exp> | <PRINT> <avgExp> | <PRINT> <sumExp>
+
+<LET> ::= "let "
+<PRINT> ::= "print "
+<TRIG> ::= "sin" | "cos" | "tan"
+<SUM> ::= "sum "
+<AVG> ::= "avg "
+<VAR> ::= r'[a-zA-Z][a-zA-Z0-9_]{0,2}'
+<DIGIT> ::= r'[0-9]{1,2}'
+<newline> ::= "\n"

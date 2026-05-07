@@ -1,0 +1,6 @@
+Embedding_Model,TopK,Jaccard,Top_Cov_Tools,Top_MS_Tools
+CODESTRAL,4,0.3333,"fuzz_prob, fuzz_equal, openai_no_gram, openai_gram","fuzz_equal, fan_no_con, fuzz_prob, fan_con"
+GraphCodeBERT,4,0.3333,"openai_no_gram, fuzz_equal, fuzz_prob, isla_no_con","fuzz_equal, fan_no_con, fuzz_prob, fan_con"
+OpenAI,4,0.3333,"fuzz_prob, fuzz_equal, openai_no_gram, isla_no_con","fuzz_equal, fan_no_con, fuzz_prob, fan_con"
+QWEN3,4,0.3333,"fuzz_prob, fuzz_equal, openai_no_gram, isla_no_con","fuzz_equal, fan_no_con, fuzz_prob, fan_con"
+UNIXCODER,4,0.3333,"openai_no_gram, fuzz_equal, fuzz_prob, openai_gram","fuzz_equal, fan_no_con, fuzz_prob, fan_con"

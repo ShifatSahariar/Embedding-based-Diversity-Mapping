@@ -1,0 +1,3 @@
+let prime = 2;
+if (prime == 2) { return 'prime'; } else { return 'not prime'; }
+bye

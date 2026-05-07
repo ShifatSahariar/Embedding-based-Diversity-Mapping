@@ -1,0 +1,2 @@
+var record = {value : (Number("pdou3")), value : 6};
+console.log("hu8Q5");

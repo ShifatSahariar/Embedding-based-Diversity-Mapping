@@ -1,0 +1,2 @@
+function addTen(x) { return x + 10; }
+bye

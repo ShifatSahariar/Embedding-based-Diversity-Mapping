@@ -1,0 +1,6 @@
+var JO = "A4CvN";
+
+console.log(W);
+var q = 0;
+
+console.log(g);

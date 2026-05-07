@@ -1,0 +1,2 @@
+let len = "abcd".length;
+bye

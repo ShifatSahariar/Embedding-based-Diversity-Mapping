@@ -1,0 +1,2 @@
+function degToRad(d) { return d * 3.141593 / 180; }
+bye

@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Terms, method=TO_STRING, methodDesc=(Ljava/lang/Object;)Ljava/lang/String;], indexes=[39], mutator=org.pitest.mutationtest.engine.gregor.mutators.experimental.SwitchMutator], filename=Terms.java, block=[8], lineNumber=394, description=Changed switch default to be first case, testsInOrder=[]]

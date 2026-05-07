@@ -1,0 +1,3 @@
+let days = 3;
+days = days * 7;
+bye

@@ -1,0 +1,2 @@
+var arr = [6];
+if(n > p || y != x){arr[2];}

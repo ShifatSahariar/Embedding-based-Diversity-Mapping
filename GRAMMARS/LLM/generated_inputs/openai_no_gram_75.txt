@@ -1,0 +1,3 @@
+let n = 6.5;
+n = Math.round(n);
+bye

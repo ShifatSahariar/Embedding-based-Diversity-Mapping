@@ -1,0 +1,2 @@
+let h = 4; let w = 5; return h * w;
+bye

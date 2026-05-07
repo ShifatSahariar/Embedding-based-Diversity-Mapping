@@ -1,0 +1,2 @@
+var record = {y : Number("JmjqT"), value : 6};
+M = Number("DJobI");

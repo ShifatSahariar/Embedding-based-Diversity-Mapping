@@ -1,0 +1,2 @@
+let i = 0; let s = 0; while (i < 4) { s = s + 2; i = i + 1; } return s;
+bye

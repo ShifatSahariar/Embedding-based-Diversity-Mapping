@@ -1,0 +1,3 @@
+i = count * total ;
+result = count ;
+

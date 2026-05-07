@@ -1,0 +1,3 @@
+let s = 'dojo';
+let pos = s.indexOf('o');
+bye

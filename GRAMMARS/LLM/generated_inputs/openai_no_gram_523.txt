@@ -1,0 +1,2 @@
+let d = 17; if (d < 20) { return 1; } else { return 0; }
+bye

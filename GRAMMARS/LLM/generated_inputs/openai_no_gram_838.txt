@@ -1,0 +1,3 @@
+let ready = false;
+if (!ready) { return 'wait'; } else { return 'go'; }
+bye

@@ -1,0 +1,3 @@
+var s = "k6jph";
+
+console.log("lvg7f");

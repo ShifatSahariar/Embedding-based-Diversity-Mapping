@@ -1,0 +1,2 @@
+function makeFalse() { return false; }
+bye

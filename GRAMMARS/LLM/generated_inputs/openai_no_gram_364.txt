@@ -1,0 +1,2 @@
+function hexDigit(n) { if (n < 10) { return n; } else { return String.fromCharCode(55 + n); } }
+bye

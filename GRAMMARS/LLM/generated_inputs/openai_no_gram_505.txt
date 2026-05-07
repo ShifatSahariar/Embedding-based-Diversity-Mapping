@@ -1,0 +1,2 @@
+let n = 11; if (n % 2 == 1) { return n; } else { return 0; }
+bye

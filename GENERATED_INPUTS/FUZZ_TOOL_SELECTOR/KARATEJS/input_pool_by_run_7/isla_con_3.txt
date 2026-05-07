@@ -1,0 +1,2 @@
+var arr = [4];
+if(z != i){arr[7];}

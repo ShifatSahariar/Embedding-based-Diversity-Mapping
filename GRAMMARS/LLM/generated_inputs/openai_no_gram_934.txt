@@ -1,0 +1,3 @@
+let n = 2;
+let s = n + ' belts';
+bye

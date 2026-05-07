@@ -1,0 +1,5 @@
+handle((x - i));
+switch(n){case 2: console.log(9);throw new ReferenceError("79cgs");break;
+default: nums[3];var title = "qzkj0";
+
+p--;point.x;throw new TypeError("6fxid");}

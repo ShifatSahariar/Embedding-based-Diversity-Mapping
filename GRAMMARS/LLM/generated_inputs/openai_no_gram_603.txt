@@ -1,0 +1,2 @@
+function mul(m, n) { return m * n; }
+bye

@@ -1,0 +1,2 @@
+var obj = {value : 9, x : 0};
+obj.length;

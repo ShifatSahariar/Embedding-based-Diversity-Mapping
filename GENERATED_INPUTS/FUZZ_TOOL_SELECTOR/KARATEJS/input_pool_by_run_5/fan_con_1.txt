@@ -1,0 +1,3 @@
+var Ex = "r89gS";
+
+console.log((7));

@@ -1,0 +1,5 @@
+try { var flag = "ok" ; } catch ( y ) { var y = "test" ;
+throw new TypeError ( "TypeError" ) ; } finally { var flag = temp * total ;
+console.log(x) ;console.log(4) ;console.log("error") ;
+z ++ ; }
+

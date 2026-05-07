@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Terms, method=min, methodDesc=()Ljava/lang/Object;], indexes=[15], mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator], filename=Terms.java, block=[3], lineNumber=246, description=replaced return value with null for io/karatelabs/js/Terms::min, testsInOrder=[]]

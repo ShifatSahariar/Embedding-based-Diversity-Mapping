@@ -1,0 +1,3 @@
+while ( x ) { throw new Error ( "loop" ) ;
+var i = 8 ; }
+

@@ -1,0 +1,2 @@
+function isDivisible(n, d) { return n % d == 0; }
+bye

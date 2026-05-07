@@ -1,0 +1,2 @@
+let q = 8; q = q - 2; return q;
+bye

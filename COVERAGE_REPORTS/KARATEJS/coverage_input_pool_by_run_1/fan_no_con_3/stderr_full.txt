@@ -1,0 +1,16 @@
+JS ERROR: js failed:
+==========
+record.compute(q, String(TU - Bm));
+expression: record - record is not defined
+----------
+
+java.lang.RuntimeException: js failed:
+==========
+record.compute(q, String(TU - Bm));
+expression: record - record is not defined
+----------
+
+	at io.karatelabs.js.Engine.evalInternal(Engine.java:134)
+	at io.karatelabs.js.Engine.evalInternal(Engine.java:109)
+	at io.karatelabs.js.Engine.eval(Engine.java:54)
+	at io.karatelabs.js.JsLauncher.main(JsLauncher.java:21)

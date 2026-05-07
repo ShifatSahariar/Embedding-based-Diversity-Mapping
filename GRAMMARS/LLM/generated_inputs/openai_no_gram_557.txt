@@ -1,0 +1,2 @@
+let k = 5; k = k * k; return k;
+bye

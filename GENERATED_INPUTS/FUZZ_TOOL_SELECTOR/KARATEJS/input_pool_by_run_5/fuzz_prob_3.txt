@@ -1,0 +1,5 @@
+switch ( count ) { case 2 : console.log(count) ;console.log(2) ;console.log("TypeError") ; break ; default : y ++ ; }
+try { throw new TypeError ( "done" ) ; } catch ( count ) { flag -- ; } finally { throw new ReferenceError ( "test" ) ; }
+total ++ ;
+x ++ ;
+

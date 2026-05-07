@@ -1,0 +1,7 @@
+if ( y . z ) { k = j . name (  ) ; } else { throw new Error ( "done" ) ;
+count ++ ;
+throw new TypeError ( "TypeError" ) ; }
+function k ( j ) { var flag = 3 ;
+throw new TypeError ( "done" ) ;
+return flag . value ( 4,  ) ; }
+

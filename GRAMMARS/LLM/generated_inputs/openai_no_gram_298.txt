@@ -1,0 +1,2 @@
+function notNull(x) { return x != null; }
+bye

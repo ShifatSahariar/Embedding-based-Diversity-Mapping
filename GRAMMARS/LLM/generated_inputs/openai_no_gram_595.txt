@@ -1,0 +1,2 @@
+let r = 6; r = r + 7; return r;
+bye

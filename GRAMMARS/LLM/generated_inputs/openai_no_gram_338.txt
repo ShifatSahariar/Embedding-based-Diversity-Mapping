@@ -1,0 +1,2 @@
+function arraySize(xs) { return xs.length; }
+bye

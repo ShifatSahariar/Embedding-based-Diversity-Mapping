@@ -1,0 +1,2 @@
+console.log(String(data[o]));
+rv = (obj.name);

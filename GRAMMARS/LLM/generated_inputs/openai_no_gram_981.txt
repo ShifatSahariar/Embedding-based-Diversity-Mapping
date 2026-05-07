@@ -1,0 +1,2 @@
+let alpha = 'karatejs';
+bye

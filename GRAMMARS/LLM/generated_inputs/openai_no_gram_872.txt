@@ -1,0 +1,3 @@
+let n = 12;
+if (n > 10) { return n; } else { return 0; }
+bye

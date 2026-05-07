@@ -1,0 +1,3 @@
+let n = 5;
+if (n % 2 == 0) { return 'even'; } else { return 'odd'; }
+bye

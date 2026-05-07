@@ -1,0 +1,2 @@
+let p = 0; let sum = 0; while (p < 4) { sum = sum + p; p = p + 1; } return sum;
+bye

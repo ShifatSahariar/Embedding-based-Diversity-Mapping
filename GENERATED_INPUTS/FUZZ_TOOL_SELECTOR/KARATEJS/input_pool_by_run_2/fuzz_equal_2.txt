@@ -1,0 +1,4 @@
+var count = [ total == flag ] ;
+console.log(i) ;console.log(7) ;console.log("loop") ;
+try { console.log(temp) ;console.log(1) ;console.log("loop") ; } catch ( i ) { console.log(y) ;console.log(5) ;console.log("error") ; }
+

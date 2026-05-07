@@ -1,0 +1,2 @@
+let s = 0; let i = 1; while (i <= 3) { s = s + i; i = i + 1; } return s;
+bye

@@ -1,0 +1,2 @@
+function decrement(x) { return x - 1; }
+bye

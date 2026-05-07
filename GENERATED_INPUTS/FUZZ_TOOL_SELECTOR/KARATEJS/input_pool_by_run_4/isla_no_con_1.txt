@@ -1,0 +1,6 @@
+var config = {length : i - j};
+switch(n){case 1: console.log(name);throw new ReferenceError("4ta3x");break;
+default: vals[6];
+z++;p--;
+y++;
+x--;}

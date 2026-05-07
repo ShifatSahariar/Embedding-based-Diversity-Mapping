@@ -1,0 +1,2 @@
+function squarePlusCube(x) { return x * x + x * x * x; }
+bye

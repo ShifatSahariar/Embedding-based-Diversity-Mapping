@@ -1,0 +1,2 @@
+function squareRootGuess(x) { var guess = x / 2; return guess; }
+bye

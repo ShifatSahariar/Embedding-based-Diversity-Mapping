@@ -1,0 +1,2 @@
+function length2(x1, x2) { return abs(x2 - x1); }
+bye

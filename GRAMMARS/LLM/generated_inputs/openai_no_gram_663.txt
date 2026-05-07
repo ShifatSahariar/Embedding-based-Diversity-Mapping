@@ -1,0 +1,2 @@
+function max3(a, b, c) { return max(max(a, b), c); }
+bye

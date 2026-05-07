@@ -1,0 +1,3 @@
+let alpha = 'karate';
+let beta = 'js';
+bye

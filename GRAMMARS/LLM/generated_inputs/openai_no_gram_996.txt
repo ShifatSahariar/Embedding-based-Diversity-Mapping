@@ -1,0 +1,3 @@
+let cool = 7;
+cool = cool * 3;
+bye

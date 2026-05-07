@@ -1,0 +1,4 @@
+while(RS == In){
+var y = "JPJ1v";
+list[YY];throw new TypeError("4QOow");}
+console.log(S);

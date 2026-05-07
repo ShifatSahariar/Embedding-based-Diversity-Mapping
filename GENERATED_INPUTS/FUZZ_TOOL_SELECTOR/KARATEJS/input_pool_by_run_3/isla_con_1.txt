@@ -1,0 +1,2 @@
+var arr = [3];
+if(m < z){arr[x];}

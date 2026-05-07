@@ -1,0 +1,2 @@
+let total = 15 + 20;
+bye

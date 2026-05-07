@@ -1,0 +1,2 @@
+let hours = 24; let min = hours * 60; return min;
+bye

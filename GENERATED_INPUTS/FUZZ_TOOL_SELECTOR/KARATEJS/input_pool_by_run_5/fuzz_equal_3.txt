@@ -1,0 +1,7 @@
+switch ( result ) { case 1 : throw new ReferenceError ( "test" ) ;
+x -- ;
+throw new Error ( "error" ) ;
+console.log(x) ;console.log(8) ;console.log("ok") ;
+i ++ ; break ; default : var sum = 0 ;
+throw new TypeError ( "TypeError" ) ; }
+

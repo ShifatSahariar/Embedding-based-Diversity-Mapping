@@ -1,0 +1,2 @@
+let square = 6 * 6; return square;
+bye

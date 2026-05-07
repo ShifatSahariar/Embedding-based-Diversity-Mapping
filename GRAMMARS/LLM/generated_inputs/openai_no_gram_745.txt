@@ -1,0 +1,2 @@
+function productToZero(n) { var p = 1; var i = n; while (i > 0) { p = p * i; i = i - 1; } return p; }
+bye

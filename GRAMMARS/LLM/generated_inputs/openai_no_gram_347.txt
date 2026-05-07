@@ -1,0 +1,2 @@
+function oddNumber(x) { return x * 2 + 1; }
+bye

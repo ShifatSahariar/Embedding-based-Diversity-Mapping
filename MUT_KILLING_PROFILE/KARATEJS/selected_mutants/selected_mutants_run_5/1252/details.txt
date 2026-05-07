@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Parser, method=getTokens, methodDesc=(Lio/karatelabs/common/Resource;Z)Ljava/util/List;], indexes=[88], mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator], filename=Parser.java, block=[13], lineNumber=237, description=Replaced long addition with subtraction, testsInOrder=[]]

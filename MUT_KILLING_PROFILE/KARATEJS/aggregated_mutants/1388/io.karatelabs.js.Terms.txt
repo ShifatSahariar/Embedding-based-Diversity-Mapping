@@ -1,0 +1,2014 @@
+// class version 65.0 (65)
+// access flags 0x21
+public class io/karatelabs/js/Terms {
+
+  // compiled from: Terms.java
+  NESTMEMBER io/karatelabs/js/Terms$1
+  // access flags 0x0
+  INNERCLASS io/karatelabs/js/Terms$1 null null
+  // access flags 0x19
+  public final static INNERCLASS java/lang/invoke/MethodHandles$Lookup java/lang/invoke/MethodHandles Lookup
+
+  // access flags 0x19
+  public final static Ljava/lang/Object; UNDEFINED
+
+  // access flags 0x18
+  final static Ljava/lang/Number; POSITIVE_ZERO
+
+  // access flags 0x18
+  final static Ljava/lang/Number; NEGATIVE_ZERO
+
+  // access flags 0x18
+  final static Ljava/lang/Object; NAN
+
+  // access flags 0x10
+  final Ljava/lang/Number; lhs
+
+  // access flags 0x10
+  final Ljava/lang/Number; rhs
+
+  // access flags 0x0
+  <init>(Ljava/lang/Object;Ljava/lang/Object;)V
+   L0
+    LINENUMBER 49 L0
+    ALOAD 0
+    INVOKESPECIAL java/lang/Object.<init> ()V
+   L1
+    LINENUMBER 50 L1
+    ALOAD 0
+    ALOAD 1
+    INVOKESTATIC io/karatelabs/js/Terms.objectToNumber (Ljava/lang/Object;)Ljava/lang/Number;
+    PUTFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+   L2
+    LINENUMBER 51 L2
+    ALOAD 0
+    ALOAD 2
+    INVOKESTATIC io/karatelabs/js/Terms.objectToNumber (Ljava/lang/Object;)Ljava/lang/Number;
+    PUTFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+   L3
+    LINENUMBER 52 L3
+    RETURN
+   L4
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L4 0
+    LOCALVARIABLE lhsObject Ljava/lang/Object; L0 L4 1
+    LOCALVARIABLE rhsObject Ljava/lang/Object; L0 L4 2
+    MAXSTACK = 2
+    MAXLOCALS = 3
+
+  // access flags 0x8
+  static parseFloat(Ljava/lang/String;Z)Ljava/lang/Number;
+   L0
+    LINENUMBER 55 L0
+    ALOAD 0
+    IFNONNULL L1
+   L2
+    LINENUMBER 56 L2
+    LDC NaN
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    ARETURN
+   L1
+    LINENUMBER 58 L1
+   FRAME FULL [java/lang/String I] []
+    ALOAD 0
+    INVOKEVIRTUAL java/lang/String.trim ()Ljava/lang/String;
+    ASTORE 0
+   L3
+    LINENUMBER 59 L3
+    ALOAD 0
+    INVOKEVIRTUAL java/lang/String.isEmpty ()Z
+    IFEQ L4
+   L5
+    LINENUMBER 60 L5
+    LDC NaN
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    ARETURN
+   L4
+    LINENUMBER 62 L4
+   FRAME FULL [java/lang/String I] []
+    ICONST_0
+    ISTORE 2
+   L6
+    LINENUMBER 63 L6
+    ICONST_0
+    ISTORE 3
+   L7
+    LINENUMBER 64 L7
+    ALOAD 0
+    ILOAD 2
+    INVOKEVIRTUAL java/lang/String.charAt (I)C
+    BIPUSH 45
+    IF_ICMPNE L8
+   L9
+    LINENUMBER 65 L9
+    ICONST_1
+    ISTORE 3
+   L10
+    LINENUMBER 66 L10
+    IINC 2 1
+    GOTO L11
+   L8
+    LINENUMBER 67 L8
+   FRAME FULL [java/lang/String I I I] []
+    ALOAD 0
+    ILOAD 2
+    INVOKEVIRTUAL java/lang/String.charAt (I)C
+    BIPUSH 43
+    IF_ICMPNE L11
+   L12
+    LINENUMBER 68 L12
+    IINC 2 1
+   L11
+    LINENUMBER 70 L11
+   FRAME FULL [java/lang/String I I I] []
+    ALOAD 0
+    INVOKESTATIC io/karatelabs/js/Terms.fromHex (Ljava/lang/String;)Ljava/lang/Number;
+    ASTORE 4
+   L13
+    LINENUMBER 71 L13
+    ALOAD 4
+    IFNULL L14
+   L15
+    LINENUMBER 72 L15
+    ALOAD 4
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+    ARETURN
+   L14
+    LINENUMBER 74 L14
+   FRAME FULL [java/lang/String I I I java/lang/Number] []
+    LCONST_0
+    LSTORE 5
+   L16
+    LINENUMBER 75 L16
+    DCONST_0
+    DSTORE 7
+   L17
+    LINENUMBER 76 L17
+    DCONST_1
+    DSTORE 9
+   L18
+    LINENUMBER 77 L18
+    ICONST_0
+    ISTORE 11
+   L19
+    LINENUMBER 78 L19
+    ICONST_0
+    ISTORE 12
+   L20
+    LINENUMBER 79 L20
+   FRAME FULL [java/lang/String I I I java/lang/Number J D D I I] []
+    ILOAD 2
+    ALOAD 0
+    INVOKEVIRTUAL java/lang/String.length ()I
+    IF_ICMPGE L21
+   L22
+    LINENUMBER 80 L22
+    ALOAD 0
+    ILOAD 2
+    INVOKEVIRTUAL java/lang/String.charAt (I)C
+    ISTORE 13
+   L23
+    LINENUMBER 81 L23
+    ILOAD 13
+    BIPUSH 46
+    IF_ICMPNE L24
+    ILOAD 1
+    IFNE L24
+    ILOAD 12
+    IFNE L24
+   L25
+    LINENUMBER 82 L25
+    ICONST_1
+    ISTORE 12
+   L26
+    LINENUMBER 83 L26
+    IINC 2 1
+   L27
+    LINENUMBER 84 L27
+    GOTO L20
+   L24
+    LINENUMBER 86 L24
+   FRAME FULL [java/lang/String I I I java/lang/Number J D D I I I] []
+    ILOAD 13
+    BIPUSH 48
+    IF_ICMPLT L21
+    ILOAD 13
+    BIPUSH 57
+    IF_ICMPLE L28
+   L29
+    LINENUMBER 87 L29
+    GOTO L21
+   L28
+    LINENUMBER 89 L28
+   FRAME FULL [java/lang/String I I I java/lang/Number J D D I I I] []
+    ILOAD 13
+    BIPUSH 48
+    ISUB
+    ISTORE 14
+   L30
+    LINENUMBER 90 L30
+    ILOAD 12
+    IFNE L31
+   L32
+    LINENUMBER 91 L32
+    LLOAD 5
+    LDC 10
+    LMUL
+    ILOAD 14
+    I2L
+    LADD
+    LSTORE 5
+    GOTO L33
+   L31
+    LINENUMBER 93 L31
+   FRAME FULL [java/lang/String I I I java/lang/Number J D D I I I I] []
+    DLOAD 9
+    LDC 10.0
+    DMUL
+    DSTORE 9
+   L34
+    LINENUMBER 94 L34
+    DLOAD 7
+    ILOAD 14
+    I2D
+    DLOAD 9
+    DDIV
+    DADD
+    DSTORE 7
+   L33
+    LINENUMBER 96 L33
+   FRAME FULL [java/lang/String I I I java/lang/Number J D D I I I I] []
+    ICONST_1
+    ISTORE 11
+   L35
+    LINENUMBER 97 L35
+    IINC 2 1
+   L36
+    LINENUMBER 98 L36
+    GOTO L20
+   L21
+    LINENUMBER 99 L21
+   FRAME FULL [java/lang/String I I I java/lang/Number J D D I I] []
+    ILOAD 11
+    IFNE L37
+   L38
+    LINENUMBER 100 L38
+    LDC NaN
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    ARETURN
+   L37
+    LINENUMBER 102 L37
+   FRAME FULL [java/lang/String I I I java/lang/Number J D D I I] []
+    LLOAD 5
+    L2D
+    DLOAD 7
+    DADD
+    DSTORE 13
+   L39
+    LINENUMBER 103 L39
+    ILOAD 3
+    IFEQ L40
+   L41
+    LINENUMBER 104 L41
+    DLOAD 13
+    DNEG
+    DSTORE 13
+   L40
+    LINENUMBER 106 L40
+   FRAME FULL [java/lang/String I I I java/lang/Number J D D I I D] []
+    DLOAD 13
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+    ARETURN
+   L42
+    LOCALVARIABLE ch C L23 L36 13
+    LOCALVARIABLE digit I L30 L36 14
+    LOCALVARIABLE str Ljava/lang/String; L0 L42 0
+    LOCALVARIABLE asInt Z L0 L42 1
+    LOCALVARIABLE index I L6 L42 2
+    LOCALVARIABLE negative Z L7 L42 3
+    LOCALVARIABLE hex Ljava/lang/Number; L13 L42 4
+    LOCALVARIABLE intPart J L16 L42 5
+    LOCALVARIABLE fracPart D L17 L42 7
+    LOCALVARIABLE divisor D L18 L42 9
+    LOCALVARIABLE foundDigit Z L19 L42 11
+    LOCALVARIABLE seenDot Z L20 L42 12
+    LOCALVARIABLE value D L39 L42 13
+    MAXSTACK = 6
+    MAXLOCALS = 15
+
+  // access flags 0x8
+  static objectToNumber(Ljava/lang/Object;)Ljava/lang/Number;
+   L0
+    LINENUMBER 110 L0
+    ALOAD 0
+    ASTORE 1
+    ICONST_0
+    ISTORE 2
+    ALOAD 1
+    ILOAD 2
+    INVOKEDYNAMIC typeSwitch(Ljava/lang/Object;I)I [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/runtime/SwitchBootstraps.typeSwitch(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      java.lang.Number.class, 
+      java.lang.Boolean.class, 
+      java.util.Date.class, 
+      java.lang.String.class
+    ]
+    TABLESWITCH
+      -1: L1
+      0: L2
+      1: L3
+      2: L4
+      3: L5
+      default: L6
+   L2
+    LINENUMBER 111 L2
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/lang/Number
+    ASTORE 3
+   L7
+    ALOAD 3
+    GOTO L8
+   L3
+    LINENUMBER 112 L3
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/lang/Boolean
+    ASTORE 4
+   L9
+    ALOAD 4
+    INVOKEVIRTUAL java/lang/Boolean.booleanValue ()Z
+    IFEQ L10
+    ICONST_1
+    GOTO L11
+   L10
+   FRAME FULL [java/lang/Object java/lang/Object I T java/lang/Boolean] []
+    ICONST_0
+   L11
+   FRAME FULL [java/lang/Object java/lang/Object I T java/lang/Boolean] [I]
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    GOTO L8
+   L4
+    LINENUMBER 113 L4
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/util/Date
+    ASTORE 5
+   L12
+    ALOAD 5
+    INVOKEVIRTUAL java/util/Date.getTime ()J
+    INVOKESTATIC java/lang/Long.valueOf (J)Ljava/lang/Long;
+    GOTO L8
+   L5
+    LINENUMBER 114 L5
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/lang/String
+    ASTORE 6
+   L13
+    ALOAD 6
+    INVOKEVIRTUAL java/lang/String.trim ()Ljava/lang/String;
+    INVOKESTATIC io/karatelabs/js/Terms.toNumber (Ljava/lang/String;)Ljava/lang/Number;
+    GOTO L8
+   L1
+    LINENUMBER 115 L1
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ICONST_0
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    GOTO L8
+   L6
+    LINENUMBER 117 L6
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    LDC NaN
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+   L8
+    LINENUMBER 110 L8
+   FRAME FULL [java/lang/Object java/lang/Object I] [java/lang/Number]
+    ARETURN
+   L14
+    LOCALVARIABLE n Ljava/lang/Number; L7 L3 3
+    LOCALVARIABLE b Ljava/lang/Boolean; L9 L4 4
+    LOCALVARIABLE d Ljava/util/Date; L12 L5 5
+    LOCALVARIABLE s Ljava/lang/String; L13 L1 6
+    LOCALVARIABLE o Ljava/lang/Object; L0 L14 0
+    MAXSTACK = 2
+    MAXLOCALS = 7
+
+  // access flags 0x9
+  public static toNumber(Ljava/lang/String;)Ljava/lang/Number;
+    TRYCATCHBLOCK L0 L1 L2 java/lang/Exception
+   L3
+    LINENUMBER 122 L3
+    ALOAD 0
+    INVOKEVIRTUAL java/lang/String.isEmpty ()Z
+    IFEQ L0
+   L4
+    LINENUMBER 123 L4
+    ICONST_0
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    ARETURN
+   L0
+    LINENUMBER 126 L0
+   FRAME FULL [java/lang/String] []
+    ALOAD 0
+    INVOKESTATIC java/lang/Double.parseDouble (Ljava/lang/String;)D
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+   L1
+    ARETURN
+   L2
+    LINENUMBER 127 L2
+   FRAME FULL [java/lang/String] [java/lang/Exception]
+    ASTORE 1
+   L5
+    LINENUMBER 128 L5
+    ALOAD 0
+    INVOKESTATIC io/karatelabs/js/Terms.fromHex (Ljava/lang/String;)Ljava/lang/Number;
+    ASTORE 2
+   L6
+    LINENUMBER 129 L6
+    ALOAD 2
+    IFNONNULL L7
+    LDC NaN
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    GOTO L8
+   L7
+   FRAME FULL [java/lang/String java/lang/Exception java/lang/Number] []
+    ALOAD 2
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+   L8
+   FRAME FULL [java/lang/String java/lang/Exception java/lang/Number] [java/lang/Number]
+    ARETURN
+   L9
+    LOCALVARIABLE hex Ljava/lang/Number; L6 L9 2
+    LOCALVARIABLE e Ljava/lang/Exception; L5 L9 1
+    LOCALVARIABLE text Ljava/lang/String; L3 L9 0
+    MAXSTACK = 2
+    MAXLOCALS = 3
+
+  // access flags 0x8
+  static fromHex(Ljava/lang/String;)Ljava/lang/Number;
+   L0
+    LINENUMBER 134 L0
+    ALOAD 0
+    ICONST_0
+    INVOKEVIRTUAL java/lang/String.charAt (I)C
+    BIPUSH 48
+    IF_ICMPNE L1
+   L2
+    LINENUMBER 135 L2
+    ALOAD 0
+    ICONST_1
+    INVOKEVIRTUAL java/lang/String.charAt (I)C
+    ISTORE 1
+   L3
+    LINENUMBER 136 L3
+    ILOAD 1
+    BIPUSH 120
+    IF_ICMPEQ L4
+    ILOAD 1
+    BIPUSH 88
+    IF_ICMPNE L1
+   L4
+    LINENUMBER 137 L4
+   FRAME FULL [java/lang/String I] []
+    ALOAD 0
+    ICONST_2
+    INVOKEVIRTUAL java/lang/String.substring (I)Ljava/lang/String;
+    BIPUSH 16
+    INVOKESTATIC java/lang/Long.parseLong (Ljava/lang/String;I)J
+    LSTORE 2
+   L5
+    LINENUMBER 138 L5
+    LLOAD 2
+    L2D
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+    ARETURN
+   L1
+    LINENUMBER 141 L1
+   FRAME FULL [java/lang/String] []
+    ACONST_NULL
+    ARETURN
+   L6
+    LOCALVARIABLE longValue J L5 L1 2
+    LOCALVARIABLE second C L3 L1 1
+    LOCALVARIABLE text Ljava/lang/String; L0 L6 0
+    MAXSTACK = 2
+    MAXLOCALS = 4
+
+  // access flags 0x8
+  static eq(Ljava/lang/Object;Ljava/lang/Object;Z)Z
+   L0
+    LINENUMBER 145 L0
+    ALOAD 0
+    IFNONNULL L1
+   L2
+    LINENUMBER 146 L2
+    ALOAD 1
+    IFNULL L3
+    ILOAD 2
+    IFNE L4
+    ALOAD 1
+    GETSTATIC io/karatelabs/js/Terms.UNDEFINED : Ljava/lang/Object;
+    IF_ACMPNE L4
+   L3
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ICONST_1
+    GOTO L5
+   L4
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ICONST_0
+   L5
+   FRAME FULL [java/lang/Object java/lang/Object I] [I]
+    IRETURN
+   L1
+    LINENUMBER 148 L1
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Terms.UNDEFINED : Ljava/lang/Object;
+    IF_ACMPNE L6
+   L7
+    LINENUMBER 149 L7
+    ALOAD 1
+    GETSTATIC io/karatelabs/js/Terms.UNDEFINED : Ljava/lang/Object;
+    IF_ACMPEQ L8
+    ILOAD 2
+    IFNE L9
+    ALOAD 1
+    IFNONNULL L9
+   L8
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ICONST_1
+    GOTO L10
+   L9
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ICONST_0
+   L10
+   FRAME FULL [java/lang/Object java/lang/Object I] [I]
+    IRETURN
+   L6
+    LINENUMBER 151 L6
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 0
+    ALOAD 1
+    IF_ACMPNE L11
+   L12
+    LINENUMBER 152 L12
+    ICONST_1
+    IRETURN
+   L11
+    LINENUMBER 154 L11
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 0
+    INSTANCEOF java/util/List
+    IFNE L13
+    ALOAD 0
+    INSTANCEOF java/util/Map
+    IFEQ L14
+   L13
+    LINENUMBER 155 L13
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ICONST_0
+    IRETURN
+   L14
+    LINENUMBER 157 L14
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 0
+    ALOAD 1
+    INVOKEVIRTUAL java/lang/Object.equals (Ljava/lang/Object;)Z
+    IFEQ L15
+   L16
+    LINENUMBER 158 L16
+    ICONST_1
+    IRETURN
+   L15
+    LINENUMBER 160 L15
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ILOAD 2
+    IFEQ L17
+   L18
+    LINENUMBER 161 L18
+    ALOAD 0
+    INSTANCEOF java/lang/Number
+    IFEQ L19
+    ALOAD 1
+    INSTANCEOF java/lang/Number
+    IFEQ L19
+   L20
+    LINENUMBER 162 L20
+    ALOAD 0
+    CHECKCAST java/lang/Number
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 1
+    CHECKCAST java/lang/Number
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DCMPL
+    IFNE L21
+    ICONST_1
+    GOTO L22
+   L21
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ICONST_0
+   L22
+   FRAME FULL [java/lang/Object java/lang/Object I] [I]
+    IRETURN
+   L19
+    LINENUMBER 164 L19
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ICONST_0
+    IRETURN
+   L17
+    LINENUMBER 166 L17
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 0
+    INSTANCEOF java/lang/Number
+    IFNE L23
+    ALOAD 1
+    INSTANCEOF java/lang/Number
+    IFEQ L24
+   L23
+    LINENUMBER 167 L23
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    NEW io/karatelabs/js/Terms
+    DUP
+    ALOAD 0
+    ALOAD 1
+    INVOKESPECIAL io/karatelabs/js/Terms.<init> (Ljava/lang/Object;Ljava/lang/Object;)V
+    ASTORE 3
+   L25
+    LINENUMBER 168 L25
+    ALOAD 3
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    ALOAD 3
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Object.equals (Ljava/lang/Object;)Z
+    IRETURN
+   L24
+    LINENUMBER 170 L24
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ICONST_0
+    IRETURN
+   L26
+    LOCALVARIABLE terms Lio/karatelabs/js/Terms; L25 L24 3
+    LOCALVARIABLE lhs Ljava/lang/Object; L0 L26 0
+    LOCALVARIABLE rhs Ljava/lang/Object; L0 L26 1
+    LOCALVARIABLE strict Z L0 L26 2
+    MAXSTACK = 4
+    MAXLOCALS = 4
+
+  // access flags 0x8
+  static lt(Ljava/lang/Object;Ljava/lang/Object;)Z
+   L0
+    LINENUMBER 174 L0
+    NEW io/karatelabs/js/Terms
+    DUP
+    ALOAD 0
+    ALOAD 1
+    INVOKESPECIAL io/karatelabs/js/Terms.<init> (Ljava/lang/Object;Ljava/lang/Object;)V
+    ASTORE 2
+   L1
+    LINENUMBER 175 L1
+    ALOAD 2
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 2
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DCMPG
+    IFGE L2
+    ICONST_1
+    GOTO L3
+   L2
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/Terms] []
+    ICONST_0
+   L3
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/Terms] [I]
+    IRETURN
+   L4
+    LOCALVARIABLE lhs Ljava/lang/Object; L0 L4 0
+    LOCALVARIABLE rhs Ljava/lang/Object; L0 L4 1
+    LOCALVARIABLE terms Lio/karatelabs/js/Terms; L1 L4 2
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x8
+  static gt(Ljava/lang/Object;Ljava/lang/Object;)Z
+   L0
+    LINENUMBER 179 L0
+    NEW io/karatelabs/js/Terms
+    DUP
+    ALOAD 0
+    ALOAD 1
+    INVOKESPECIAL io/karatelabs/js/Terms.<init> (Ljava/lang/Object;Ljava/lang/Object;)V
+    ASTORE 2
+   L1
+    LINENUMBER 180 L1
+    ALOAD 2
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 2
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DCMPL
+    IFLE L2
+    ICONST_1
+    GOTO L3
+   L2
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/Terms] []
+    ICONST_0
+   L3
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/Terms] [I]
+    IRETURN
+   L4
+    LOCALVARIABLE lhs Ljava/lang/Object; L0 L4 0
+    LOCALVARIABLE rhs Ljava/lang/Object; L0 L4 1
+    LOCALVARIABLE terms Lio/karatelabs/js/Terms; L1 L4 2
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x8
+  static ltEq(Ljava/lang/Object;Ljava/lang/Object;)Z
+   L0
+    LINENUMBER 184 L0
+    NEW io/karatelabs/js/Terms
+    DUP
+    ALOAD 0
+    ALOAD 1
+    INVOKESPECIAL io/karatelabs/js/Terms.<init> (Ljava/lang/Object;Ljava/lang/Object;)V
+    ASTORE 2
+   L1
+    LINENUMBER 185 L1
+    ALOAD 2
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 2
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DCMPG
+    IFGT L2
+    ICONST_1
+    GOTO L3
+   L2
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/Terms] []
+    ICONST_0
+   L3
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/Terms] [I]
+    IRETURN
+   L4
+    LOCALVARIABLE lhs Ljava/lang/Object; L0 L4 0
+    LOCALVARIABLE rhs Ljava/lang/Object; L0 L4 1
+    LOCALVARIABLE terms Lio/karatelabs/js/Terms; L1 L4 2
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x8
+  static gtEq(Ljava/lang/Object;Ljava/lang/Object;)Z
+   L0
+    LINENUMBER 189 L0
+    NEW io/karatelabs/js/Terms
+    DUP
+    ALOAD 0
+    ALOAD 1
+    INVOKESPECIAL io/karatelabs/js/Terms.<init> (Ljava/lang/Object;Ljava/lang/Object;)V
+    ASTORE 2
+   L1
+    LINENUMBER 190 L1
+    ALOAD 2
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 2
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DCMPL
+    IFLT L2
+    ICONST_1
+    GOTO L3
+   L2
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/Terms] []
+    ICONST_0
+   L3
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/Terms] [I]
+    IRETURN
+   L4
+    LOCALVARIABLE lhs Ljava/lang/Object; L0 L4 0
+    LOCALVARIABLE rhs Ljava/lang/Object; L0 L4 1
+    LOCALVARIABLE terms Lio/karatelabs/js/Terms; L1 L4 2
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x0
+  bitAnd()Ljava/lang/Object;
+   L0
+    LINENUMBER 194 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    IAND
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L1 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x0
+  bitOr()Ljava/lang/Object;
+   L0
+    LINENUMBER 198 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    IOR
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L1 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x0
+  bitXor()Ljava/lang/Object;
+   L0
+    LINENUMBER 202 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    IXOR
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L1 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x0
+  bitShiftRight()Ljava/lang/Object;
+   L0
+    LINENUMBER 206 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    ISHR
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L1 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x0
+  bitShiftLeft()Ljava/lang/Object;
+   L0
+    LINENUMBER 210 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    ISHL
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L1 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x0
+  bitShiftRightUnsigned()Ljava/lang/Object;
+   L0
+    LINENUMBER 214 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    I2L
+    LDC 4294967295
+    LAND
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    LUSHR
+    L2D
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L1 0
+    MAXSTACK = 4
+    MAXLOCALS = 1
+
+  // access flags 0x8
+  static bitNot(Ljava/lang/Object;)Ljava/lang/Object;
+   L0
+    LINENUMBER 218 L0
+    ALOAD 0
+    INVOKESTATIC io/karatelabs/js/Terms.objectToNumber (Ljava/lang/Object;)Ljava/lang/Number;
+    ASTORE 1
+   L1
+    LINENUMBER 219 L1
+    ALOAD 1
+    INVOKEVIRTUAL java/lang/Number.intValue ()I
+    ICONST_M1
+    IXOR
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    ARETURN
+   L2
+    LOCALVARIABLE value Ljava/lang/Object; L0 L2 0
+    LOCALVARIABLE number Ljava/lang/Number; L1 L2 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 0x0
+  mul()Ljava/lang/Object;
+   L0
+    LINENUMBER 223 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DMUL
+    DSTORE 1
+   L1
+    LINENUMBER 224 L1
+    DLOAD 1
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+    ARETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L2 0
+    LOCALVARIABLE result D L1 L2 1
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x0
+  div()Ljava/lang/Object;
+   L0
+    LINENUMBER 228 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    GETSTATIC io/karatelabs/js/Terms.POSITIVE_ZERO : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Object.equals (Ljava/lang/Object;)Z
+    IFEQ L1
+   L2
+    LINENUMBER 229 L2
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DCONST_0
+    DCMPL
+    IFLE L3
+    LDC Infinity
+    GOTO L4
+   L3
+   FRAME FULL [io/karatelabs/js/Terms] []
+    LDC -Infinity
+   L4
+   FRAME FULL [io/karatelabs/js/Terms] [D]
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    ARETURN
+   L1
+    LINENUMBER 231 L1
+   FRAME FULL [io/karatelabs/js/Terms] []
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    GETSTATIC io/karatelabs/js/Terms.NEGATIVE_ZERO : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Object.equals (Ljava/lang/Object;)Z
+    IFEQ L5
+   L6
+    LINENUMBER 232 L6
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DCONST_0
+    DCMPG
+    IFGE L7
+    LDC Infinity
+    GOTO L8
+   L7
+   FRAME FULL [io/karatelabs/js/Terms] []
+    LDC -Infinity
+   L8
+   FRAME FULL [io/karatelabs/js/Terms] [D]
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    ARETURN
+   L5
+    LINENUMBER 234 L5
+   FRAME FULL [io/karatelabs/js/Terms] []
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    LDC Infinity
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    INVOKEVIRTUAL java/lang/Object.equals (Ljava/lang/Object;)Z
+    IFEQ L9
+   L10
+    LINENUMBER 235 L10
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DCONST_0
+    DCMPL
+    IFLE L11
+    GETSTATIC io/karatelabs/js/Terms.POSITIVE_ZERO : Ljava/lang/Number;
+    GOTO L12
+   L11
+   FRAME FULL [io/karatelabs/js/Terms] []
+    GETSTATIC io/karatelabs/js/Terms.NEGATIVE_ZERO : Ljava/lang/Number;
+   L12
+   FRAME FULL [io/karatelabs/js/Terms] [java/lang/Number]
+    POP
+    ACONST_NULL
+    ARETURN
+   L9
+    LINENUMBER 237 L9
+   FRAME FULL [io/karatelabs/js/Terms] []
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    LDC -Infinity
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    INVOKEVIRTUAL java/lang/Object.equals (Ljava/lang/Object;)Z
+    IFEQ L13
+   L14
+    LINENUMBER 238 L14
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DCONST_0
+    DCMPG
+    IFGE L15
+    GETSTATIC io/karatelabs/js/Terms.POSITIVE_ZERO : Ljava/lang/Number;
+    GOTO L16
+   L15
+   FRAME FULL [io/karatelabs/js/Terms] []
+    GETSTATIC io/karatelabs/js/Terms.NEGATIVE_ZERO : Ljava/lang/Number;
+   L16
+   FRAME FULL [io/karatelabs/js/Terms] [java/lang/Number]
+    ARETURN
+   L13
+    LINENUMBER 240 L13
+   FRAME FULL [io/karatelabs/js/Terms] []
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DDIV
+    DSTORE 1
+   L17
+    LINENUMBER 241 L17
+    DLOAD 1
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+    ARETURN
+   L18
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L18 0
+    LOCALVARIABLE result D L17 L18 1
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x0
+  min()Ljava/lang/Object;
+   L0
+    LINENUMBER 245 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DSUB
+    DSTORE 1
+   L1
+    LINENUMBER 246 L1
+    DLOAD 1
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+    ARETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L2 0
+    LOCALVARIABLE result D L1 L2 1
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x0
+  mod()Ljava/lang/Object;
+   L0
+    LINENUMBER 250 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DREM
+    DSTORE 1
+   L1
+    LINENUMBER 251 L1
+    DLOAD 1
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+    ARETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L2 0
+    LOCALVARIABLE result D L1 L2 1
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x0
+  exp()Ljava/lang/Object;
+   L0
+    LINENUMBER 255 L0
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.lhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 0
+    GETFIELD io/karatelabs/js/Terms.rhs : Ljava/lang/Number;
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    INVOKESTATIC java/lang/Math.pow (DD)D
+    DSTORE 1
+   L1
+    LINENUMBER 256 L1
+    DLOAD 1
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+    ARETURN
+   L2
+    LOCALVARIABLE this Lio/karatelabs/js/Terms; L0 L2 0
+    LOCALVARIABLE result D L1 L2 1
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x8
+  static add(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   L0
+    LINENUMBER 260 L0
+    ALOAD 0
+    INSTANCEOF java/lang/String
+    IFNE L1
+    ALOAD 1
+    INSTANCEOF java/lang/String
+    IFEQ L2
+   L1
+    LINENUMBER 261 L1
+   FRAME FULL [java/lang/Object java/lang/Object] []
+    ALOAD 0
+    INVOKESTATIC java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;
+    ALOAD 1
+    INVOKESTATIC java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;
+    INVOKEDYNAMIC makeConcatWithConstants(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      "\u0001\u0001"
+    ]
+    ARETURN
+   L2
+    LINENUMBER 263 L2
+   FRAME FULL [java/lang/Object java/lang/Object] []
+    ALOAD 0
+    INVOKESTATIC io/karatelabs/js/Terms.objectToNumber (Ljava/lang/Object;)Ljava/lang/Number;
+    ASTORE 2
+   L3
+    LINENUMBER 264 L3
+    ALOAD 1
+    INVOKESTATIC io/karatelabs/js/Terms.objectToNumber (Ljava/lang/Object;)Ljava/lang/Number;
+    ASTORE 3
+   L4
+    LINENUMBER 265 L4
+    ALOAD 2
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    ALOAD 3
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DADD
+    DSTORE 4
+   L5
+    LINENUMBER 266 L5
+    DLOAD 4
+    INVOKESTATIC io/karatelabs/js/Terms.narrow (D)Ljava/lang/Number;
+    ARETURN
+   L6
+    LOCALVARIABLE lhs Ljava/lang/Object; L0 L6 0
+    LOCALVARIABLE rhs Ljava/lang/Object; L0 L6 1
+    LOCALVARIABLE lhsNum Ljava/lang/Number; L3 L6 2
+    LOCALVARIABLE rhsNum Ljava/lang/Number; L4 L6 3
+    LOCALVARIABLE result D L5 L6 4
+    MAXSTACK = 4
+    MAXLOCALS = 6
+
+  // access flags 0x9
+  public static narrow(D)Ljava/lang/Number;
+   L0
+    LINENUMBER 270 L0
+    GETSTATIC io/karatelabs/js/Terms.NEGATIVE_ZERO : Ljava/lang/Number;
+    DLOAD 0
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    INVOKEVIRTUAL java/lang/Object.equals (Ljava/lang/Object;)Z
+    IFEQ L1
+   L2
+    LINENUMBER 271 L2
+    DLOAD 0
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    ARETURN
+   L1
+    LINENUMBER 273 L1
+   FRAME FULL [D] []
+    DLOAD 0
+    DCONST_1
+    DREM
+    DCONST_0
+    DCMPL
+    IFEQ L3
+   L4
+    LINENUMBER 274 L4
+    DLOAD 0
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    ARETURN
+   L3
+    LINENUMBER 276 L3
+   FRAME FULL [D] []
+    DLOAD 0
+    LDC 2.147483647E9
+    DCMPG
+    IFGT L5
+   L6
+    LINENUMBER 277 L6
+    DLOAD 0
+    D2I
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    ARETURN
+   L5
+    LINENUMBER 279 L5
+   FRAME FULL [D] []
+    DLOAD 0
+    LDC 9.223372036854776E18
+    DCMPG
+    IFGT L7
+   L8
+    LINENUMBER 280 L8
+    DLOAD 0
+    D2L
+    INVOKESTATIC java/lang/Long.valueOf (J)Ljava/lang/Long;
+    ARETURN
+   L7
+    LINENUMBER 282 L7
+   FRAME FULL [D] []
+    DLOAD 0
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    ARETURN
+   L9
+    LOCALVARIABLE d D L0 L9 0
+    MAXSTACK = 4
+    MAXLOCALS = 2
+
+  // access flags 0x8
+  static toJavaMirror(Ljava/lang/Object;)Lio/karatelabs/js/JavaMirror;
+   L0
+    LINENUMBER 286 L0
+    ALOAD 0
+    ASTORE 1
+    ICONST_0
+    ISTORE 2
+    ALOAD 1
+    ILOAD 2
+    INVOKEDYNAMIC typeSwitch(Ljava/lang/Object;I)I [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/runtime/SwitchBootstraps.typeSwitch(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      java.lang.String.class, 
+      java.lang.Number.class, 
+      java.lang.Boolean.class, 
+      java.util.Date.class, 
+      byte[].class
+    ]
+    TABLESWITCH
+      -1: L1
+      0: L2
+      1: L3
+      2: L4
+      3: L5
+      4: L6
+      default: L1
+   L2
+    LINENUMBER 287 L2
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/lang/String
+    ASTORE 3
+   L7
+    NEW io/karatelabs/js/JsString
+    DUP
+    ALOAD 3
+    INVOKESPECIAL io/karatelabs/js/JsString.<init> (Ljava/lang/String;)V
+    GOTO L8
+   L3
+    LINENUMBER 288 L3
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/lang/Number
+    ASTORE 4
+   L9
+    NEW io/karatelabs/js/JsNumber
+    DUP
+    ALOAD 4
+    INVOKESPECIAL io/karatelabs/js/JsNumber.<init> (Ljava/lang/Number;)V
+    GOTO L8
+   L4
+    LINENUMBER 289 L4
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/lang/Boolean
+    ASTORE 5
+   L10
+    NEW io/karatelabs/js/JsBoolean
+    DUP
+    ALOAD 5
+    INVOKEVIRTUAL java/lang/Boolean.booleanValue ()Z
+    INVOKESPECIAL io/karatelabs/js/JsBoolean.<init> (Z)V
+    GOTO L8
+   L5
+    LINENUMBER 290 L5
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/util/Date
+    ASTORE 6
+   L11
+    NEW io/karatelabs/js/JsDate
+    DUP
+    ALOAD 6
+    INVOKESPECIAL io/karatelabs/js/JsDate.<init> (Ljava/util/Date;)V
+    GOTO L8
+   L6
+    LINENUMBER 291 L6
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST [B
+    ASTORE 7
+   L12
+    NEW io/karatelabs/js/JsUint8Array
+    DUP
+    ALOAD 7
+    INVOKESPECIAL io/karatelabs/js/JsUint8Array.<init> ([B)V
+    GOTO L8
+   L1
+    LINENUMBER 292 L1
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ACONST_NULL
+   L8
+    LINENUMBER 286 L8
+   FRAME FULL [java/lang/Object java/lang/Object I] [io/karatelabs/js/JsObject]
+    ARETURN
+   L13
+    LOCALVARIABLE s Ljava/lang/String; L7 L3 3
+    LOCALVARIABLE n Ljava/lang/Number; L9 L4 4
+    LOCALVARIABLE b Ljava/lang/Boolean; L10 L5 5
+    LOCALVARIABLE d Ljava/util/Date; L11 L6 6
+    LOCALVARIABLE bytes [B L12 L1 7
+    LOCALVARIABLE o Ljava/lang/Object; L0 L13 0
+    MAXSTACK = 3
+    MAXLOCALS = 8
+
+  // access flags 0x8
+  // signature (Ljava/lang/Object;)Ljava/lang/Iterable<Lio/karatelabs/js/KeyValue;>;
+  // declaration: java.lang.Iterable<io.karatelabs.js.KeyValue> toIterable(java.lang.Object)
+  static toIterable(Ljava/lang/Object;)Ljava/lang/Iterable;
+   L0
+    LINENUMBER 299 L0
+    ALOAD 0
+    INSTANCEOF io/karatelabs/js/JsObject
+    IFEQ L1
+    ALOAD 0
+    CHECKCAST io/karatelabs/js/JsObject
+    ASTORE 1
+   L2
+    LINENUMBER 300 L2
+    ALOAD 1
+    ARETURN
+   L1
+    LINENUMBER 302 L1
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    INSTANCEOF java/util/List
+    IFEQ L3
+   L4
+    LINENUMBER 303 L4
+    NEW io/karatelabs/js/JsArray
+    DUP
+    ALOAD 0
+    CHECKCAST java/util/List
+    INVOKESPECIAL io/karatelabs/js/JsArray.<init> (Ljava/util/List;)V
+    ARETURN
+   L3
+    LINENUMBER 305 L3
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    INSTANCEOF java/util/Map
+    IFEQ L5
+   L6
+    LINENUMBER 306 L6
+    NEW io/karatelabs/js/JsObject
+    DUP
+    ALOAD 0
+    CHECKCAST java/util/Map
+    INVOKESPECIAL io/karatelabs/js/JsObject.<init> (Ljava/util/Map;)V
+    ARETURN
+   L5
+    LINENUMBER 308 L5
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    INSTANCEOF java/lang/String
+    IFEQ L7
+   L8
+    LINENUMBER 309 L8
+    NEW io/karatelabs/js/JsString
+    DUP
+    ALOAD 0
+    CHECKCAST java/lang/String
+    INVOKESPECIAL io/karatelabs/js/JsString.<init> (Ljava/lang/String;)V
+    ARETURN
+   L7
+    LINENUMBER 311 L7
+   FRAME FULL [java/lang/Object] []
+    NEW io/karatelabs/js/JsObject
+    DUP
+    INVOKESPECIAL io/karatelabs/js/JsObject.<init> ()V
+    ARETURN
+   L9
+    LOCALVARIABLE jsObject Lio/karatelabs/js/JsObject; L2 L1 1
+    LOCALVARIABLE o Ljava/lang/Object; L0 L9 0
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x8
+  static toCallable(Ljava/lang/Object;)Lio/karatelabs/js/JsCallable;
+   L0
+    LINENUMBER 315 L0
+    ALOAD 0
+    INSTANCEOF io/karatelabs/js/JsCallable
+    IFEQ L1
+    ALOAD 0
+    CHECKCAST io/karatelabs/js/JsCallable
+    ASTORE 1
+   L2
+    LINENUMBER 316 L2
+    ALOAD 1
+    ARETURN
+   L1
+    LINENUMBER 317 L1
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    INSTANCEOF io/karatelabs/js/Invokable
+    IFEQ L3
+    ALOAD 0
+    CHECKCAST io/karatelabs/js/Invokable
+    ASTORE 2
+   L4
+    LINENUMBER 318 L4
+    ALOAD 2
+    INVOKEDYNAMIC call(Lio/karatelabs/js/Invokable;)Lio/karatelabs/js/JsCallable; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/LambdaMetafactory.metafactory(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      (Lio/karatelabs/js/Context;[Ljava/lang/Object;)Ljava/lang/Object;, 
+      // handle kind 0x6 : INVOKESTATIC
+      io/karatelabs/js/Terms.lambda$toCallable$0(Lio/karatelabs/js/Invokable;Lio/karatelabs/js/Context;[Ljava/lang/Object;)Ljava/lang/Object;, 
+      (Lio/karatelabs/js/Context;[Ljava/lang/Object;)Ljava/lang/Object;
+    ]
+    ARETURN
+   L3
+    LINENUMBER 320 L3
+   FRAME FULL [java/lang/Object] []
+    ACONST_NULL
+    ARETURN
+   L5
+    LOCALVARIABLE callable Lio/karatelabs/js/JsCallable; L2 L1 1
+    LOCALVARIABLE invokable Lio/karatelabs/js/Invokable; L4 L3 2
+    LOCALVARIABLE o Ljava/lang/Object; L0 L5 0
+    MAXSTACK = 1
+    MAXLOCALS = 3
+
+  // access flags 0x9
+  public static isTruthy(Ljava/lang/Object;)Z
+   L0
+    LINENUMBER 325 L0
+    ALOAD 0
+    IFNULL L1
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Terms.UNDEFINED : Ljava/lang/Object;
+    INVOKEVIRTUAL java/lang/Object.equals (Ljava/lang/Object;)Z
+    IFNE L1
+    ALOAD 0
+    LDC NaN
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    INVOKEVIRTUAL java/lang/Object.equals (Ljava/lang/Object;)Z
+    IFEQ L2
+   L1
+    LINENUMBER 326 L1
+   FRAME FULL [java/lang/Object] []
+    ICONST_0
+    IRETURN
+   L2
+    LINENUMBER 328 L2
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    INSTANCEOF io/karatelabs/js/JavaMirror
+    IFEQ L3
+    ALOAD 0
+    CHECKCAST io/karatelabs/js/JavaMirror
+    ASTORE 1
+   L4
+    LINENUMBER 329 L4
+    ALOAD 1
+    INVOKEINTERFACE io/karatelabs/js/JavaMirror.toJava ()Ljava/lang/Object; (itf)
+    ASTORE 0
+   L3
+    LINENUMBER 331 L3
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    DUP
+    INVOKESTATIC java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+    POP
+    ASTORE 1
+    ICONST_0
+    ISTORE 2
+    ALOAD 1
+    ILOAD 2
+    INVOKEDYNAMIC typeSwitch(Ljava/lang/Object;I)I [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/runtime/SwitchBootstraps.typeSwitch(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      java.lang.Boolean.class, 
+      java.lang.Number.class, 
+      java.lang.String.class
+    ]
+    TABLESWITCH
+      0: L5
+      1: L6
+      2: L7
+      default: L8
+   L5
+    LINENUMBER 332 L5
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/lang/Boolean
+    ASTORE 3
+   L9
+    ALOAD 3
+    INVOKEVIRTUAL java/lang/Boolean.booleanValue ()Z
+    GOTO L10
+   L6
+    LINENUMBER 333 L6
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/lang/Number
+    ASTORE 4
+   L11
+    ALOAD 4
+    INVOKEVIRTUAL java/lang/Number.doubleValue ()D
+    DCONST_0
+    DCMPL
+    IFEQ L12
+    ICONST_1
+    GOTO L10
+   L12
+   FRAME FULL [java/lang/Object java/lang/Object I T java/lang/Number] []
+    ICONST_0
+    GOTO L10
+   L7
+    LINENUMBER 334 L7
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST java/lang/String
+    ASTORE 5
+   L13
+    ALOAD 5
+    INVOKEVIRTUAL java/lang/String.isEmpty ()Z
+    IFNE L14
+    ICONST_1
+    GOTO L10
+   L14
+   FRAME FULL [java/lang/Object java/lang/Object I T T java/lang/String] []
+    ICONST_0
+    GOTO L10
+   L8
+    LINENUMBER 335 L8
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ICONST_1
+   L10
+    LINENUMBER 331 L10
+   FRAME FULL [java/lang/Object java/lang/Object I] [I]
+    IRETURN
+   L15
+    LOCALVARIABLE mirror Lio/karatelabs/js/JavaMirror; L4 L3 1
+    LOCALVARIABLE b Ljava/lang/Boolean; L9 L6 3
+    LOCALVARIABLE number Ljava/lang/Number; L11 L7 4
+    LOCALVARIABLE s Ljava/lang/String; L13 L8 5
+    LOCALVARIABLE value Ljava/lang/Object; L0 L15 0
+    MAXSTACK = 4
+    MAXLOCALS = 6
+
+  // access flags 0x8
+  static isPrimitive(Ljava/lang/Object;)Z
+   L0
+    LINENUMBER 340 L0
+    ALOAD 0
+    INSTANCEOF java/lang/String
+    IFNE L1
+    ALOAD 0
+    INSTANCEOF java/lang/Number
+    IFNE L1
+    ALOAD 0
+    INSTANCEOF java/lang/Boolean
+    IFEQ L2
+   L1
+    LINENUMBER 343 L1
+   FRAME FULL [java/lang/Object] []
+    ICONST_1
+    IRETURN
+   L2
+    LINENUMBER 345 L2
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    IFNONNULL L3
+   L4
+    LINENUMBER 346 L4
+    ICONST_1
+    IRETURN
+   L3
+    LINENUMBER 348 L3
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Terms.UNDEFINED : Ljava/lang/Object;
+    IF_ACMPNE L5
+    ICONST_1
+    GOTO L6
+   L5
+   FRAME FULL [java/lang/Object] []
+    ICONST_0
+   L6
+   FRAME FULL [java/lang/Object] [I]
+    IRETURN
+   L7
+    LOCALVARIABLE value Ljava/lang/Object; L0 L7 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  public static typeOf(Ljava/lang/Object;)Ljava/lang/String;
+   L0
+    LINENUMBER 352 L0
+    ALOAD 0
+    INSTANCEOF java/lang/String
+    IFEQ L1
+   L2
+    LINENUMBER 353 L2
+    LDC "string"
+    ARETURN
+   L1
+    LINENUMBER 355 L1
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    INSTANCEOF io/karatelabs/js/JsFunction
+    IFEQ L3
+   L4
+    LINENUMBER 356 L4
+    LDC "function"
+    ARETURN
+   L3
+    LINENUMBER 358 L3
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    INSTANCEOF java/lang/Number
+    IFEQ L5
+   L6
+    LINENUMBER 359 L6
+    LDC "number"
+    ARETURN
+   L5
+    LINENUMBER 361 L5
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    INSTANCEOF java/lang/Boolean
+    IFEQ L7
+   L8
+    LINENUMBER 362 L8
+    LDC "boolean"
+    ARETURN
+   L7
+    LINENUMBER 364 L7
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    GETSTATIC io/karatelabs/js/Terms.UNDEFINED : Ljava/lang/Object;
+    IF_ACMPNE L9
+   L10
+    LINENUMBER 365 L10
+    LDC "undefined"
+    ARETURN
+   L9
+    LINENUMBER 367 L9
+   FRAME FULL [java/lang/Object] []
+    LDC "object"
+    ARETURN
+   L11
+    LOCALVARIABLE value Ljava/lang/Object; L0 L11 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x8
+  static instanceOf(Ljava/lang/Object;Ljava/lang/Object;)Z
+   L0
+    LINENUMBER 371 L0
+    ALOAD 0
+    INSTANCEOF io/karatelabs/js/JsObject
+    IFEQ L1
+    ALOAD 0
+    CHECKCAST io/karatelabs/js/JsObject
+    ASTORE 2
+   L2
+    ALOAD 1
+    INSTANCEOF io/karatelabs/js/JsObject
+    IFEQ L1
+    ALOAD 1
+    CHECKCAST io/karatelabs/js/JsObject
+    ASTORE 3
+   L3
+    LINENUMBER 372 L3
+    ALOAD 0
+    INSTANCEOF io/karatelabs/js/JavaMirror
+    IFEQ L4
+    ALOAD 1
+    INSTANCEOF io/karatelabs/js/JavaMirror
+    IFEQ L4
+   L5
+    LINENUMBER 373 L5
+    ALOAD 0
+    INVOKEVIRTUAL java/lang/Object.getClass ()Ljava/lang/Class;
+    ALOAD 1
+    INVOKEVIRTUAL java/lang/Object.getClass ()Ljava/lang/Class;
+    INVOKEVIRTUAL java/lang/Object.equals (Ljava/lang/Object;)Z
+    IRETURN
+   L4
+    LINENUMBER 375 L4
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/JsObject io/karatelabs/js/JsObject] []
+    ALOAD 2
+    INVOKEVIRTUAL io/karatelabs/js/JsObject.getPrototype ()Lio/karatelabs/js/Prototype;
+    ASTORE 4
+   L6
+    LINENUMBER 376 L6
+    ALOAD 4
+    IFNULL L1
+   L7
+    LINENUMBER 377 L7
+    ALOAD 4
+    LDC "constructor"
+    INVOKEVIRTUAL io/karatelabs/js/Prototype.get (Ljava/lang/String;)Ljava/lang/Object;
+    ASTORE 5
+   L8
+    LINENUMBER 378 L8
+    ALOAD 5
+    IFNULL L1
+   L9
+    LINENUMBER 379 L9
+    ALOAD 3
+    LDC "constructor"
+    INVOKEVIRTUAL io/karatelabs/js/JsObject.get (Ljava/lang/String;)Ljava/lang/Object;
+    ASTORE 6
+   L10
+    LINENUMBER 380 L10
+    ALOAD 5
+    ALOAD 6
+    IF_ACMPNE L11
+    ICONST_1
+    GOTO L12
+   L11
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/JsObject io/karatelabs/js/JsObject io/karatelabs/js/Prototype java/lang/Object java/lang/Object] []
+    ICONST_0
+   L12
+   FRAME FULL [java/lang/Object java/lang/Object io/karatelabs/js/JsObject io/karatelabs/js/JsObject io/karatelabs/js/Prototype java/lang/Object java/lang/Object] [I]
+    IRETURN
+   L1
+    LINENUMBER 384 L1
+   FRAME FULL [java/lang/Object java/lang/Object] []
+    ICONST_0
+    IRETURN
+   L13
+    LOCALVARIABLE constructorRhs Ljava/lang/Object; L10 L1 6
+    LOCALVARIABLE constructorLhs Ljava/lang/Object; L8 L1 5
+    LOCALVARIABLE prototypeLhs Lio/karatelabs/js/Prototype; L6 L1 4
+    LOCALVARIABLE objectLhs Lio/karatelabs/js/JsObject; L2 L1 2
+    LOCALVARIABLE objectRhs Lio/karatelabs/js/JsObject; L3 L1 3
+    LOCALVARIABLE lhs Ljava/lang/Object; L0 L13 0
+    LOCALVARIABLE rhs Ljava/lang/Object; L0 L13 1
+    MAXSTACK = 2
+    MAXLOCALS = 7
+
+  // access flags 0x8
+  static TO_STRING(Ljava/lang/Object;)Ljava/lang/String;
+   L0
+    LINENUMBER 388 L0
+    ALOAD 0
+    IFNONNULL L1
+   L2
+    LINENUMBER 389 L2
+    LDC "[object Null]"
+    ARETURN
+   L1
+    LINENUMBER 391 L1
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    INVOKESTATIC io/karatelabs/js/Terms.isPrimitive (Ljava/lang/Object;)Z
+    IFNE L3
+    ALOAD 0
+    INSTANCEOF io/karatelabs/js/JavaMirror
+    IFEQ L4
+   L3
+    LINENUMBER 392 L3
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    INVOKEVIRTUAL java/lang/Object.toString ()Ljava/lang/String;
+    ARETURN
+   L4
+    LINENUMBER 394 L4
+   FRAME FULL [java/lang/Object] []
+    ALOAD 0
+    DUP
+    INVOKESTATIC java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+    POP
+    ASTORE 1
+    ICONST_0
+    ISTORE 2
+    ALOAD 1
+    ILOAD 2
+    INVOKEDYNAMIC typeSwitch(Ljava/lang/Object;I)I [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/runtime/SwitchBootstraps.typeSwitch(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      io.karatelabs.js.JsArray.class, 
+      io.karatelabs.js.JsFunction.class, 
+      io.karatelabs.js.SimpleObject.class, 
+      io.karatelabs.js.ObjectLike.class
+    ]
+    TABLESWITCH
+      0: L5
+      1: L6
+      2: L7
+      3: L8
+      default: L9
+   L5
+    LINENUMBER 395 L5
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST io/karatelabs/js/JsArray
+    ASTORE 3
+   L10
+    LINENUMBER 396 L10
+    ALOAD 3
+    INVOKEVIRTUAL io/karatelabs/js/JsArray.toList ()Ljava/util/List;
+    ASTORE 4
+   L11
+    LINENUMBER 397 L11
+    ALOAD 4
+    INVOKESTATIC net/minidev/json/JSONValue.toJSONString (Ljava/lang/Object;)Ljava/lang/String;
+    ARETURN
+   L6
+    LINENUMBER 399 L6
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST io/karatelabs/js/JsFunction
+    ASTORE 4
+   L12
+    LINENUMBER 400 L12
+    LDC "[object Object]"
+    ARETURN
+   L7
+    LINENUMBER 402 L7
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST io/karatelabs/js/SimpleObject
+    ASTORE 5
+   L13
+    LINENUMBER 403 L13
+    ALOAD 5
+    INVOKEINTERFACE io/karatelabs/js/SimpleObject.jsToString ()Lio/karatelabs/js/JsCallable; (itf)
+    ASTORE 6
+   L14
+    LINENUMBER 404 L14
+    ALOAD 6
+    ACONST_NULL
+    ICONST_0
+    ANEWARRAY java/lang/Object
+    INVOKEINTERFACE io/karatelabs/js/JsCallable.call (Lio/karatelabs/js/Context;[Ljava/lang/Object;)Ljava/lang/Object; (itf)
+    CHECKCAST java/lang/String
+    ARETURN
+   L8
+    LINENUMBER 406 L8
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 1
+    CHECKCAST io/karatelabs/js/ObjectLike
+    ASTORE 6
+   L15
+    LINENUMBER 407 L15
+    ALOAD 6
+    INVOKEINTERFACE io/karatelabs/js/ObjectLike.toMap ()Ljava/util/Map; (itf)
+    ASTORE 7
+   L16
+    LINENUMBER 408 L16
+    ALOAD 7
+    IFNULL L17
+   L18
+    LINENUMBER 409 L18
+    ALOAD 7
+    INVOKESTATIC net/minidev/json/JSONValue.toJSONString (Ljava/lang/Object;)Ljava/lang/String;
+    ARETURN
+   L17
+    LINENUMBER 411 L17
+   FRAME FULL [java/lang/Object java/lang/Object I T T T io/karatelabs/js/ObjectLike java/util/Map] []
+    GOTO L9
+   L9
+    LINENUMBER 415 L9
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 0
+    INSTANCEOF java/util/Map
+    IFNE L19
+    ALOAD 0
+    INSTANCEOF java/util/List
+    IFEQ L20
+   L19
+    LINENUMBER 416 L19
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    ALOAD 0
+    INVOKESTATIC net/minidev/json/JSONValue.toJSONString (Ljava/lang/Object;)Ljava/lang/String;
+    ARETURN
+   L20
+    LINENUMBER 418 L20
+   FRAME FULL [java/lang/Object java/lang/Object I] []
+    LDC "[object Object]"
+    ARETURN
+   L21
+    LOCALVARIABLE list Ljava/util/List; L11 L6 4
+    // signature Ljava/util/List<Ljava/lang/Object;>;
+    // declaration: list extends java.util.List<java.lang.Object>
+    LOCALVARIABLE keyValues Lio/karatelabs/js/JsArray; L10 L6 3
+    LOCALVARIABLE ignored Lio/karatelabs/js/JsFunction; L12 L7 4
+    LOCALVARIABLE callable Lio/karatelabs/js/JsCallable; L14 L8 6
+    LOCALVARIABLE so Lio/karatelabs/js/SimpleObject; L13 L8 5
+    LOCALVARIABLE map Ljava/util/Map; L16 L17 7
+    // signature Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;
+    // declaration: map extends java.util.Map<java.lang.String, java.lang.Object>
+    LOCALVARIABLE objectLike Lio/karatelabs/js/ObjectLike; L15 L9 6
+    LOCALVARIABLE o Ljava/lang/Object; L0 L21 0
+    MAXSTACK = 3
+    MAXLOCALS = 8
+
+  // access flags 0x100A
+  private static synthetic lambda$toCallable$0(Lio/karatelabs/js/Invokable;Lio/karatelabs/js/Context;[Ljava/lang/Object;)Ljava/lang/Object;
+   L0
+    LINENUMBER 318 L0
+    ALOAD 0
+    ALOAD 2
+    INVOKEINTERFACE io/karatelabs/js/Invokable.invoke ([Ljava/lang/Object;)Ljava/lang/Object; (itf)
+    ARETURN
+   L1
+    LOCALVARIABLE invokable Lio/karatelabs/js/Invokable; L0 L1 0
+    LOCALVARIABLE c Lio/karatelabs/js/Context; L0 L1 1
+    LOCALVARIABLE args [Ljava/lang/Object; L0 L1 2
+    MAXSTACK = 2
+    MAXLOCALS = 3
+
+  // access flags 0x8
+  static <clinit>()V
+   L0
+    LINENUMBER 34 L0
+    NEW io/karatelabs/js/Terms$1
+    DUP
+    INVOKESPECIAL io/karatelabs/js/Terms$1.<init> ()V
+    PUTSTATIC io/karatelabs/js/Terms.UNDEFINED : Ljava/lang/Object;
+   L1
+    LINENUMBER 41 L1
+    ICONST_0
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    PUTSTATIC io/karatelabs/js/Terms.POSITIVE_ZERO : Ljava/lang/Number;
+   L2
+    LINENUMBER 42 L2
+    LDC -0.0
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    PUTSTATIC io/karatelabs/js/Terms.NEGATIVE_ZERO : Ljava/lang/Number;
+   L3
+    LINENUMBER 44 L3
+    LDC NaN
+    INVOKESTATIC java/lang/Double.valueOf (D)Ljava/lang/Double;
+    PUTSTATIC io/karatelabs/js/Terms.NAN : Ljava/lang/Object;
+    RETURN
+    MAXSTACK = 2
+    MAXLOCALS = 0
+}
+

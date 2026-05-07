@@ -1,0 +1,3 @@
+let max = 50;
+if (max > 25) { return true; } else { return false; }
+bye

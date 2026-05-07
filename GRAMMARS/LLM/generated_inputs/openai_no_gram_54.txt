@@ -1,0 +1,3 @@
+let h = 80;
+if (h > 85) { return "A"; } return "B";
+bye

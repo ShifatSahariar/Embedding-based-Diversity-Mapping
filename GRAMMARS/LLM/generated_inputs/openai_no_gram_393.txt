@@ -1,0 +1,2 @@
+function arraySum(xs) { var total = 0; for (var i = 0; i < xs.length; i = i + 1) { total = total + xs[i]; } return total; }
+bye

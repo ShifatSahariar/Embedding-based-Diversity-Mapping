@@ -1,0 +1,5 @@
+var L = "mvG83";
+
+console.log(GZ);
+point.x;
+tM++;

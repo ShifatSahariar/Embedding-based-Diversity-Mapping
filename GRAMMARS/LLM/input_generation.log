@@ -1,0 +1,17 @@
+2025-12-06 03:36:00,908 [WARNING] No grammar provided for karatejs; using freeform mode.
+2025-12-06 03:36:00,909 [INFO] [Batch 1] Requesting 200 programs (remaining: 1000)
+2025-12-06 03:37:10,181 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-06 03:37:10,188 [INFO] [Batch 1] +200 (total 200/1000)
+2025-12-06 03:37:10,188 [INFO] [Batch 2] Requesting 200 programs (remaining: 800)
+2025-12-06 03:38:24,439 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-06 03:38:24,568 [INFO] [Batch 2] +200 (total 400/1000)
+2025-12-06 03:38:24,569 [INFO] [Batch 3] Requesting 200 programs (remaining: 600)
+2025-12-06 03:39:34,958 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-06 03:39:34,959 [INFO] [Batch 3] +200 (total 600/1000)
+2025-12-06 03:39:34,959 [INFO] [Batch 4] Requesting 200 programs (remaining: 400)
+2025-12-06 03:41:07,524 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-06 03:41:07,610 [INFO] [Batch 4] +200 (total 800/1000)
+2025-12-06 03:41:07,610 [INFO] [Batch 5] Requesting 200 programs (remaining: 200)
+2025-12-06 03:42:16,317 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-06 03:42:16,441 [INFO] [Batch 5] +200 (total 1000/1000)
+2025-12-06 03:42:16,443 [INFO] Saved 1000 programs to generated_inputs/all_karatejs_inputs.json.

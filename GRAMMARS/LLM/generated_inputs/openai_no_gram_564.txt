@@ -1,0 +1,2 @@
+let height = 6; let width = 2; let area = height * width; return area;
+bye

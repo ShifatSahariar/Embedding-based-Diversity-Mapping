@@ -1,0 +1,2 @@
+let mod = 14 % 5; return mod;
+bye

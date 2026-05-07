@@ -1,0 +1,2 @@
+let isEven = 10 % 2 == 0;
+bye

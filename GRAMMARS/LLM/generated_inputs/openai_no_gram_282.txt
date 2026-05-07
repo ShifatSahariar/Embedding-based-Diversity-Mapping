@@ -1,0 +1,2 @@
+function isUpperCase(c) { return c >= "A" && c <= "Z"; }
+bye

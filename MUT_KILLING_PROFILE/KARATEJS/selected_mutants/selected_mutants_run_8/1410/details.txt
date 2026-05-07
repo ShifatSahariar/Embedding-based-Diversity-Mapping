@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Terms, method=div, methodDesc=()Ljava/lang/Object;], indexes=[109], mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator], filename=Terms.java, block=[34], lineNumber=240, description=Replaced double division with multiplication, testsInOrder=[]]

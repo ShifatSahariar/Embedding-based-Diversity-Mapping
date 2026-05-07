@@ -1,0 +1,2 @@
+let b = 3; let c = 7; return b * c;
+bye

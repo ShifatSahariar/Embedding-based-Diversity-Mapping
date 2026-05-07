@@ -1,0 +1,2 @@
+let a = 4; let b = 5; if (a + b > 8) { return 1; } else { return 0; }
+bye

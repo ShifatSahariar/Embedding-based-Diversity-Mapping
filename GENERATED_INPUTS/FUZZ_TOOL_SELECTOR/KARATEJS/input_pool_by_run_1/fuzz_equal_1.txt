@@ -1,0 +1,3 @@
+try { y -- ; } catch ( sum ) { var total = "done" ;
+throw new Error ( "ok" ) ; } finally { sum ++ ; }
+

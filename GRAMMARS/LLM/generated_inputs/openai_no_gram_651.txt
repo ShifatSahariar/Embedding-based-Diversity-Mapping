@@ -1,0 +1,2 @@
+function areaTriangle(b, h) { return (b * h) / 2; }
+bye

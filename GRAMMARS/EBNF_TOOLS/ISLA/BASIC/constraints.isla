@@ -1,0 +1,58 @@
+# ---------- DEF–BEFORE–USE (numeric IF + numeric PRINT + string PRINT) ----------
+
+forall <print_numeric_stmt> Print_N:
+  exists <let_stmt_numeric> Let_N:(
+    before(Let_N,Print_N) and Let_N.<NUMERIC_VAR> = Print_N.<NUMERIC_VAR>)
+and
+
+forall <if_stmt> If_S:
+  exists <let_stmt_numeric> L_if:(
+    before(L_if,If_S) and L_if.<NUMERIC_VAR> = If_S.<var_number_cmp>.<NUMERIC_VAR>)
+and
+
+forall <print_string_stmt> Pring_S:
+  exists <let_stmt_string> Let_S:(
+    before(Let_S,Pring_S) and Let_S.<STRING_VAR> = Pring_S.<STRING_VAR>
+  )
+
+and
+# ---------- FOR / NEXT pairing and FOR var defined earlier ----------
+
+# FOR loop variable must be defined by a prior numeric LET
+forall <for_stmt> for_stmt:
+  exists <let_stmt_numeric> Let_for:(
+    before(Let_for, for_stmt) and Let_for.<NUMERIC_VAR> = for_stmt.<NUMERIC_VAR>
+  )
+and
+# Every NEXT must match some earlier FOR on the same variable
+forall <next_statement> Next_s:
+  exists <for_stmt> For_n:(
+    before(For_n, Next_s) and For_n.<NUMERIC_VAR> = Next_s.<NUMERIC_VAR>
+  )
+and
+# ---------- ON statement selector var must be defined earlier (numeric) ----------
+forall <on_statement> On_stmt:
+  exists <let_stmt_numeric> D_on:(
+    before(D_on,On_stmt) and D_on.<NUMERIC_VAR> = On_stmt.<NUMERIC_VAR>
+  )
+and
+# ---------- GOSUB / RETURN pairing from your combined rule ----------
+
+forall <gosub_statement_with_return> G:
+  G.<return_statement>.<line_number> = G.<gosub_statement>.<line_number>
+
+and
+# ---------- READ / DATA typing and order (scoped inside the same block) ----------
+
+forall <read_statement> R:
+  exists <data_read_restore> B:(
+    inside(R, B) and
+    exists <data_statement> D:(
+      inside(D, B) and
+      before(D, R) and
+      (
+        (R = "READ {<NUMERIC_VAR> _}" and D = "DATA {<number> _}") or
+        (R = "READ {<STRING_VAR> _}" and D = "DATA {<string> _}")
+      )
+    )
+  )

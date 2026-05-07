@@ -1,0 +1,3 @@
+let day = "Monday";
+if (day == "Monday") { return 1; }
+bye

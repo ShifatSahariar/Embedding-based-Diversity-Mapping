@@ -1,0 +1,2 @@
+function min3(a, b, c) { var m = a; if (b < m) { m = b; } if (c < m) { m = c; } return m; }
+bye

@@ -1,0 +1,2 @@
+let odd = 15; if (odd % 2 == 1) { return 2; } else { return 4; }
+bye

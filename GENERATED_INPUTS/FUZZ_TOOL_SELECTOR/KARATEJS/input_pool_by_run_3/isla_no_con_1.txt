@@ -1,0 +1,4 @@
+var arr = [x - m, result[1]];
+try{i--;}catch(err){p++;
+z--;
+j++;}

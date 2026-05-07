@@ -1,0 +1,2 @@
+let a = 11; if (a > 10) { return 2; } else { return 1; }
+bye

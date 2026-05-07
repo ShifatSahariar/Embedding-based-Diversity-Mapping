@@ -1,0 +1,2 @@
+var arr = [7];
+if(p < i){arr[0];}

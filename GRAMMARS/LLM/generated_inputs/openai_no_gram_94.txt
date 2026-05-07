@@ -1,0 +1,5 @@
+function greetTime(time) {
+  if (time < 12) return "Morning";
+  return "Afternoon";
+}
+bye

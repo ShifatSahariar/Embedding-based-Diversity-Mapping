@@ -1,0 +1,138 @@
+# ======================================================
+# KARATEJS JavaScript Grammar (LLM-Compatible)
+
+# Focus: ECMAScript subset supported by Rhino, Closure, Nashorn, GraalJS
+
+<start> ::= <preamble>? <sourceElements>
+
+<preamble> ::= <variableStatement>+ <newline>
+
+<sourceElements> ::= <statement>+ (<newline> <functionDeclaration>)*
+
+# ======================================================
+# STATEMENTS
+# ======================================================
+<statement> ::= <variableStatement>
+               | <arrayInit>
+               | <objectInit>
+               | <expressionStatement>
+               | <ifStatement>
+               | <iterationStatement>
+               | <switchStatement>
+               | <tryStatement>
+               | <printStatement>
+               | <throwStatement>
+               | <functionDeclaration>
+
+# -----------------------------
+# Variable Declarations
+<variableStatement> ::= "var" <identifier> "=" <expression> ";"
+                      | "var" <identifier> ";"
+                      | "var" <identifier> "=" <expression> "," <identifier> "=" <expression> ";"
+
+# -----------------------------
+# Array and Object Initialization
+<arrayInit> ::= "var" <identifier> "=" "[" <expressionList> "]" ";"
+<objectInit> ::= "var" <identifier> "=" "{" <propertyList> "}" ";"
+<expressionList> ::= <expression> | <expression> "," <expressionList>
+
+# -----------------------------
+# Expression Statements
+<expressionStatement> ::= <identifier> "=" <expression> ";"
+                        | <identifier> "++" ";"
+                        | <identifier> "--" ";"
+
+# -----------------------------
+# IF / ELSE
+<ifStatement> ::= "if" "(" <booleanExp> ")" "{" <simpleStatementList> "}"
+                | "if" "(" <booleanExp> ")" "{" <simpleStatementList> "}" "else" "{" <simpleStatementList> "}"
+
+# -----------------------------
+# LOOPS
+<iterationStatement> ::= "while" "(" <booleanExp> ")" "{" <simpleStatementList> "}"
+                       | "for" "(" "var" <identifier> "=" <numericLiteral> ";" <booleanExp> ";" <identifier> "++" ")" "{" <simpleStatementList> "}"
+
+# -----------------------------
+# SWITCH
+<switchStatement> ::= "switch" "(" <identifier> ")" "{"
+                      "case" <numericLiteral> ":" <simpleStatementList> "break;"
+                      "default:" <simpleStatementList> "}"
+                    | "switch" "(" <identifier> ")" "{"
+                      "case" <numericLiteral> ":" <simpleStatementList> "break;"
+                      "case" <numericLiteral> ":" <simpleStatementList> "break;"
+                      "default:" <simpleStatementList> "}"
+
+# -----------------------------
+# TRY / CATCH / FINALLY
+<tryStatement> ::= "try" "{" <simpleStatementList> "}" "catch" "(" <identifier> ")" "{" <simpleStatementList> "}"
+                 | "try" "{" <simpleStatementList> "}" "catch" "(" <identifier> ")" "{" <simpleStatementList> "}" "finally" "{" <simpleStatementList> "}"
+
+# -----------------------------
+# PRINT
+<printStatement> ::= "console.log("<printable>")"";"
+<printable> ::= <identifier>
+              | <numericLiteral>
+              | <stringLiteral>
+              | <identifier> "+" <identifier>
+              | <identifier> "*" <identifier>
+              | "typeof" <identifier>
+              | "\"Type: \" + typeof " <identifier>
+              | "(" <identifier> "+" <numericLiteral> ")*" <identifier>
+
+# -----------------------------
+# THROW (restricted for consistency)
+<throwStatement> ::= "throw new" <errorType> "(" <stringLiteral> ")" ";"
+<errorType> ::= "Error" | "TypeError" | "ReferenceError" | "RangeError"
+
+# ======================================================
+# FUNCTIONS
+# ======================================================
+<functionDeclaration> ::= "function" <identifier> "(" <paramList>? ")" "{" <functionBody> "}"
+<paramList> ::= <identifier> | <identifier> "," <paramList>
+<functionBody> ::= <simpleStatementList> <newline> <returnMaybe>
+<returnMaybe> ::= "return" <expression> ";" | "return;" | ""
+
+# ======================================================
+# SIMPLE STATEMENT GROUPS
+# ======================================================
+<simpleStatementList> ::= <simpleStatement>
+                        | <simpleStatement> <newline> <simpleStatementList>
+<simpleStatement> ::= <variableStatement>
+                    | <expressionStatement>
+                    | <printStatement>
+                    | <throwStatement>
+
+# ======================================================
+# EXPRESSIONS
+# ======================================================
+<expression> ::= <numericLiteral>
+               | <identifier>
+               | <identifier> "+" <identifier>
+               | <identifier> "-" <identifier>
+               | <identifier> "*" <identifier>
+               | <identifier> "/" <identifier>
+               | "(" <expression> ")"
+               | "Number(" <stringLiteral> ")"
+               | <identifier> "." <property>
+               | <identifier> "[" <numericLiteral> "]"
+               | <identifier> "(" <argumentList> ")"
+
+<booleanExp> ::= <identifier> ">" <identifier>
+               | <identifier> "<" <identifier>
+               | <identifier> "==" <identifier>
+               | <identifier> "!=" <identifier>
+               | "(" <booleanExp> ")"
+               | <booleanExp> "&&" <booleanExp>
+               | <booleanExp> "||" <booleanExp>
+
+<property> ::= "length" | "x" | "y" | "z" | "value" | "name"
+<propertyList> ::= <property> ":" <expression> | <property> ":" <expression> "," <propertyList>
+<argumentList> ::= <expression> | <expression> "," <argumentList>
+
+# ======================================================
+# LITERALS & IDENTIFIERS
+# ======================================================
+<numericLiteral> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<identifier> ::= "x" | "y" | "z" | "i" | "j" | "k" | "count" | "sum" | "result" | "temp" | "flag" | "data" | "val"
+<stringLiteral> ::= "\"ok\"" | "\"error\"" | "\"test\"" | "\"done\"" | "\"value\"" | "\"true\"" | "\"false\"" | "\"input\"" | "\"RuntimeError\"" | "\"TypeError\"" | "\"Computation complete\""
+<newline> ::= "\n"

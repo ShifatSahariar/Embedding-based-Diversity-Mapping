@@ -1,0 +1,5 @@
+switch(x){case 6: i++;
+m++;break;
+default: g();point.value;}
+function handle(){n--;
+return;}

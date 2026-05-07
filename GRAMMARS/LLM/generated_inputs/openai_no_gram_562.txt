@@ -1,0 +1,2 @@
+let d = 19; d = d - 7; return d;
+bye

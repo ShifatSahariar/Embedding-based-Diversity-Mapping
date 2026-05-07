@@ -1,0 +1,2 @@
+function isLowerCase(c) { return c >= "a" && c <= "z"; }
+bye

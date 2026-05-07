@@ -1,0 +1,2 @@
+function calc(a, b, op) { if (op == 0) { return a + b; } else if (op == 1) { return a - b; } else { return a * b; } }
+bye

@@ -1,0 +1,2 @@
+function bar(b) { return b * 3; }
+bye

@@ -1,0 +1,2 @@
+let temp = 25; if (temp > 20) { return 1; } else { return 0; }
+bye

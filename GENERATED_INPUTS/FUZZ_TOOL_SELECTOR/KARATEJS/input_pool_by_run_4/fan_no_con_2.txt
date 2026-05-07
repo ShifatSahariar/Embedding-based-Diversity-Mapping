@@ -1,0 +1,4 @@
+nums[0];
+pp++;
+record.value;
+point.y;

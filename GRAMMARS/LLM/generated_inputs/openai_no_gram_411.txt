@@ -1,0 +1,2 @@
+let lim = 10; if (lim > 5) { return lim; } else { return 0; }
+bye

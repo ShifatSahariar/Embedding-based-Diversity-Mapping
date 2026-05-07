@@ -1,0 +1,9 @@
+Tool,Tests,Mutants_Selected,MS,KI,SKI
+fan_con,1000,5,0.4,487,1.00616
+fan_no_con,1000,5,0.4,197,1.010152
+fuzz_equal,1000,5,1.0,259,1.069498
+fuzz_prob,1000,5,1.0,230,1.034783
+isla_con,1000,5,0.6,706,1.194051
+isla_no_con,1000,5,0.6,81,1.012346
+openai_gram,1000,5,0.4,1000,1.496
+openai_no_gram,1000,5,0.8,1000,1.764

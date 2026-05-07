@@ -1,0 +1,2 @@
+function setSign(x, sgn) { if (sgn < 0) { return -abs(x); } else { return abs(x); } }
+bye

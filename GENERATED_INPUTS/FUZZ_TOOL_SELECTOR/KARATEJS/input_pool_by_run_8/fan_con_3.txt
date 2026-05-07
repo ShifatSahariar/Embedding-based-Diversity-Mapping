@@ -1,0 +1,7 @@
+var ir = "IlQHZ";
+
+var wn = 3;
+
+var A = "S5596";
+
+Zw = "LSi8 ";

@@ -1,0 +1,3 @@
+var s = "xstcj";
+
+console.log("ezrpi");

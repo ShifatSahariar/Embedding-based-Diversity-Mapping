@@ -1,0 +1,3 @@
+let value = 11;
+let total = value + 9;
+bye

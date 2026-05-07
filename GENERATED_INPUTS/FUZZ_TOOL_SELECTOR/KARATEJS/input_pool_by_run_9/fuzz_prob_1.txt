@@ -1,0 +1,4 @@
+while ( x - z ) { throw new Error ( "TypeError" ) ;
+var temp = 4 ; }
+if ( y ) { var sum = "loop" ; }
+

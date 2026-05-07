@@ -1,0 +1,2 @@
+function notEqualToFive(x) { return x != 5; }
+bye

@@ -1,0 +1,2 @@
+let m = 8; if (m < 5) { return 0; } else { return 1; }
+bye

@@ -1,0 +1,2 @@
+function evenNumber(x) { return x * 2; }
+bye

@@ -1,0 +1,2 @@
+let min = Math.min(2,8,5);
+bye

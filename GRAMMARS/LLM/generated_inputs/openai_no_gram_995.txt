@@ -1,0 +1,3 @@
+let word = 'karate';
+let code = word + 2024;
+bye

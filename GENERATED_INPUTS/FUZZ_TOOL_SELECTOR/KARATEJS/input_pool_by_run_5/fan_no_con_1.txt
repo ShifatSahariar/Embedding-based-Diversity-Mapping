@@ -1,0 +1,5 @@
+var B = Number("bV9H9");
+
+var Q = "wHCoO";
+
+GB = 3;

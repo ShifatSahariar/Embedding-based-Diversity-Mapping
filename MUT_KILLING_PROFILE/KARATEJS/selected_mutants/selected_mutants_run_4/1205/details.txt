@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.JsProperty, method=set, methodDesc=(Ljava/lang/Object;)V], indexes=[186], mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator], filename=JsProperty.java, block=[35], lineNumber=151, description=removed call to io/karatelabs/js/ObjectLike::put, testsInOrder=[]]

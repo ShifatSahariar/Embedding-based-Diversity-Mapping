@@ -1,0 +1,5 @@
+try{n++;}catch(e){m--;}
+switch(j){case 5: y--;
+z++;break;
+case 4: x++;break;
+default: p--;}

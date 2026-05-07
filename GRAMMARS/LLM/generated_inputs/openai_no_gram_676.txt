@@ -1,0 +1,2 @@
+function radToDeg(r) { return r * 180 / 3.141593; }
+bye

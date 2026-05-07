@@ -1,0 +1,2 @@
+function clamp01(x) { return clamp(x, 0, 1); }
+bye

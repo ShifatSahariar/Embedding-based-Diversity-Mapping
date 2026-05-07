@@ -1,0 +1,2 @@
+for ( var temp = 5 ; sum ( temp - count, temp + y ) ; i ++ ) { var total = "loop" ; }
+

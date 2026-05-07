@@ -1,0 +1,2 @@
+var list = [Number("rfio5"), p * m];
+console.log((m / i));

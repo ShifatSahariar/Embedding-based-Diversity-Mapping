@@ -1,0 +1,6 @@
+while(j != x){
+var n = 0;
+record.value;
+i++;throw new RangeError("cs49t");}
+var t = "vzkg2";
+

@@ -1,0 +1,3 @@
+let bool = true;
+if (bool) { return 1; } return 0;
+bye

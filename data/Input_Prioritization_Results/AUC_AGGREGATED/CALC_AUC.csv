@@ -1,0 +1,4 @@
+Metric,Value
+SpreadEx_mean_AUC,0.8877352425
+Random_mean_AUC,0.8249166824999999
+Mean_diff,0.06281856000000008

@@ -1,0 +1,2 @@
+let div = 24 / 6; return div;
+bye

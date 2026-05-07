@@ -1,0 +1,2 @@
+function first(a, b) { return a; }
+bye

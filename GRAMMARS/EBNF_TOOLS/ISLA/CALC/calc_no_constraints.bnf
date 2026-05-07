@@ -1,0 +1,59 @@
+<start> ::= <defs_opt> <stmts> "exit" <newline>
+
+<defs_opt> ::= <empty> 
+             | <define_var> <newline>
+
+<stmts> ::= <stmt> 
+           | <stmt> <stmts>
+
+<stmt> ::= <letExp> <newline>
+          | <printExp> <newline>
+          | <sumExp> <newline>
+          | <avgExp> <newline>
+
+<define_var> ::= <LET> <VAR> " = " <DIGIT>
+
+<letExp> ::= <LET> <VAR> " = " <exp>
+
+<exp> ::= <multExp> 
+         | <multExp> "+" <multExp_seq>
+         | <multExp> "-" <multExp_seq>
+
+<multExp_seq> ::= <multExp>
+                 | <multExp> "+" <multExp_seq>
+                 | <multExp> "-" <multExp_seq>
+
+<multExp> ::= <atom> 
+             | <atom> "*" <atom>
+             | <atom> "/" <atom>
+
+<atom> ::= <DIGIT>
+          | <VAR>
+          | <TRIG> "(" <exp> ")"
+          | "(" <exp> ")"
+
+<sumExp> ::= <SUM> <listExp>
+
+<listExp> ::= <exp>
+             | <exp> "," <listExp>
+
+<avgExp> ::= <AVG> "(" <avgCalc> ")"
+
+<avgCalc> ::= <exp>
+             | <exp> "," <avgCalc>
+
+<printExp> ::= <PRINT> <exp>
+              | <PRINT> <avgExp>
+              | <PRINT> <sumExp>
+
+<LET> ::= "let " | "LET " | "Let "
+<PRINT> ::= "print " | "PRINT " | "Print "
+<TRIG> ::= "sin" | "cos" | "tan"
+<SUM> ::= "sum " | "SUM " | "Sum "
+<AVG> ::= "avg " | "AVG " | "Avg "
+<VAR> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" 
+         | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T"
+         | "U" | "V" | "W" | "X" | "Y" | "Z"
+<DIGIT> ::= "10" | "11" | "12" | "13" | "14" | "15" | "16" | "17" | "18" | "19"
+<newline> ::= "\n"
+<empty> ::= ""

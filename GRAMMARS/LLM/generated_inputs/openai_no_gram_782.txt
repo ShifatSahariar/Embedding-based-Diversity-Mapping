@@ -1,0 +1,2 @@
+function cubeMinusSquare(x) { return x * x * x - x * x; }
+bye

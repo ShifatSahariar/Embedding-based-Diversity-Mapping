@@ -1,0 +1,2 @@
+let msg = 'Karate!';
+bye

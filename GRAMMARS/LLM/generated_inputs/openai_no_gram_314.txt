@@ -1,0 +1,2 @@
+function divideByTen(x) { return x / 10; }
+bye

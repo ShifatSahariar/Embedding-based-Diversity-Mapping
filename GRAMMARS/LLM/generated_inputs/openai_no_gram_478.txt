@@ -1,0 +1,2 @@
+let z = 18; z = z / 3; return z;
+bye

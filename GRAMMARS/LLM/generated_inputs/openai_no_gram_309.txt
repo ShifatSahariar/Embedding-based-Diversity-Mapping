@@ -1,0 +1,2 @@
+function distance(x, y) { var d = x - y; if (d < 0) { return -d; } return d; }
+bye

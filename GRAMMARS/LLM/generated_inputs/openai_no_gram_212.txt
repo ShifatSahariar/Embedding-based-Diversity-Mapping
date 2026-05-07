@@ -1,0 +1,2 @@
+function power(a, b) { var res = 1; while (b > 0) { res = res * a; b = b - 1; } return res; }
+bye

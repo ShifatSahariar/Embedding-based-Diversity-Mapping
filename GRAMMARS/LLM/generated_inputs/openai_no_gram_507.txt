@@ -1,0 +1,2 @@
+let years = 3; let months = years * 12; return months;
+bye

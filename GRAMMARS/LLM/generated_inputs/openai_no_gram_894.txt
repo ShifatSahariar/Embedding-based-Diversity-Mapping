@@ -1,0 +1,3 @@
+let code = 404;
+if (code == 404) { return 'not found'; } else { return 'found'; }
+bye

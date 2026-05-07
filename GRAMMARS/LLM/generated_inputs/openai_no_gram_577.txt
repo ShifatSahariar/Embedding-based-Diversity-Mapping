@@ -1,0 +1,2 @@
+let n = 8; let cube = n * n * n; return cube;
+bye

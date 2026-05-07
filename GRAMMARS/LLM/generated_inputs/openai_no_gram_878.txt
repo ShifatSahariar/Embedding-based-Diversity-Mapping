@@ -1,0 +1,3 @@
+let grade = 90;
+if (grade >= 90) { return 'A'; } else { return 'B'; }
+bye

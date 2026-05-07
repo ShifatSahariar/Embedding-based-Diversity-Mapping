@@ -1,0 +1,3 @@
+let check = 12;
+if (check > 10) { return true; } else { return false; }
+bye

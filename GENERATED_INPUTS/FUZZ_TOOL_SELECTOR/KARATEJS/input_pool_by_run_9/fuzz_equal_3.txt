@@ -1,0 +1,8 @@
+try { j -- ; } catch ( k ) { throw new Error ( "TypeError" ) ;
+console.log(flag) ;console.log(8) ;console.log("ok") ; }
+sum -- ;
+function total ( y , y ) { count = z < temp ;
+console.log(i) ;console.log(4) ;console.log("error") ;
+return ; }
+console.log(x) ;console.log(8) ;console.log("ok") ;
+

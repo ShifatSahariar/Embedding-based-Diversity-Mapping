@@ -1,0 +1,2 @@
+function boolNeq(a, b) { return !!a != !!b; }
+bye

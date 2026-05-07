@@ -1,0 +1,2 @@
+function main() { var s = 1; for (var i = 2; i < 10; i = i + 1) { s = s * i; } return s; }
+bye

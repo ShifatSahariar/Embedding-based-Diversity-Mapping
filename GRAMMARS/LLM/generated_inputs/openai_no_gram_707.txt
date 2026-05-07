@@ -1,0 +1,2 @@
+function sumRange(a, b) { var s = 0; var i = a; while (i <= b) { s = s + i; i = i + 1; } return s; }
+bye

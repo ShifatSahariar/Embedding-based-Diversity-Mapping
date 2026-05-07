@@ -1,0 +1,2 @@
+var vals = [0];
+M = Number("DJobI");

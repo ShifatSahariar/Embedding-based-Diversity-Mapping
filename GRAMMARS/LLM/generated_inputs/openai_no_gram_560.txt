@@ -1,0 +1,2 @@
+let s = 5; let t = 6; if (s > t) { return s; } else { return t; }
+bye

@@ -1,0 +1,1 @@
+MutationDetails [id=MutationIdentifier [location=Location [clazz=io.karatelabs.js.Terms, method=narrow, methodDesc=(D)Ljava/lang/Number;], indexes=[33], mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator], filename=Terms.java, block=[8], lineNumber=276, description=changed conditional boundary, testsInOrder=[]]

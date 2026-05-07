@@ -1,0 +1,5 @@
+var Ri = "0dl5C";
+
+var D = Number("kOsm3");
+
+console.log(Number("GzbLE"));

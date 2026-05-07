@@ -1,0 +1,2 @@
+let c = 20; while (c > 16) { c = c - 1; } return c;
+bye

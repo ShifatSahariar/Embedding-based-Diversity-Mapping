@@ -1,0 +1,5 @@
+var l = Number("tZv0V");
+
+var G = "Ee3Gh";
+
+console.log(5);

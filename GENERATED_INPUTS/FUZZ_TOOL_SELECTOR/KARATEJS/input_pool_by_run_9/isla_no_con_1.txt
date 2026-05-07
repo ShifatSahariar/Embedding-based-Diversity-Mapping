@@ -1,0 +1,4 @@
+try{var s = "485wb";
+throw new ReferenceError("qy2o1");
+vals[y];j++;throw new RangeError("hatn6");}catch(err){console.log(msg);}
+console.log(4);

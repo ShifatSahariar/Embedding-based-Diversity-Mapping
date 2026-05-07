@@ -1,0 +1,2 @@
+var config = {z : 9, z : 1};
+Jp = 0;

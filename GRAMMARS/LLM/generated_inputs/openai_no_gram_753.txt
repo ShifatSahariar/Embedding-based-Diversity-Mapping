@@ -1,0 +1,2 @@
+function tripleAbs(x) { return abs(x) * 3; }
+bye

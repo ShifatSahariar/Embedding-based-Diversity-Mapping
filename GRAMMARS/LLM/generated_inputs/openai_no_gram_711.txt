@@ -1,0 +1,2 @@
+function bitwiseXor(a, b) { return a ^ b; }
+bye

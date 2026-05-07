@@ -1,0 +1,2 @@
+let k = 7; let l = 5; if (k > l) { return k - l; } else { return l - k; }
+bye

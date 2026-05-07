@@ -1,0 +1,4 @@
+function negate(x) {
+  return -x;
+}
+bye

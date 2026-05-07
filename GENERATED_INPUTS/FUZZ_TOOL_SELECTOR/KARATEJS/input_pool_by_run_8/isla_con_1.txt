@@ -1,0 +1,2 @@
+var arr = [8];
+if((n == x && j > y)){arr[i];}

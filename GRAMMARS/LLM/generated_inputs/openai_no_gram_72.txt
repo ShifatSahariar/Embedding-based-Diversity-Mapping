@@ -1,0 +1,3 @@
+let obj = {foo: 8};
+obj.bar = 12;
+bye

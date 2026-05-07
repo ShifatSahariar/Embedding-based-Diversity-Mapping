@@ -1,0 +1,4 @@
+if((y < n)){record.z;var j = 8;
+throw new Error("e0dhn");
+var x = z;
+j--;throw new RangeError("m8juy");}

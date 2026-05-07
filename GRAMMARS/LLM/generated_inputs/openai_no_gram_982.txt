@@ -1,0 +1,3 @@
+let s = 'kick';
+let y = s.toUpperCase();
+bye

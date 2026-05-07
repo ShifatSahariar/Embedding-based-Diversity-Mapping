@@ -1,0 +1,2 @@
+function doNothing(x) { return undefined; }
+bye

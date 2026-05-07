@@ -1,0 +1,2 @@
+var temp = { name : flag * i } ;
+

@@ -1,0 +1,2 @@
+function productArray(xs) { var p = 1; for (var i = 0; i < xs.length; i = i + 1) { p = p * xs[i]; } return p; }
+bye

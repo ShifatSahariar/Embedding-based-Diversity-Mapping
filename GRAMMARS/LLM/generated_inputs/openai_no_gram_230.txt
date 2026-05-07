@@ -1,0 +1,2 @@
+function toString(x) { return "Value: " + x; }
+bye

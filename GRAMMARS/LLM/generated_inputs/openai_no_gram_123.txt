@@ -1,0 +1,2 @@
+let arr = [true, false, true];
+bye

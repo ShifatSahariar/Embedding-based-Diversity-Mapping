@@ -1,0 +1,4 @@
+var Z = "nFeiX";
+
+console.log(Jj);
+point.length;

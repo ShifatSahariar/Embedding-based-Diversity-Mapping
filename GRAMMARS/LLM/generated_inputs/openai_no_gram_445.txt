@@ -1,0 +1,2 @@
+let p = 24; p = p / 2; return p;
+bye

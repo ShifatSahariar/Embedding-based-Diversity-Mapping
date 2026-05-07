@@ -1,0 +1,1934 @@
+16:15:45.437 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+16:15:45.448 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+16:15:45.450 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+16:15:45.454 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+16:15:45.457 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+16:15:45.459 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+16:15:45.462 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+16:15:45.464 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+16:15:45.469 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+16:15:45.472 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+16:15:45.473 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+16:15:45.476 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+16:15:45.477 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+16:15:45.481 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+16:15:45.481 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+16:15:45.481 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+16:15:45.487 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+16:15:52.530 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:15:53.349 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+16:15:53.708 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+16:15:53.709 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+16:15:54.823 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+16:15:54.824 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+16:15:54.956 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+16:15:54.956 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+16:15:56.039 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+16:15:57.660 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+16:15:57.660 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+16:20:23.624 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+16:20:23.637 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+16:20:23.639 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+16:20:23.642 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+16:20:23.645 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+16:20:23.649 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+16:20:23.652 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+16:20:23.655 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+16:20:23.661 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+16:20:23.663 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+16:20:23.665 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+16:20:23.667 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+16:20:23.668 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+16:20:23.672 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+16:20:23.672 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+16:20:23.672 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+16:20:23.682 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+16:20:29.877 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:20:30.445 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:20:31.324 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+16:20:31.590 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0]
+actual=>:[0,2]
+16:20:31.791 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+16:20:31.791 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+16:20:33.137 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+16:20:33.138 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+16:20:33.292 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0]
+actual=>:[0,2]
+16:20:33.332 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+16:20:33.333 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+16:20:34.958 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+16:20:35.677 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:20:36.762 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+16:20:36.763 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+16:20:37.376 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:20:38.172 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:22:10.891 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+16:22:10.905 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+16:22:10.908 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+16:22:10.914 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+16:22:10.916 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+16:22:10.918 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+16:22:10.922 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+16:22:10.924 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+16:22:10.930 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+16:22:10.933 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+16:22:10.935 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+16:22:10.937 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+16:22:10.938 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+16:22:10.942 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+16:22:10.942 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+16:22:10.942 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+16:22:10.948 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+16:22:15.887 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:22:17.152 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:22:17.733 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:22:18.535 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+16:22:19.062 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+16:22:19.062 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+16:22:20.456 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+16:22:20.456 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+16:22:20.608 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+16:22:20.608 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+16:22:21.933 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+16:22:22.721 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:22:23.998 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+16:22:23.998 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+16:22:24.583 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:22:25.599 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:23:22.846 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+16:23:22.858 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+16:23:22.860 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+16:23:22.865 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+16:23:22.867 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+16:23:22.871 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+16:23:22.875 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+16:23:22.877 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+16:23:22.882 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+16:23:22.886 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+16:23:22.888 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+16:23:22.890 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+16:23:22.891 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+16:23:22.895 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+16:23:22.895 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+16:23:22.895 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+16:23:22.904 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+16:23:28.062 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:23:29.300 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:23:29.814 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:23:30.633 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+16:23:30.969 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+16:23:30.969 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+16:23:33.494 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+16:23:34.126 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:23:35.621 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:23:36.378 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+16:23:40.773 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+16:23:40.786 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+16:23:40.789 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+16:23:40.792 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+16:23:40.796 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+16:23:40.799 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+16:23:40.802 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+16:23:40.805 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+16:23:40.811 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+16:23:40.814 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+16:23:40.816 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+16:23:40.818 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+16:23:40.819 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+16:23:40.822 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+16:23:40.822 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+16:23:40.822 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+16:23:40.828 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+16:23:47.871 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:null
+16:23:48.622 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1]
+actual=>:[1,3]
+16:23:48.709 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+16:23:48.710 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+16:24:02.422 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+16:24:11.290 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+16:24:11.296 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+16:24:12.462 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,2,3]
+actual=>:[]
+16:24:12.593 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+16:24:12.846 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"foo":1}
+actual=>:{"foo":1,"bar":2}
+16:24:12.972 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{"obj1":{"a":1,"b":2}}
+16:24:13.713 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:[]
+16:24:14.241 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:24:14.375 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:10
+actual=>:30
+16:24:14.375 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[10,20,30]
+actual=>:[30,30,30]
+16:24:15.750 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:null
+16:24:16.153 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+16:24:23.126 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+16:24:23.435 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,3]
+actual=>:[1]
+16:24:31.014 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0]
+actual=>:[0,2]
+16:24:31.192 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"\"a\"":1}
+16:24:31.887 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:{}
+16:24:42.985 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:24:43.042 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:10
+actual=>:30
+16:24:43.043 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[10,20,30]
+actual=>:[30,30,30]
+16:24:43.668 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+16:24:44.299 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+16:24:44.299 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+16:24:45.136 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"bar":2}
+actual=>:{"foo":1,"bar":2}
+16:24:45.178 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:[]
+16:24:45.392 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+16:24:52.597 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:null
+16:24:53.166 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[]
+16:24:53.466 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"bar":2}
+actual=>:{"foo":1,"bar":2}
+16:24:54.445 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+16:25:01.530 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+16:25:09.835 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1]
+actual=>:[1,3]
+16:25:09.921 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:null
+16:25:10.026 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:[]
+16:25:10.341 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+16:25:10.382 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+16:25:10.867 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+16:25:10.950 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:25:11.319 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:null
+16:25:11.721 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+16:25:11.827 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+16:25:12.157 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+16:25:13.088 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"a1"
+actual=>:NaN
+16:25:13.088 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a1","b2"]
+actual=>:[NaN,NaN]
+16:25:14.483 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,2,3]
+actual=>:[]
+16:25:14.518 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+16:25:14.849 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+16:25:17.786 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+16:25:17.797 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+16:25:17.800 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+16:25:17.804 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+16:25:17.806 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+16:25:17.809 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+16:25:17.812 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+16:25:17.814 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+16:25:17.819 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+16:25:17.822 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+16:25:17.824 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+16:25:17.826 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+16:25:17.827 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+16:25:17.830 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+16:25:17.830 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+16:25:17.830 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+16:25:17.836 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+16:25:26.566 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo, bar
+16:25:26.853 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo = 1
+16:25:27.535 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[]
+16:25:38.815 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+!foo || bar
+16:25:38.878 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a < b
+16:25:39.303 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+!foo || bar
+16:25:39.460 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2 + 3
+16:25:39.913 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+try {} catch (e) {} finally {}
+16:25:55.455 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+if (true) a = 1; else a = 2
+16:25:55.889 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[]
+16:25:55.974 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b[c]
+16:26:06.055 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+5 | 1 | 2
+16:26:06.971 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2
+16:26:21.632 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+true ? 'foo' : bar
+16:26:40.695 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+2 * (1 + 3)
+16:26:40.798 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+16:26:40.929 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.null
+16:27:04.903 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1
+2
+16:27:04.986 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+0 && 1 ? 'foo' : bar
+16:27:11.633 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+5 | 1 | 2
+16:27:12.394 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+16:27:12.560 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 | 2
+16:27:20.561 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = b++
+16:27:21.895 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo
+16:27:22.000 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+16:27:49.898 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+0 && 1 ? 'foo' : bar
+16:27:51.177 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = --b
+16:27:51.903 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b()
+16:27:53.090 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = function(){ return true }
+16:27:59.795 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = b++
+16:28:25.881 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+16:28:56.794 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+16:28:58.787 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+foo instanceof Foo
+16:29:13.203 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo
+16:29:14.816 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a => true
+16:29:14.923 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b()
+16:29:30.122 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+2 * 3
+16:29:30.170 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+2 ** 3
+16:29:43.484 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+16:30:03.910 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+16:30:25.552 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2 + 3
+16:30:28.779 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo, bar
+16:30:42.247 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+{ a }
+16:30:46.031 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+16:30:46.040 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+16:30:46.042 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+16:30:46.045 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+16:30:46.048 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+16:30:46.050 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+16:30:46.053 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+16:30:46.055 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+16:30:46.060 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+16:30:46.064 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+16:30:46.068 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+16:30:46.070 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+16:30:46.071 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+16:30:46.074 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+16:30:46.075 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+16:30:46.075 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+16:30:46.083 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+16:30:51.035 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:30:53.477 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+16:30:56.552 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{}
+actual=>:null
+16:30:56.743 [mutationTestThread] ERROR io.karatelabs.js.JsProperty - external bridge error: class io.karatelabs.js.DemoPojo cannot be cast to class io.karatelabs.js.ExternalAccess (io.karatelabs.js.DemoPojo and io.karatelabs.js.ExternalAccess are in unnamed module of loader 'app')
+16:31:00.877 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+16:31:00.887 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+16:31:00.889 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+16:31:00.892 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+16:31:00.895 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+16:31:00.897 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+16:31:00.900 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+16:31:00.902 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+16:31:00.907 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+16:31:00.910 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+16:31:00.912 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+16:31:00.915 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+16:31:00.917 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+16:31:00.920 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+16:31:00.920 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+16:31:00.920 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+16:31:00.930 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+16:31:06.248 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+16:31:06.556 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+16:31:08.489 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+16:31:56.863 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+16:31:59.855 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+16:31:59.963 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+16:32:00.120 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1
+16:32:02.509 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+16:32:03.300 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+16:32:12.264 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+16:32:12.389 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+16:32:15.327 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+16:32:15.336 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+16:32:15.339 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+16:32:15.341 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+16:32:15.344 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+16:32:15.347 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+16:32:15.350 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+16:32:15.352 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+16:32:15.357 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+16:32:15.362 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+16:32:15.364 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+16:32:15.366 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+16:32:15.368 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+16:32:15.371 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+16:32:15.372 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+16:32:15.372 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+16:32:15.384 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+16:32:21.648 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a1","b2"]
+actual=>:[]
+16:32:22.059 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1.0
+16:32:22.059 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1.0}
+16:32:31.377 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1.0
+16:32:31.382 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1.0}
+16:32:32.234 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+16:32:32.235 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+16:32:33.542 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a","b","c"]
+actual=>:[]
+16:32:35.804 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:0.5714285714285714
+16:32:36.299 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0,1,2,3]
+16:32:36.515 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1.0
+16:32:36.515 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1.0}
+16:32:36.972 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1
+16:32:36.973 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1}
+16:32:44.675 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a","b","c"]
+actual=>:[]
+16:32:46.525 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a1","b2"]
+actual=>:[]
+16:32:47.317 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+16:32:47.318 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+16:32:51.021 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+16:32:51.030 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+16:32:51.032 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+16:32:51.037 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+16:32:51.038 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+16:32:51.041 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+16:32:51.044 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+16:32:51.046 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+16:32:51.051 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+16:32:51.056 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+16:32:51.058 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+16:32:51.060 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+16:32:51.061 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+16:32:51.064 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+16:32:51.064 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+16:32:51.064 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+16:32:51.074 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+16:32:57.720 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+18:44:32.969 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+18:44:32.979 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+18:44:32.981 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+18:44:32.985 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+18:44:32.987 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+18:44:32.989 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+18:44:32.992 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+18:44:32.994 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+18:44:32.999 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+18:44:33.001 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+18:44:33.003 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+18:44:33.006 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+18:44:33.007 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+18:44:33.010 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+18:44:33.010 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+18:44:33.010 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+18:44:33.017 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+18:44:38.835 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+18:44:39.326 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+18:44:40.189 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+18:44:46.838 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+18:44:46.842 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+18:44:49.688 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+18:44:50.342 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+18:44:58.545 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+18:44:59.479 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+18:45:03.850 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+18:45:03.860 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+18:45:03.863 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+18:45:03.865 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+18:45:03.870 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+18:45:03.872 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+18:45:03.875 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+18:45:03.877 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+18:45:03.882 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+18:45:03.887 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+18:45:03.889 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+18:45:03.891 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+18:45:03.892 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+18:45:03.895 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+18:45:03.895 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+18:45:03.895 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+18:45:03.901 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+18:45:11.143 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:null
+18:45:11.915 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a"]
+actual=>:["a","c"]
+18:45:12.007 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+18:45:12.007 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+18:45:26.017 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+18:45:34.877 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+18:45:34.884 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+18:45:36.032 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,2,3]
+actual=>:[]
+18:45:36.169 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+18:45:36.419 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"foo":1}
+actual=>:{"foo":1,"bar":2}
+18:45:36.543 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{"obj1":{"a":1,"b":2}}
+18:45:37.270 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:[]
+18:45:37.775 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+18:45:37.918 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:10
+actual=>:30
+18:45:37.918 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[10,20,30]
+actual=>:[30,30,30]
+18:45:39.567 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:null
+18:45:40.032 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+18:45:47.018 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+18:45:47.306 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a","c"]
+actual=>:["a"]
+18:45:54.839 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0]
+actual=>:[0,2]
+18:45:55.850 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:{}
+18:46:07.225 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+18:46:07.288 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:10
+actual=>:30
+18:46:07.288 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[10,20,30]
+actual=>:[30,30,30]
+18:46:08.098 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+18:46:08.685 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+18:46:08.685 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+18:46:09.639 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"bar":2}
+actual=>:{"foo":1,"bar":2}
+18:46:09.684 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:[]
+18:46:09.963 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+18:46:17.213 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:null
+18:46:17.810 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[]
+18:46:18.128 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"bar":2}
+actual=>:{"foo":1,"bar":2}
+18:46:19.202 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+18:46:26.093 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+18:46:34.340 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a"]
+actual=>:["a","c"]
+18:46:34.454 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:null
+18:46:34.590 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:[]
+18:46:35.013 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+18:46:35.063 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+18:46:35.693 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+18:46:35.805 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+18:46:36.242 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:null
+18:46:36.767 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+18:46:36.915 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+18:46:37.356 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+18:46:38.545 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"a1"
+actual=>:NaN
+18:46:38.546 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a1","b2"]
+actual=>:[NaN,NaN]
+18:46:40.097 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,2,3]
+actual=>:[]
+18:46:40.137 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+18:46:40.573 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+18:46:43.562 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+18:46:43.572 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+18:46:43.574 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+18:46:43.576 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+18:46:43.580 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+18:46:43.582 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+18:46:43.585 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+18:46:43.587 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+18:46:43.592 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+18:46:43.597 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+18:46:43.599 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+18:46:43.601 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+18:46:43.602 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+18:46:43.605 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+18:46:43.605 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+18:46:43.605 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+18:46:43.612 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+18:46:52.610 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo, bar
+18:46:52.909 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo = 1
+18:47:04.685 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+!foo || bar
+18:47:04.745 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a < b
+18:47:05.179 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+!foo || bar
+18:47:05.347 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2 + 3
+18:47:05.746 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+try {} catch (e) {} finally {}
+18:47:21.261 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+if (true) a = 1; else a = 2
+18:47:21.812 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b[c]
+18:47:31.889 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+5 | 1 | 2
+18:47:32.797 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2
+18:47:47.336 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+true ? 'foo' : bar
+18:48:06.200 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+2 * (1 + 3)
+18:48:06.320 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+18:48:06.353 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.null
+18:48:29.827 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1
+2
+18:48:29.922 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+0 && 1 ? 'foo' : bar
+18:48:36.556 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+5 | 1 | 2
+18:48:37.235 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+18:48:37.429 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 | 2
+18:48:45.475 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = b++
+18:48:46.981 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo
+18:48:47.107 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+18:49:15.533 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+0 && 1 ? 'foo' : bar
+18:49:16.742 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = --b
+18:49:17.398 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b()
+18:49:18.537 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = function(){ return true }
+18:49:25.326 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = b++
+18:49:52.655 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+18:50:25.009 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+18:50:27.518 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+foo instanceof Foo
+18:50:42.623 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo
+18:50:44.469 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a => true
+18:50:44.611 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b()
+18:51:00.368 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+2 * 3
+18:51:00.423 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+2 ** 3
+18:51:14.197 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+18:51:35.996 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+18:51:58.635 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2 + 3
+18:52:02.028 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo, bar
+18:52:15.899 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+{ a }
+18:52:20.319 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+18:52:20.328 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+18:52:20.331 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+18:52:20.334 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+18:52:20.337 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+18:52:20.339 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+18:52:20.342 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+18:52:20.345 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+18:52:20.350 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+18:52:20.355 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+18:52:20.357 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+18:52:20.360 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+18:52:20.361 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+18:52:20.364 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+18:52:20.364 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+18:52:20.364 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+18:52:20.376 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+18:52:25.773 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+18:52:28.649 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+18:52:32.157 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{}
+actual=>:null
+18:52:32.501 [mutationTestThread] ERROR io.karatelabs.js.JsProperty - external bridge error: class io.karatelabs.js.DemoPojo cannot be cast to class io.karatelabs.js.ExternalAccess (io.karatelabs.js.DemoPojo and io.karatelabs.js.ExternalAccess are in unnamed module of loader 'app')
+18:52:37.136 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+18:52:37.146 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+18:52:37.149 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+18:52:37.151 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+18:52:37.155 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+18:52:37.157 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+18:52:37.160 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+18:52:37.163 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+18:52:37.168 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+18:52:37.173 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+18:52:37.175 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+18:52:37.178 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+18:52:37.178 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+18:52:37.182 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+18:52:37.182 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+18:52:37.182 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+18:52:37.191 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+18:52:42.753 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+18:52:43.074 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+18:52:45.006 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+18:53:35.959 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+18:53:39.346 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+18:53:39.476 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+18:53:39.675 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1
+18:53:42.664 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+18:53:43.632 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+18:53:52.812 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+18:53:52.954 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+18:53:56.126 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+18:53:56.136 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+18:53:56.138 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+18:53:56.140 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+18:53:56.143 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+18:53:56.146 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+18:53:56.149 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+18:53:56.151 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+18:53:56.155 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+18:53:56.158 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+18:53:56.160 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+18:53:56.162 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+18:53:56.164 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+18:53:56.168 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+18:53:56.168 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+18:53:56.168 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+18:53:56.177 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+18:54:03.503 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1.0
+18:54:03.510 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1.0}
+18:54:06.302 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1.0
+18:54:06.303 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1.0}
+18:54:07.274 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+18:54:07.275 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+18:54:08.640 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a","b","c"]
+actual=>:[]
+18:54:11.194 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:0.5714285714285714
+18:54:12.158 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1.0
+18:54:12.158 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1.0}
+18:54:12.713 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1
+18:54:12.713 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1}
+18:54:14.362 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a","b","c"]
+actual=>:[]
+18:54:17.380 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+18:54:17.381 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+18:54:21.648 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+18:54:21.658 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+18:54:21.661 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+18:54:21.663 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+18:54:21.666 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+18:54:21.669 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+18:54:21.672 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+18:54:21.675 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+18:54:21.680 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+18:54:21.682 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+18:54:21.685 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+18:54:21.687 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+18:54:21.690 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+18:54:21.694 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+18:54:21.694 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+18:54:21.694 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+18:54:21.705 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+18:54:28.822 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:04:04.545 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:04:04.554 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:04:04.556 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:04:04.561 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:04:04.563 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:04:04.565 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:04:04.568 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:04:04.570 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:04:04.575 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:04:04.579 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:04:04.581 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:04:04.583 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:04:04.584 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:04:04.586 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:04:04.587 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:04:04.587 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:04:04.592 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:04:10.702 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:04:11.738 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a","c"]
+actual=>:["a"]
+09:04:11.954 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a"]
+actual=>:["a","c"]
+09:04:12.197 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+09:04:12.197 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+09:04:13.238 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+09:04:13.243 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+09:04:13.350 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a"]
+actual=>:["a","c"]
+09:04:13.379 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{}
+09:04:13.379 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":{}}
+09:04:45.982 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:04:45.994 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:04:45.996 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:04:45.999 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:04:46.003 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:04:46.006 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:04:46.009 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:04:46.011 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:04:46.015 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:04:46.017 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:04:46.019 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:04:46.021 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:04:46.021 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:04:46.025 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:04:46.025 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:04:46.025 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:04:46.031 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:04:50.588 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:04:51.811 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+09:04:52.484 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:04:53.903 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+09:04:57.016 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+09:04:57.747 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+09:04:59.548 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+09:05:00.416 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+09:05:05.044 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:05:05.053 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:05:05.055 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:05:05.059 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:05:05.061 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:05:05.065 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:05:05.068 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:05:05.070 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:05:05.075 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:05:05.077 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:05:05.078 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:05:05.081 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:05:05.082 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:05:05.085 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:05:05.085 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:05:05.085 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:05:05.090 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:05:12.257 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:null
+09:05:13.212 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a"]
+actual=>:["a","c"]
+09:05:13.314 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+09:05:13.314 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+09:05:27.008 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+09:05:35.749 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+09:05:35.755 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+09:05:36.798 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,2,3]
+actual=>:[]
+09:05:36.926 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+09:05:37.160 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"foo":1}
+actual=>:{"foo":1,"bar":2}
+09:05:37.285 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{"obj1":{"a":1,"b":2}}
+09:05:37.967 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:[]
+09:05:38.513 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:05:38.651 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:10
+actual=>:30
+09:05:38.651 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[10,20,30]
+actual=>:[30,30,30]
+09:05:39.931 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:null
+09:05:40.307 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+09:05:47.239 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+09:05:47.510 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a","c"]
+actual=>:["a"]
+09:05:54.733 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0]
+actual=>:[0,2]
+09:05:54.868 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"\"a\"":1}
+09:05:55.554 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:{}
+09:06:06.390 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:06:06.448 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:10
+actual=>:30
+09:06:06.448 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[10,20,30]
+actual=>:[30,30,30]
+09:06:07.119 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+09:06:07.585 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+09:06:07.586 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+09:06:08.386 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"bar":2}
+actual=>:{"foo":1,"bar":2}
+09:06:08.425 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:[]
+09:06:08.640 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+09:06:15.728 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:null
+09:06:16.317 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[]
+09:06:16.712 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"bar":2}
+actual=>:{"foo":1,"bar":2}
+09:06:17.643 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+09:06:24.534 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+09:06:32.965 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a"]
+actual=>:["a","c"]
+09:06:33.057 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:null
+09:06:33.176 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:[]
+09:06:33.501 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+09:06:33.537 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+09:06:34.023 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+09:06:34.108 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:06:34.461 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:null
+09:06:34.884 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+09:06:34.988 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+09:06:35.317 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+09:06:36.260 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{"a":1}
+09:06:36.260 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,2]
+actual=>:[{"a":1},{"a":2}]
+09:06:37.423 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,2,3]
+actual=>:[]
+09:06:37.458 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+09:06:37.794 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+09:06:40.645 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:06:40.652 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:06:40.655 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:06:40.657 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:06:40.660 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:06:40.663 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:06:40.666 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:06:40.668 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:06:40.673 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:06:40.676 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:06:40.679 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:06:40.681 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:06:40.682 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:06:40.685 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:06:40.686 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:06:40.686 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:06:40.696 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:06:49.551 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo, bar
+09:06:49.838 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo = 1
+09:06:50.585 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[]
+09:07:01.485 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+!foo || bar
+09:07:01.541 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a < b
+09:07:01.976 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+!foo || bar
+09:07:02.134 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2 + 3
+09:07:02.532 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+try {} catch (e) {} finally {}
+09:07:18.377 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+if (true) a = 1; else a = 2
+09:07:18.811 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[]
+09:07:18.894 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b[c]
+09:07:28.826 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+5 | 1 | 2
+09:07:29.634 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2
+09:07:44.206 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+true ? 'foo' : bar
+09:08:03.526 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+2 * (1 + 3)
+09:08:03.637 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+09:08:03.671 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.null
+09:08:26.934 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1
+2
+09:08:27.086 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+0 && 1 ? 'foo' : bar
+09:08:33.914 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+5 | 1 | 2
+09:08:34.974 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+09:08:35.131 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 | 2
+09:08:43.427 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = b++
+09:08:44.926 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo
+09:08:45.027 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+09:09:13.234 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+0 && 1 ? 'foo' : bar
+09:09:14.546 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = --b
+09:09:15.274 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b()
+09:09:16.408 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = function(){ return true }
+09:09:23.458 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = b++
+09:11:02.617 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:11:02.625 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:11:02.627 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:11:02.631 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:11:02.633 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:11:02.635 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:11:02.640 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:11:02.642 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:11:02.645 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:11:02.648 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:11:02.649 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:11:02.650 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:11:02.651 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:11:02.653 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:11:02.654 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:11:02.654 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:11:02.659 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:11:08.361 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+09:11:08.866 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:11:09.568 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+09:11:12.693 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:"hello"
+actual=>:null
+09:11:13.425 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+09:11:15.228 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+09:11:16.182 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:NaN
+09:11:20.683 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:11:20.691 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:11:20.693 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:11:20.696 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:11:20.698 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:11:20.700 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:11:20.704 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:11:20.707 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:11:20.710 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:11:20.713 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:11:20.714 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:11:20.715 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:11:20.716 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:11:20.718 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:11:20.719 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:11:20.719 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:11:20.727 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:11:27.908 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:null
+09:11:28.632 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a"]
+actual=>:["a","c"]
+09:11:28.723 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+09:11:28.724 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+09:11:42.232 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+09:11:51.023 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+09:11:51.027 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+09:11:52.082 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,2,3]
+actual=>:[]
+09:11:52.447 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"foo":1}
+actual=>:{"foo":1,"bar":2}
+09:11:52.562 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{"obj1":{"a":1,"b":2}}
+09:11:53.265 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:[]
+09:11:53.718 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:11:53.845 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:10
+actual=>:30
+09:11:53.845 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[10,20,30]
+actual=>:[30,30,30]
+09:11:55.192 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:null
+09:11:55.585 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+09:12:02.332 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+09:12:02.594 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a","c"]
+actual=>:["a"]
+09:12:09.827 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0]
+actual=>:[0,2]
+09:12:09.965 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"\"a\"":1}
+09:12:10.599 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"b":2,"c":3}
+actual=>:{}
+09:12:21.401 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:12:21.462 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:10
+actual=>:30
+09:12:21.462 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[10,20,30]
+actual=>:[30,30,30]
+09:12:22.164 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+09:12:22.662 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:0
+actual=>:3
+09:12:22.662 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[3,3,3]
+09:12:23.568 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"bar":2}
+actual=>:{"foo":1,"bar":2}
+09:12:23.607 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:[]
+09:12:23.874 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+09:12:31.302 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:null
+09:12:31.893 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[]
+09:12:32.186 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"bar":2}
+actual=>:{"foo":1,"bar":2}
+09:12:33.141 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{}
+09:12:40.147 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[0]
+09:12:48.711 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a"]
+actual=>:["a","c"]
+09:12:48.787 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:null
+09:12:48.891 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[2,3]
+actual=>:[]
+09:12:49.190 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+09:12:49.228 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+09:12:49.688 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+09:12:49.760 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:12:50.088 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[null]
+actual=>:null
+09:12:50.480 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+09:12:50.902 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+09:12:51.882 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:{"a":1}
+09:12:51.882 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,2]
+actual=>:[{"a":1},{"a":2}]
+09:12:52.949 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[1,2,3]
+actual=>:[]
+09:12:52.983 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+09:12:53.344 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1,"b":2}
+actual=>:{}
+09:12:56.279 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:12:56.288 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:12:56.290 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:12:56.292 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:12:56.294 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:12:56.297 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:12:56.302 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:12:56.306 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:12:56.311 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:12:56.313 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:12:56.315 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:12:56.316 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:12:56.318 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:12:56.322 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:12:56.323 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:12:56.323 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:12:56.333 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:13:05.104 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo, bar
+09:13:05.381 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo = 1
+09:13:06.074 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[]
+09:13:16.786 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+!foo || bar
+09:13:16.835 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a < b
+09:13:17.259 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+!foo || bar
+09:13:17.449 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2 + 3
+09:13:17.713 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+try {} catch (e) {} finally {}
+09:13:32.848 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+if (true) a = 1; else a = 2
+09:13:33.275 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,2]
+actual=>:[]
+09:13:33.352 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b[c]
+09:13:43.185 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+5 | 1 | 2
+09:13:44.075 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2
+09:13:58.920 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+true ? 'foo' : bar
+09:14:17.602 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+2 * (1 + 3)
+09:14:17.695 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+09:14:17.730 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.null
+09:14:40.638 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1
+2
+09:14:40.721 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+0 && 1 ? 'foo' : bar
+09:14:47.326 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+5 | 1 | 2
+09:14:48.051 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+09:14:48.188 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 | 2
+09:14:55.939 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = b++
+09:14:57.229 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo
+09:14:57.323 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+09:15:23.813 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+0 && 1 ? 'foo' : bar
+09:15:24.947 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = --b
+09:15:25.566 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b()
+09:15:26.604 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = function(){ return true }
+09:15:33.184 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a = b++
+09:15:59.156 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+09:16:31.062 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+09:16:32.989 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+foo instanceof Foo
+09:16:47.921 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo
+09:16:49.685 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a => true
+09:16:49.805 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+a.b()
+09:17:05.756 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+2 * 3
+09:17:05.801 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+2 ** 3
+09:17:19.505 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+function(a){ return { a, b } }
+09:17:39.707 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0]
+09:18:01.254 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 + 2 + 3
+09:18:04.429 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+var foo, bar
+09:18:17.786 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+{ a }
+09:18:21.600 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:18:21.609 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:18:21.611 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:18:21.613 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:18:21.616 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:18:21.618 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:18:21.623 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:18:21.625 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:18:21.628 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:18:21.631 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:18:21.632 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:18:21.633 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:18:21.633 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:18:21.635 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:18:21.635 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:18:21.635 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:18:21.642 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:18:26.801 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:18:29.241 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null
+09:18:32.329 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{}
+actual=>:null
+09:18:32.531 [mutationTestThread] ERROR io.karatelabs.js.JsProperty - external bridge error: class io.karatelabs.js.DemoPojo cannot be cast to class io.karatelabs.js.ExternalAccess (io.karatelabs.js.DemoPojo and io.karatelabs.js.ExternalAccess are in unnamed module of loader 'app')
+09:18:36.684 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:18:36.692 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:18:36.693 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:18:36.696 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:18:36.698 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:18:36.700 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:18:36.704 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:18:36.706 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:18:36.710 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:18:36.712 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:18:36.713 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:18:36.714 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:18:36.715 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:18:36.718 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:18:36.718 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:18:36.718 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:18:36.725 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:18:42.271 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+09:18:42.593 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+09:18:44.434 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+09:19:33.034 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+09:19:36.059 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+09:19:36.166 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+typeof 'foo' === 'string'
+09:19:36.308 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1
+09:19:38.756 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+09:19:39.647 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+09:19:48.651 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+09:19:48.785 [mutationTestThread] DEBUG io.karatelabs.js.NodeUtils - text:
+1 ** 2 ** 3
+09:19:51.572 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:19:51.581 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:19:51.582 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:19:51.585 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:19:51.588 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:19:51.591 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:19:51.595 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:19:51.598 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:19:51.601 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:19:51.603 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:19:51.604 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:19:51.605 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:19:51.606 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:19:51.608 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:19:51.609 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:19:51.609 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:19:51.615 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:19:58.221 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1.0
+09:19:58.225 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1.0}
+09:20:07.444 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1.0
+09:20:07.448 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1.0}
+09:20:08.248 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+09:20:08.249 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+09:20:09.478 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a","b","c"]
+actual=>:[]
+09:20:11.636 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:28
+actual=>:0.5714285714285714
+09:20:12.144 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:[0,1,2]
+actual=>:[0,1,2,3]
+09:20:12.363 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1.0
+09:20:12.363 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1.0}
+09:20:12.796 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:1
+09:20:12.796 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":1}
+09:20:20.342 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:["a","b","c"]
+actual=>:[]
+09:20:22.825 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:1
+actual=>:null
+09:20:22.825 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:{"a":null}
+09:20:26.563 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with percent: "PATH=%%PATH%%"
+09:20:26.571 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with space: echo 'Hello World'
+09:20:26.573 [main] INFO  i.k.common.StringUtilsCliTest - URL escaped: 'https://example.com/search?q=test&category=books'
+09:20:26.575 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with ampersand: "test ^& special"
+09:20:26.578 [main] INFO  i.k.common.StringUtilsCliTest - JSON escaped: '{"name":"O'\''Brien","age":30}'
+09:20:26.580 [main] INFO  i.k.common.StringUtilsCliTest - Unicode escaped: 'Hello 世界 🌍'
+09:20:26.584 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape with quote on mac os x: 'It'\''s a test'
+09:20:26.587 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command with args: curl '-X' 'POST' 'https://example.com'
+09:20:26.591 [main] INFO  i.k.common.StringUtilsCliTest - Build shell command: curl 'https://example.com'
+09:20:26.593 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape with double quote: "say ""hello"""
+09:20:26.594 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with single quote: 'O'\''Brien'
+09:20:26.595 [main] INFO  i.k.common.StringUtilsCliTest - Windows escape all special chars: "^^^&^|^<^>%%"
+09:20:26.595 [main] INFO  i.k.common.StringUtilsCliTest - Unix escape with multiple single quotes: 'It'\''s John'\''s book'
+09:20:26.598 [main] INFO  i.k.common.StringUtilsCliTest - Original: curl 'https://example.com' -H 'Content-Type: application/json'
+09:20:26.598 [main] INFO  i.k.common.StringUtilsCliTest - Escaped URL: 'https://example.com'
+09:20:26.598 [main] INFO  i.k.common.StringUtilsCliTest - Escaped header: 'Content-Type: application/json'
+09:20:26.604 [main] INFO  i.k.common.StringUtilsCliTest - Shell escape on mac os x: 'test'
+09:20:33.012 [mutationTestThread] ERROR io.karatelabs.js.NodeUtils - assertion failed:
+expected:{"a":1}
+actual=>:null

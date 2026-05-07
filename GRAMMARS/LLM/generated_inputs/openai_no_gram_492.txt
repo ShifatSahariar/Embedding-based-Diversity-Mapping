@@ -1,0 +1,2 @@
+let max = 7; if (max >= 5) { return 10; } else { return 2; }
+bye

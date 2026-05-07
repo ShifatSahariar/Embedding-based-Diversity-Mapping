@@ -1,0 +1,6 @@
+Configuration,Coverage–MS
+OpenAI + Affinity,0.5784
+CODESTRAL + Affinity,0.5181
+GraphCodeBERT + Affinity,0.6747
+UNIXCODER + Affinity,0.8675
+QWEN3 + Affinity,0.5663
