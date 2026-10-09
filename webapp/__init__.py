@@ -1,2 +1,0 @@
-# SpreadEx web app package.
-
